@@ -44,6 +44,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -57,11 +58,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'cloudinary',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'home',
-    'titbit',
+    'titbit'
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 SITE_ID = 1
 
@@ -92,6 +94,8 @@ TEMPLATES = [
         },
     },
 ]
+
+print(TEMPLATES_DIR)
 
 WSGI_APPLICATION = 'network.wsgi.application'
 
@@ -146,6 +150,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
