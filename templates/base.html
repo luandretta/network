@@ -1,38 +1,97 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{% block head_title %}{% endblock %}</title>
-    {% block extra_head %}
-    {% endblock %}
+<html lang="en">
 
-     <!-- Font Awesome -->
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-     <!-- Google Fonts -->
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-     <!-- Bootstrap core CSS -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<head>
+  {% block meta %}
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% endblock %}
 
-  </head>
-  <body>
+  {% block extra_meta %}
+  <!-- Extra Meta tags -->
+  <meta name="description" content="Titbit is a free social networking site where users broadcast short posts.">
+  <meta name="keywords"
+    content="social, media, connect, love titbit, post, twitter, twitt, follow, follower, timeline, influencer, titbit, titbit feed, titbit register, titbit sign up, news">
+  <meta name="Author" content="Lucimeri Andretta">
+  {% endblock %}
+
+  {% block corecss %}
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  {% endblock %}
+
+  {% block corejs %}
+  <!-- jQuery and Bootstrap  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/5a751252a7.js" crossorigin="anonymous"></script>
+  {% endblock %}
+
+
+  <link rel="shortcut icon" href=" {% static 'images/shortcut-icon.png' %}" type="image/x-icon">
+  <title>Titbit {% block extra_title %}{% endblock %}</title>
+</head>
+
+<body>
+  <header>
+    <!-- Navbar-->
+    {% include 'home/navbar.html' %}
+  </header>
+  <main>
     {% block body %}
-
+    <!-- Messages -->
     {% if messages %}
-    <div class="row justify-content-center pt-3">
-      <div class="col-md-6">
-        {% for message in messages %}
-        <div class="alert alert-primary" role="alert">{{message}}</div>
-        {% endfor %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    </div>
+    {% endfor %}
+
     {% endif %}
-    <div class="mt-5">
+
     {% block content %}
+    <!-- Content Goes here -->
+    {% endblock content %}
     {% endblock %}
-    {% endblock %}
+
     {% block extra_body %}
     {% endblock %}
-  </div>
+  </main>
+  <!-- Footer -->
+  <footer class="text-center text-light bg-dark p-3 mt-5">
+    <!-- Grid container -->
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <!-- Section: Social media -->
+        <p>Get in touch:
+          <!-- Linkedin -->
+          <a class="btn btn-floating m-1 link-light" href="https://www.linkedin.com/in/luandretta/" target="_blank"
+            rel="nofollow" role="button"><i class="fab fa-linkedin-in"></i></a>
+          <!-- Github -->
+          <a class="btn btn-floating m-1 link-light" href="https://github.com/luandretta" target="_blank" rel="nofollow"
+            role="button"><i class="fab fa-github"></i></a>
+        </p>
+        <!-- Copyright -->
+        <small class="text-muted">
+          <p>
+            Developed By <a href="https://github.com/luandretta" target="_blank" rel="nofollow">
+              Lucimeri Andretta </a> for Code Institute's Portfolio Project 4 - 2023
+          </p>
+        </small>
+      </div>
+    </div>
+  </footer>
+</body>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-  </body>
 </html>
