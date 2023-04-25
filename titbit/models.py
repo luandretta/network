@@ -10,4 +10,3 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(max_length=250)
     posted_on = models.DateTimeField(default=timezone.now)
-    
