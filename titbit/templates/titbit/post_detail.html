@@ -11,11 +11,27 @@
 
     <div class="row justify-content-center mt-3">
         <div class="col-md-5 col-sm-12 border-bottom">
-            <p><strong>{{ post.author }}</strong> {{ post.posted_on }}</p>
+            <p><strong>{{ post.author }}</strong></p>
             <p>{{ post.content }}</p>
+            <small class="text-muted">
+                <p>{{ post.posted_on }}
+                    {% if request.user == post.author %}
+                    <a href="{% url 'post-edit' post.pk %}" style="color: #333;">
+                        <i class="far fa-edit"></i>
+                    </a>
+                    <a href="{% url 'post-delete' post.pk %}" style="color: #333;">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    {% endif %}
+                </p>
+            </small>
         </div>
     </div>
-
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12">
+            <h5>Add a Comment!</h5>
+        </div>
+    </div>
     <div class="row justify-content-center mt-3 mb-5">
         <div class="col-md-5 col-sm-12">
             <form method="POST">
@@ -27,6 +43,23 @@
             </form>
         </div>
     </div>
-
+    {% for comment in comments %}
+    <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <p><strong>{{ comment.author}}</strong></p>
+            <p>{{ comment.comment}}</p>
+            <small class="text-muted">
+                <p>
+                    {{ comment.posted_on }}
+                    {% if request.user == post.author %}
+                    <a href="{% url 'comment-delete' post.pk comment.pk %}" style="color: #333;">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    {% endif %}
+                </p>
+            </small>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 {% endblock content %}
