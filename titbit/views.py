@@ -7,7 +7,7 @@ from .forms import PostForm, CommentForm
 from django.views.generic.edit import UpdateView, DeleteView
 
 
-class AllPostsListView(View):
+class AllPostsListView(LoginRequiredMixin, View):
     """
     View from all posts sorted by the latest
     """
@@ -40,7 +40,7 @@ class AllPostsListView(View):
         return render(request, 'titbit/all_post_list.html', context)
 
 
-class PostDetailView(View):
+class PostDetailView(LoginRequiredMixin, View):
     """
     View an individual post in more detail
     """
@@ -79,10 +79,11 @@ class PostDetailView(View):
         return render(request, 'titbit/post_detail.html', context)
 
 
-class PostEditView(UpdateView):
+class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     Edit the post
     Redirect to the previous page through the primary key
+    Boolean expression to UserPassesTextMixin
     """
     model = Post
     fields = ['content']
@@ -92,21 +93,31 @@ class PostEditView(UpdateView):
         pk = self.kwargs['pk']
         return reverse_lazy('post-detail', kwargs={'pk': pk})
 
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author
 
-class PostDeleteView(DeleteView):
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
     Delete the post
     Redirect to the previous page through the primary key
+    Boolean expression to UserPassesTextMixin
     """
     model = Post
     template_name = 'titbit/post_delete.html'
     success_url = reverse_lazy('post-list')
 
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author
 
-class CommentDeleteView(DeleteView):
+
+class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
     Delete the comment
     Redirect to the post detail
+    Boolean expression to UserPassesTextMixin
     """
     model = Comment
     template_name = 'titbit/comment_delete.html'
@@ -114,3 +125,7 @@ class CommentDeleteView(DeleteView):
     def get_success_url(self):
         pk = self.kwargs['post_pk']
         return reverse_lazy('post-detail', kwargs={'pk': pk})
+
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author

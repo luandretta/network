@@ -51,7 +51,7 @@
             <small class="text-muted">
                 <p>
                     {{ comment.posted_on }}
-                    {% if request.user == post.author %}
+                    {% if request.user == comment.author %}
                     <a href="{% url 'comment-delete' post.pk comment.pk %}" style="color: #333;">
                         <i class="fas fa-trash"></i>
                     </a>
