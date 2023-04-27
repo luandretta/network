@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views import View
-from .models import Post, Comment
+from .models import Post, Comment, UserProfile
 from .forms import PostForm, CommentForm
 from django.views.generic.edit import UpdateView, DeleteView
 
@@ -66,7 +66,8 @@ class PostDetailView(LoginRequiredMixin, View):
             new_comment.author = request.user
             new_comment.post = post
             new_comment.save()
-            # messages.add_message(request, messages.SUCCESS, 'Your comment has been submitted')
+            # messages.add_message(request, messages.SUCCESS,
+            # 'Your comment has been submitted')
 
         comments = Comment.objects.filter(post=post).order_by('-posted_on')
 
@@ -129,3 +130,22 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author
+
+
+class ProfileView(LoginRequiredMixin, View):
+    """
+    View from Profile
+    Each Profile has a unique url through pk
+    """
+    def get(self, request, pk, *args, **kwargs):
+        profile = UserProfile.objects.get(pk=pk)
+        user = profile.user
+        post = Post.objects.filter(author=user).order_by('-posted_on')
+
+        context = {
+            'user': user,
+            'profile': profile,
+            'post': post
+        }
+
+        return render(request, 'titbit/profile.html', context)

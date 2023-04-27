@@ -1,0 +1,52 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-3">
+        <!-- Back to Feed Button -->
+        <div class="col-md-3 col-sm-6">
+            <a href="{% url 'post-list' %}" class="btn btn-light">Back to Feed</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <!-- Profile Card -->
+        <div class="card shadow-sm col-md-8 col-sm-12 border-bottom px-5 pt-3">
+            <img src="{{ profile.picture.url }}" class="rounded-circle" width="100" height="100" alt="profile image" />
+            {% if profile.name %}
+            <h3 class="py-4">{{ profile.name }}
+
+            {% endif %}
+            </h3>
+
+            {% if profile.location %}
+            <p>{{ profile.location }}</p>
+            {% endif %}
+
+            {% if profile.birth_date %}
+            <p>{{ profile.birth_date }}</p>
+            {% endif %}
+
+            {% if profile.bio %}
+            <p>{{ profile.bio }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+    {% for post in posts %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom position-relative">
+            <p><strong>{{ post.author }}</strong></p>
+            <p>{{ post.content }}</p>
+            <small class="text-muted">
+                <p>{{ post.posted_on }}</p>
+            </small>
+            <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
