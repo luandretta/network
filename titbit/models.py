@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from cloudinary.models import CloudinaryField
+from django.db.models.signal import post_save
+from django.dispatch import receiver
 
 
 class Post(models.Model):
@@ -37,5 +39,8 @@ class UserProfile(models.Model):
     profile_pic = CloudinaryField('Profile Picture',
                                   default='user.png',
                                   blank=True)
+    bg_pic = CloudinaryField('Background Picture',
+                              default='bg.png',
+                              blank=True)
     birth_date = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=100, blank=True, null=True)

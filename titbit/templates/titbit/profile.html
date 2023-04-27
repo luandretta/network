@@ -13,40 +13,48 @@
 
     <div class="row justify-content-center mt-3">
         <!-- Profile Card -->
-        <div class="card shadow-sm col-md-8 col-sm-12 border-bottom px-5 pt-3">
-            <img src="{{ profile.picture.url }}" class="rounded-circle" width="100" height="100" alt="profile image" />
-            {% if profile.name %}
-            <h3 class="py-4">{{ profile.name }}
+        <div class="card shadow-sm">
+            <!-- Background -->
+            <img class="card-img-top" src="{{ profile.bg_pic.url }}" alt="background image">
 
-            {% endif %}
-            </h3>
+            <!-- Profile Picture -->
+            <div class="card-body little-profile text-center">
+                <div class="pro-img">
+                    <img src="{{ profile.picture.url }}" alt="profile image" />
+                </div>
+                <!-- User's data -->
+                {% if profile.name %}
+                <h3 class="py-4">{{ profile.name }}</h3>
+                {% endif %}
 
-            {% if profile.location %}
-            <p>{{ profile.location }}</p>
-            {% endif %}
+                {% if profile.bio %}
+                <p>{{ profile.bio }}</p>
+                {% endif %}
+                
+                <p>
+                {% if profile.location %}
+                {{ profile.location }} - 
+                {% endif %}
 
-            {% if profile.birth_date %}
-            <p>{{ profile.birth_date }}</p>
-            {% endif %}
-
-            {% if profile.bio %}
-            <p>{{ profile.bio }}</p>
-            {% endif %}
+                {% if profile.birth_date %}
+                {{ profile.birth_date }}
+                {% endif %}
+                </p>
+            </div>
         </div>
-    </div>
 
 
-    {% for post in posts %}
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-5 col-sm-12 border-bottom position-relative">
-            <p><strong>{{ post.author }}</strong></p>
-            <p>{{ post.content }}</p>
-            <small class="text-muted">
-                <p>{{ post.posted_on }}</p>
-            </small>
-            <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
+        {% for post in posts %}
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-5 col-sm-12 border-bottom position-relative">
+                <p><strong>{{ post.author }}</strong></p>
+                <p>{{ post.content }}</p>
+                <small class="text-muted">
+                    <p>{{ post.posted_on }}</p>
+                </small>
+                <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-{% endblock content %}
+    {% endblock content %}
