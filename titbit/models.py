@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from cloudinary.models import CloudinaryField
 
 
 class Post(models.Model):
@@ -20,3 +21,21 @@ class Comment(models.Model):
     comment = models.TextField(max_length=250)
     posted_on = models.DateTimeField(default=timezone.now)
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
+
+
+class UserProfile(models.Model):
+    """
+    Profile Model each User can have only one Profile
+    """
+    user = models.OneToOneField(User,
+                                primary_key=True,
+                                verbose_name='user',
+                                related_name='profile',
+                                on_delete=models.CASCADE)
+    name = models.CharField(max_length=30, blank=True, null=True)
+    bio = models.TextField(max_length=150, blank=True, null=True)
+    profile_pic = CloudinaryField('Profile Picture',
+                                  default='user.png',
+                                  blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    location = models.CharField(max_length=100, blank=True, null=True)
