@@ -149,3 +149,20 @@ class ProfileView(LoginRequiredMixin, View):
         }
 
         return render(request, 'titbit/profile.html', context)
+
+
+class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """
+    Edit the own profile
+    """
+    model = UserProfile
+    fields = ['name', 'profile_pic', 'bg_pic', 'bio', 'birth_date', 'location']
+    template_name = 'titbit/profile_edit.html'
+
+    def get_success_url(self):
+        pk = self.kwargs['pk']
+        return reverse_lazy('profile', kwargs={'pk': pk})
+
+    def test_func(self):
+        profile = self.get_object()
+        return self.request.user == profile.user
