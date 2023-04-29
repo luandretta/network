@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views import View
@@ -134,18 +134,35 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class ProfileView(LoginRequiredMixin, View):
     """
-    View from Profile
+    View from User's Profile
     Each Profile has a unique url through pk
+    Displays posts and followers from User
     """
     def get(self, request, pk, *args, **kwargs):
         profile = UserProfile.objects.get(pk=pk)
         user = profile.user
         posts = Post.objects.filter(author=user).order_by('-posted_on')
 
+        followers = profile.followers.all()
+        
+        if len(followers) == 0:
+            is_following = False
+
+        for follower in followers:
+            if follower == request.user:
+                is_following = True
+                break
+            else:
+                is_following = False
+
+        number_of_followers = len(followers)
+
         context = {
             'user': user,
             'profile': profile,
-            'posts': posts
+            'posts': posts,
+            'number_of_followers': number_of_followers,
+            'is_following': is_following,
         }
 
         return render(request, 'titbit/profile.html', context)
@@ -166,3 +183,25 @@ class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         profile = self.get_object()
         return self.request.user == profile.user
+
+
+class AddFollower(LoginRequiredMixin, View):
+    """
+    Follow another User
+    """
+    def post(self, request, pk, *args, **kwargs):
+        profile = UserProfile.objects.get(pk=pk)
+        profile.followers.add(request.user)
+
+        return redirect('profile', pk=profile.pk)
+
+
+class RemoveFollower(LoginRequiredMixin, View):
+    """
+    Unfollow an User
+    """
+    def post(self, request, pk, *args, **kwargs):
+        profile = UserProfile.objects.get(pk=pk)
+        profile.followers.remove(request.user)
+
+        return redirect('profile', pk=profile.pk)

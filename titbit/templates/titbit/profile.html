@@ -27,7 +27,7 @@
                 </div>
                 <!-- User's data -->
                 {% if profile.name %}
-                <h3 class="py-4">{{ profile.name }}  
+                <h3 class="py-4">{{ profile.name }}
                     <span>
                         {% if request.user == user %}
                         <a href="{% url 'profile-edit' profile.pk %}" style="color: #333">
@@ -62,17 +62,38 @@
                     {% endif %}
                 </p>
             </div>
+            <div class="mb-3 text-center">
+                <p>Followers: {{ number_of_followers }}</p>
+                {% if user == request.user %}
+                {% else %}
+                {% if is_following %}
+                <form method="POST" action="{% url 'remove-follower' profile.pk %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-danger" type="submit">Unfollow</button>
+                </form>
+                {% else %}
+                <form method="POST" action="{% url 'add-follower' profile.pk %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-success" type="submit">Follow</button>
+                </form>
+                {% endif %}
+                {% endif %}
+            </div>
         </div>
         <!-- User's posts -->
         {% for post in posts %}
         <div class="row justify-content-center mt-3">
-            <div class="col-md-5 col-sm-12 border-bottom position-relative">
-                <p><strong>{{ post.author }}</strong></p>
-                <p>{{ post.content }}</p>
-                <small class="text-muted">
-                    <p>{{ post.posted_on }}</p>
-                </small>
-                <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
+            <div class="col-md-5 col-sm-12 border-bottom">
+                <p>
+                    <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@ {{ post.author }}</a>
+                </p>
+                <div class="position-relative">
+                    <p>{{ post.content }}</p>
+                    <small class="text-muted">
+                        <p>{{ post.posted_on }}</p>
+                    </small>
+                    <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
+                </div>
             </div>
         </div>
         {% endfor %}
