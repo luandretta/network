@@ -140,12 +140,12 @@ class ProfileView(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         profile = UserProfile.objects.get(pk=pk)
         user = profile.user
-        post = Post.objects.filter(author=user).order_by('-posted_on')
+        posts = Post.objects.filter(author=user).order_by('-posted_on')
 
         context = {
             'user': user,
             'profile': profile,
-            'post': post
+            'posts': posts
         }
 
         return render(request, 'titbit/profile.html', context)

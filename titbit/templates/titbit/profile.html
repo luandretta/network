@@ -2,6 +2,8 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block extra_title %}- @{{ profile.user }}{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row mt-3">
@@ -20,11 +22,12 @@
             <!-- Profile Picture -->
             <div class="card-body little-profile text-center">
                 <div class="pro-img">
-                    <img src="{{ profile.profile_pic.url }}"  class="rounded-circle" width="100" height="100"  alt="profile image"/>
+                    <img src="{{ profile.profile_pic.url }}" class="rounded-circle" width="200" height="200"
+                        alt="profile image" />
                 </div>
                 <!-- User's data -->
                 {% if profile.name %}
-                <h3 class="py-4">{{ profile.name }}
+                <h3 class="py-4">{{ profile.name }}  
                     <span>
                         {% if request.user == user %}
                         <a href="{% url 'profile-edit' profile.pk %}" style="color: #333">
@@ -32,36 +35,35 @@
                         </a>
                         {% endif %}
                     </span>
-                {% else %}
-                <h3 class="py-4">{{ user.username }}
-                    <span>
-                        {% if request.user == user %}
-                        <a href="{% url 'profile-edit' profile.pk %}" style="color: #333">
-                            <i class="far fa-edit"></i>
-                        </a>
-                        {% endif %}
-                    </span>
-                
-                {% endif %}
+                    {% else %}
+                    <h3 class="py-4">{{ user.username }}
+                        <span>
+                            {% if request.user == user %}
+                            <a href="{% url 'profile-edit' profile.pk %}" style="color: #333">
+                                <i class="far fa-edit"></i>
+                            </a>
+                            {% endif %}
+                        </span>
+                    </h3>
+                    {% endif %}
                 </h3>
 
                 {% if profile.bio %}
                 <p>{{ profile.bio }}</p>
                 {% endif %}
-                
-                <p>
-                {% if profile.location %}
-                {{ profile.location }} - 
-                {% endif %}
 
-                {% if profile.birth_date %}
-                {{ profile.birth_date }}
-                {% endif %}
+                <p>
+                    {% if profile.location %}
+                    {{ profile.location }} -
+                    {% endif %}
+
+                    {% if profile.birth_date %}
+                    {{ profile.birth_date }}
+                    {% endif %}
                 </p>
             </div>
         </div>
-
-
+        <!-- User's posts -->
         {% for post in posts %}
         <div class="row justify-content-center mt-3">
             <div class="col-md-5 col-sm-12 border-bottom position-relative">

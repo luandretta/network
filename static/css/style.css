@@ -1,0 +1,8 @@
+
+
+
+/* Profile */
+.card-img-top{
+    max-height:300px;
+    object-fit: cover;
+}
