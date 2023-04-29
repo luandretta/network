@@ -8,3 +8,12 @@ a {
     max-height:300px;
     object-fit: cover;
 }
+
+/* Like and Dislike */
+.like-button,
+.comment-button {
+    color: var(--main-purple);
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
