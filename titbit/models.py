@@ -9,10 +9,14 @@ from django.dispatch import receiver
 class Post(models.Model):
     """
     Post Model including autor and time
+    Like and dislike posts
     """
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(max_length=250)
     posted_on = models.DateTimeField(default=timezone.now)
+    likes = models.ManyToManyField(User, blank=True, related_name='likes')
+    dislikes = models.ManyToManyField(User, blank=True,
+                                      related_name='dislikes')
 
 
 class Comment(models.Model):

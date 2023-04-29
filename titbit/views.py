@@ -144,7 +144,7 @@ class ProfileView(LoginRequiredMixin, View):
         posts = Post.objects.filter(author=user).order_by('-posted_on')
 
         followers = profile.followers.all()
-        
+
         if len(followers) == 0:
             is_following = False
 
