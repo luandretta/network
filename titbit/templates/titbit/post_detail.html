@@ -25,6 +25,34 @@
                     {% endif %}
                 </p>
             </small>
+            <div class="d-flex flex-row">
+                <form method="POST" action="{% url 'post-like' post.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button class="like-button" type="submit">
+                        {% if request.user in post.likes.all %}
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        {% else %}
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        {% endif %}
+                        <span>{{ post.likes.all.count }}</span>
+                    </button>
+                </form>
+                <form method="POST" action="{% url 'dislike' post.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button class="like-button" type="submit">
+                        {% if request.user in post.dislikes.all %}
+                        <i class="fa-solid fa-thumbs-down"></i>
+                        {% else %}
+                        <i class="fa-regular fa-thumbs-down"></i>
+                        {% endif %}
+                        <span>{{ post.dislikes.all.count }}</span>
+                    </button>
+                </form>
+                <a class="comment-button" href="{% url 'post-detail' post.pk %}">
+                    <i class="fa-regular fa-comment"></i></a>
+            </div>
         </div>
     </div>
     <div class="row justify-content-center mt-3">
