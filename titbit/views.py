@@ -12,6 +12,7 @@ from django.views.generic.edit import UpdateView, DeleteView
 class AllPostsListView(LoginRequiredMixin, View):
     """
     View from all posts sorted by the latest
+    Create new post using post form
     """
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-posted_on')
@@ -40,6 +41,43 @@ class AllPostsListView(LoginRequiredMixin, View):
             }
 
         return render(request, 'titbit/all_post_list.html', context)
+
+
+class FollowingPostsListView(LoginRequiredMixin, View):
+    """
+    Displays only posts from people who user is following
+    Create new post using post form
+    """
+    def get(self, request, *args, **kwargs):
+        logged_in_user = request.user
+        following_posts = Post.objects.filter(
+            author__profile__followers__in=[logged_in_user.id]
+        ).order_by('-posted_on')
+        form = PostForm()
+
+        context = {
+            'following_post_list': following_posts,
+            'form': form,
+        }
+
+        return render(request, 'titbit/feed.html', context)
+
+    # Save the new post
+    def post(self, request, *args, **kwargs):
+        posts = Post.objects.all().order_by('-posted_on')
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.author = request.user
+            new_post.save()
+
+            context = {
+                'post_list': posts,
+                'form': form,
+            }
+
+        return render(request, 'titbit/feed.html', context)
 
 
 class PostDetailView(LoginRequiredMixin, View):
@@ -242,6 +280,7 @@ class LikePost(LoginRequiredMixin, View):
 
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
+
 
 class Dislike(LoginRequiredMixin, View):
     """

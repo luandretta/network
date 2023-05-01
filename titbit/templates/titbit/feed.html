@@ -1,0 +1,78 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block extra_title %}- Following{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Post form -->
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12">
+            <h5>Titbit a little bit!</h5>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success mt-3">Submit!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Feed from following -->
+    {% if following_post_list %}
+    {% for post in following_post_list %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom position-relative">
+            <p>
+                <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@ {{ post.author }}</a>
+            </p>
+            <div class="position-relative">
+                <p>{{ post.content }}</p>
+                <small class="text-muted">
+                    <p>{{ post.posted_on }}</p>
+                </small>
+                <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
+            </div>
+            <div class="d-flex flex-row">
+                <form method="POST" action="{% url 'post-like' post.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button class="like-button" type="submit">
+                        {% if request.user in post.likes.all %}
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        {% else %}
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        {% endif %}
+                        <span>{{ post.likes.all.count }}</span>
+                    </button>
+                </form>
+                <form method="POST" action="{% url 'dislike' post.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button class="like-button" type="submit">
+                        {% if request.user in post.dislikes.all %}
+                        <i class="fa-solid fa-thumbs-down"></i>
+                        {% else %}
+                        <i class="fa-regular fa-thumbs-down"></i>
+                        {% endif %}
+                        <span>{{ post.dislikes.all.count }}</span>
+                    </button>
+                </form>
+                <a class="comment-button" href="{% url 'post-detail' post.pk %}">
+                    <i class="fa-regular fa-comment"></i></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h5 class="text-center p-3">Try to follow other users...</h5>
+    {% endif %}
+</div>
+{% endblock content %}

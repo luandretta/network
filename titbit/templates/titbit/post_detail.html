@@ -16,10 +16,10 @@
             <small class="text-muted">
                 <p>{{ post.posted_on }}
                     {% if request.user == post.author %}
-                    <a href="{% url 'post-edit' post.pk %}" style="color: #333;">
+                    <a href="{% url 'post-edit' post.pk %}" class="edit">
                         <i class="far fa-edit"></i>
                     </a>
-                    <a href="{% url 'post-delete' post.pk %}" style="color: #333;">
+                    <a href="{% url 'post-delete' post.pk %}" class="edit">
                         <i class="fas fa-trash"></i>
                     </a>
                     {% endif %}
@@ -80,7 +80,7 @@
                 <p>
                     {{ comment.posted_on }}
                     {% if request.user == comment.author %}
-                    <a href="{% url 'comment-delete' post.pk comment.pk %}" style="color: #333;">
+                    <a href="{% url 'comment-delete' post.pk comment.pk %}" class="edit">
                         <i class="fas fa-trash"></i>
                     </a>
                     {% endif %}

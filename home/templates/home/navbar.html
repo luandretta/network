@@ -1,30 +1,35 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
-                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Logo redirects to feed if user is authenticated -->
+            <a class="navbar-brand" {% if user.is_authenticated %} href="{% url 'post-list' %}" {% else %}
+                href="{% url 'index' %}" {% endif %}><i class="fa-solid fa-users-between-lines"></i> Titbit</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" 
-            {% if user.is_authenticated %}
-            href="{% url 'post-list' %}"
-            {% else %}
-            href="{% url 'index' %}"
-            {% endif %}
-            ><i class="fa-solid fa-users-between-lines"></i> Titbit</a>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'feed' %}">Following Posts</a>
+                    </li>
+                    {% endif %}
                 </ul>
+                <!-- User search -->
                 <form class="d-flex" method="GET" action="{% url 'profile-search' %}">
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">@</span>
                         <input type="text" class="form-control" placeholder="Username" aria-label="Username"
                             aria-describedby="basic-addon1" name="query" value="{{ request.GET.query }}">
-                        <button style="border: none; background-color: transparent; box-shadow: none" type="submit">
+                        <button class="search-btn" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </form>
+                <!-- User settings-->
                 {% if user.is_authenticated %}
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="buton"

@@ -2,11 +2,12 @@ from django.urls import path
 from .views import (
     AllPostsListView, PostDetailView, PostEditView, PostDeleteView,
     CommentDeleteView, ProfileView, ProfileEditView, AddFollower,
-    RemoveFollower, LikePost, Dislike, UserSearch)
+    RemoveFollower, LikePost, Dislike, UserSearch, FollowingPostsListView)
 
 
 urlpatterns = [
      path('', AllPostsListView.as_view(), name='post-list'),
+     path('feed/', FollowingPostsListView.as_view(), name='feed'),
      path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
      path('post/edit/<int:pk>/', PostEditView.as_view(), name='post-edit'),
      path('post/delete/<int:pk>/', PostDeleteView.as_view(),

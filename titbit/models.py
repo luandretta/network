@@ -41,10 +41,10 @@ class UserProfile(models.Model):
     name = models.CharField(max_length=30, blank=True, null=True)
     bio = models.TextField(max_length=150, blank=True, null=True)
     profile_pic = CloudinaryField('Profile Picture',
-                                  default='user.png',
+                                  default='static/images/user.png',
                                   blank=True)
     bg_pic = CloudinaryField('Background Picture',
-                             default='bg.png',
+                             default='static/images/bg.png',
                              blank=True)
     birth_date = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=100, blank=True, null=True)

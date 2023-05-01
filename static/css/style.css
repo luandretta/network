@@ -1,18 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    max-width: 2000px;
+    margin-left: auto;
+    margin-right: auto;
+    scroll-behavior: smooth;
+}
+
 
 a {
     text-decoration: none;
 }
 
+nav ul {
+    list-style-type: none;
+    color: #333;
+}
+
+
 /* Profile */
-.card-img-top{
-    max-height:300px;
+.card-img-top {
+    max-height: 300px;
     object-fit: cover;
 }
 
-/* Like and Dislike */
+
+.profile-pic {
+    margin-top: -80px;
+    margin-bottom: 20px;
+    width: 150px;
+    height: 150px;
+}
+
+.edit {
+    color: #333;
+}
+
+/* Buttons */
 .like-button,
-.comment-button {
-    color: var(--main-purple);
+.comment-button,
+.search-btn {
     background-color: transparent;
     border: none;
     box-shadow: none;
