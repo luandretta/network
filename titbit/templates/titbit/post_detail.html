@@ -11,21 +11,30 @@
 
     <div class="row justify-content-center mt-3">
         <div class="col-md-5 col-sm-12 border-bottom">
-            <p><strong>{{ post.author }}</strong></p>
-            <p>{{ post.content }}</p>
-            <small class="text-muted">
-                <p>{{ post.posted_on }}
-                    {% if request.user == post.author %}
-                    <a href="{% url 'post-edit' post.pk %}" class="edit">
-                        <i class="far fa-edit"></i>
-                    </a>
-                    <a href="{% url 'post-delete' post.pk %}" class="edit">
-                        <i class="fas fa-trash"></i>
-                    </a>
-                    {% endif %}
+            <!-- Author and date -->
+            <div>
+                <a href="{% url 'profile' post.author.profile.pk %}">
+                    <img class="rounded-circle post-img" height="50" width="50"
+                        src="{{ post.author.profile.profile_pic.url }}" />
+                </a>
+                <p class="post-text">
+                    <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@ {{ post.author }}</a>
+                    <small class="text-muted"> {{ post.posted_on }}</small>
                 </p>
-            </small>
+            </div>
+            <!-- Content -->
+            {% if request.user == post.author %}
+            <a href="{% url 'post-edit' post.pk %}" class="edit">
+                <i class="far fa-edit"></i>
+            </a>
+            <a href="{% url 'post-delete' post.pk %}" class="edit">
+                <i class="fas fa-trash"></i>
+            </a>
+            {% endif %}
+            <p>{{ post.content }}</p>
+
             <div class="d-flex flex-row">
+                <!-- Like -->
                 <form method="POST" action="{% url 'post-like' post.pk %}">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ request.path }}">
@@ -35,9 +44,10 @@
                         {% else %}
                         <i class="fa-regular fa-thumbs-up"></i>
                         {% endif %}
-                        <span>{{ post.likes.all.count }}</span>
+                        <span> {{ post.likes.all.count }}</span>
                     </button>
                 </form>
+                <!-- Dislike -->
                 <form method="POST" action="{% url 'dislike' post.pk %}">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ request.path }}">
@@ -47,9 +57,10 @@
                         {% else %}
                         <i class="fa-regular fa-thumbs-down"></i>
                         {% endif %}
-                        <span>{{ post.dislikes.all.count }}</span>
+                        <span> {{ post.dislikes.all.count }}</span>
                     </button>
                 </form>
+                <!-- Comment icon -->
                 <a class="comment-button" href="{% url 'post-detail' post.pk %}">
                     <i class="fa-regular fa-comment"></i></a>
             </div>
@@ -60,6 +71,7 @@
             <h5>Add a Comment!</h5>
         </div>
     </div>
+    <!-- Add a Comment -->
     <div class="row justify-content-center mt-3 mb-5">
         <div class="col-md-5 col-sm-12">
             <form method="POST">
@@ -71,21 +83,29 @@
             </form>
         </div>
     </div>
+    <!-- All comments -->
     {% for comment in comments %}
     <div class="row justify-content-center mt-3 mb-5">
         <div class="col-md-5 col-sm-12 border-bottom">
-            <p><strong>{{ comment.author}}</strong></p>
-            <p>{{ comment.comment}}</p>
-            <small class="text-muted">
-                <p>
-                    {{ comment.posted_on }}
+            <!-- Author and date -->
+            <div>
+                <a href="{% url 'profile' comment.author.profile.pk %}">
+                    <img class="rounded-circle post-img" height="50" width="50"
+                        src="{{ comment.author.profile.profile_pic.url }}" />
+                </a>
+                <p class="post-text">
+                    <a class="text-primary" href="{% url 'profile' comment.author.profile.pk %}">@
+                        {{ comment.author }}</a>
+                    <small class="text-muted"> {{ comment.posted_on }}</small>
                     {% if request.user == comment.author %}
                     <a href="{% url 'comment-delete' post.pk comment.pk %}" class="edit">
                         <i class="fas fa-trash"></i>
                     </a>
                     {% endif %}
                 </p>
-            </small>
+            </div>
+            <!-- Comment -->
+            <p>{{ comment.comment }}</p>
         </div>
     </div>
     {% endfor %}

@@ -8,17 +8,26 @@
             <a href="{% url 'post-list' %}" class="btn btn-light">Back To Feed</a>
         </div>
     </div>
-    
+
     {% for profile in profile_list %}
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-5 col-sm-12 border-bottom position-relative">
-                <p><a style="text-decoration: none;" class="text-primary" href="{% url 'profile' profile.pk %}">@{{ profile.user }}</a></p>
-                {% if profile.location %}
-                    <p>{{ profile.location }}</p>
-                {% endif %}
-                <p>Followers: {{ profile.followers.all.count }}</p>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom position-relative">
+            <!-- Result from Users search -->
+            <div>
+                <a href="{% url 'profile' profile.pk %}">
+                    <img class="rounded-circle post-img" height="50" width="50"
+                        src="{{ profile.profile_pic.url }}" />
+                </a>
+                <p class="post-text">
+                    <a class="text-primary" href="{% url 'profile' profile.pk %}">@ {{ profile.user }}</a>
+                </p>
             </div>
+            {% if profile.location %}
+            <p>{{ profile.location }}</p>
+            {% endif %}
+            <p>Followers: {{ profile.followers.all.count }}</p>
         </div>
+    </div>
     {% endfor %}
 </div>
 {% endblock content %}
