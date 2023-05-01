@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views import View
@@ -211,6 +212,7 @@ class RemoveFollower(LoginRequiredMixin, View):
 class LikePost(LoginRequiredMixin, View):
     """
     Like posts
+    Users cannot like and dislike the same post
     """
     def post(self, request, pk, *args, **kwargs):
         post = Post.objects.get(pk=pk)
@@ -243,7 +245,8 @@ class LikePost(LoginRequiredMixin, View):
 
 class Dislike(LoginRequiredMixin, View):
     """
-    Like posts
+    Dislike posts
+    Users cannot like and dislike the same post
     """
     def post(self, request, pk, *args, **kwargs):
         post = Post.objects.get(pk=pk)
@@ -273,3 +276,20 @@ class Dislike(LoginRequiredMixin, View):
 
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
+
+
+class UserSearch(View):
+    """
+    Search users
+    """
+    def get(self, request, *args, **kwargs):
+        query = self.request.GET.get('query')
+        profile_list = UserProfile.objects.filter(
+            Q(user__username__icontains=query)
+        )
+
+        context = {
+            'profile_list': profile_list,
+        }
+
+        return render(request, 'titbit/search.html', context)

@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (
     AllPostsListView, PostDetailView, PostEditView, PostDeleteView,
     CommentDeleteView, ProfileView, ProfileEditView, AddFollower,
-    RemoveFollower, LikePost, Dislike)
+    RemoveFollower, LikePost, Dislike, UserSearch)
 
 
 urlpatterns = [
@@ -22,4 +22,5 @@ urlpatterns = [
           name='add-follower'),
      path('profile/<int:pk>/followers/remove', RemoveFollower.as_view(),
           name='remove-follower'),
+     path('search/', UserSearch.as_view(), name='profile-search'),
 ]
