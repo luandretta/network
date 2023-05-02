@@ -120,6 +120,21 @@ class PostDetailView(LoginRequiredMixin, View):
         return render(request, 'titbit/post_detail.html', context)
 
 
+class CommentReplyView(LoginRequiredMixin, View):
+    def post(self, request, post_pk, pk, *args, **kwargs):
+        post = Post.objects.get(pk=post_pk)
+        parent_comment = Comment.objects.get(pk=pk)
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.author = request.user
+            new_comment.post = post
+            new_comment.parent = parent_comment
+            new_comment.save()
+        return redirect('post-detail', pk=post_pk)
+
+
 class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     Edit the post
