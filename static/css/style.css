@@ -63,3 +63,8 @@ nav ul {
 .post-text {
     padding-top: 0.5rem;
 }
+
+/* Comment */
+.child-comment {
+    margin-left: 2rem;
+}
