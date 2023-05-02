@@ -333,6 +333,7 @@ class UserSearch(View):
 
         return render(request, 'titbit/search.html', context)
 
+
 class ListFollowers(View):
     """
     Display the followers list
