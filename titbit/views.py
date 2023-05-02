@@ -332,3 +332,18 @@ class UserSearch(View):
         }
 
         return render(request, 'titbit/search.html', context)
+
+class ListFollowers(View):
+    """
+    Display the followers list
+    """
+    def get(self, request, pk, *args, **kwargs):
+        profile = UserProfile.objects.get(pk=pk)
+        followers = profile.followers.all()
+
+        context = {
+            'profile': profile,
+            'followers': followers,
+        }
+
+        return render(request, 'titbit/followers_list.html', context)

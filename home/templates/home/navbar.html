@@ -25,7 +25,7 @@
                         <input type="text" class="form-control" placeholder="Username" aria-label="Username"
                             aria-describedby="basic-addon1" name="query" value="{{ request.GET.query }}">
                         <button class="search-btn" type="submit">
-                            <i class="fas fa-search"></i>
+                            <i class="fas fa-search ml-4"></i>
                         </button>
                     </div>
                 </form>
@@ -35,7 +35,7 @@
                     <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="buton"
                         aria-expanded="false"><i class="fas fa-user"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'profile' user.profile.pk %}">Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'profile' request.user.profile.pk %}">Profile</a></li>
                         <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a></li>
                     </ul>
                 </div>
