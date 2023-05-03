@@ -23,17 +23,21 @@
                 <p class="post-text">
                     <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@ {{ post.author }}</a>
                     <small class="text-muted"> {{ post.posted_on }}</small>
+                    <!-- Author can edit the post -->
+                    {% if request.user == post.author or request.user.is_superuser %}
+                    <a href="{% url 'post-edit' post.pk %}" class="edit">
+                        <i class="far fa-edit"></i>
+                    </a>
+                    {% endif %}
+                    <!-- Author or admin can delete the post -->
+                    {% if request.user == post.author or request.user.is_superuser %}
+                    <a href="{% url 'post-delete' post.pk %}" class="edit">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    {% endif %}
                 </p>
             </div>
             <!-- Content -->
-            {% if request.user == post.author %}
-            <a href="{% url 'post-edit' post.pk %}" class="edit">
-                <i class="far fa-edit"></i>
-            </a>
-            <a href="{% url 'post-delete' post.pk %}" class="edit">
-                <i class="fas fa-trash"></i>
-            </a>
-            {% endif %}
             <p>{{ post.content }}</p>
 
             <div class="d-flex flex-row">
@@ -101,7 +105,7 @@
                     <a class="text-primary" href="{% url 'profile' comment.author.profile.pk %}">@
                         {{ comment.author }}</a>
                     <small class="text-muted"> {{ comment.posted_on }}</small>
-                    {% if request.user == comment.author %}
+                    {% if request.user == comment.author or request.user.is_superuser%}
                     <a href="{% url 'comment-delete' post.pk comment.pk %}" class="edit">
                         <i class="fas fa-trash"></i>
                     </a>
@@ -137,15 +141,16 @@
                         <span> {{ comment.dislikes.all.count }}</span>
                     </button>
                 </form>
-                 <!-- Reply a Comment button-->
+                <!-- Reply a Comment button-->
                 <div>
-                    <button class="comment-button"><i class="fa-regular fa-comment" onclick="commentReplyToggle('{{ comment.pk }}')"></i></button>
+                    <button class="comment-button"><i class="fa-regular fa-comment"
+                            onclick="commentReplyToggle('{{ comment.pk }}')"></i></button>
                 </div>
             </div>
         </div>
     </div>
-     <!-- Reply a Comment -->
-     <div class="row justify-content-center mt-3 mb-5 d-none" id="{{ comment.pk }}">
+    <!-- Reply a Comment -->
+    <div class="row justify-content-center mt-3 mb-5 d-none" id="{{ comment.pk }}">
         <div class="col-md-5 col-sm-12">
             <form method="POST" action="{% url 'comment-reply' post.pk comment.pk %}">
                 {% csrf_token %}
@@ -160,8 +165,8 @@
     {% for child_comment in comment.children %}
     <div class="row justify-content-center mt-2 mb-3 child-comment">
         <div class="col-md-5 col-sm-12 border-bottom">
-             <!-- Author and date -->
-             <div>
+            <!-- Author and date -->
+            <div>
                 <a href="{% url 'profile' child_comment.author.profile.pk %}">
                     <img class="rounded-circle post-img" height="50" width="50"
                         src="{{ child_comment.author.profile.profile_pic.url }}" />
@@ -170,7 +175,7 @@
                     <a class="text-primary" href="{% url 'profile' child_comment.author.profile.pk %}">@
                         {{ child_comment.author }}</a>
                     <small class="text-muted"> {{ child_comment.posted_on }}</small>
-                    {% if request.user == child_comment.author %}
+                    {% if request.user == child_comment.author  or request.user.is_superuser %}
                     <a href="{% url 'comment-delete' post.pk child_comment.pk %}" class="edit">
                         <i class="fas fa-trash"></i>
                     </a>

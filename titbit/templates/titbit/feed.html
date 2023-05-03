@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
-{% block extra_title %}- Following{% endblock %}
+{% block extra_title %}- My Feed {% endblock %}
 
 {% block content %}
 <div class="container">
@@ -39,6 +39,18 @@
                 <p class="post-text">
                     <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@ {{ post.author }}</a>
                     <small class="text-muted"> {{ post.posted_on }}</small>
+                    <!-- Author can edit the post -->
+                    {% if request.user == post.author %}
+                    <a href="{% url 'post-edit' post.pk %}" class="edit">
+                        <i class="far fa-edit"></i>
+                    </a>
+                    {% endif %}
+                    <!-- Author or admin can delete the post -->
+                    {% if request.user == post.author or request.user.is_superuser %}
+                    <a href="{% url 'post-delete' post.pk %}" class="edit">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    {% endif %}
                 </p>
             </div>
             <!-- Content -->

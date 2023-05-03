@@ -1,7 +1,7 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <!-- Logo redirects to feed if user is authenticated -->
+            <!-- Logo redirects to general feed if user is authenticated -->
             <a class="navbar-brand" {% if user.is_authenticated %} href="{% url 'post-list' %}" {% else %}
                 href="{% url 'index' %}" {% endif %}><i class="fa-solid fa-users-between-lines"></i> Titbit</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -9,12 +9,12 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+             <!-- Feed from following users -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'feed' %}">Following Posts</a>
+                        <a href="{% url 'feed' %}">My Feed</a>
                     </li>
                     {% endif %}
                 </ul>

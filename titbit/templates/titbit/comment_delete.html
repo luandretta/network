@@ -8,7 +8,7 @@
             <a href="{% url 'post-detail' object.post.pk %}" class="btn btn-light">Back to Post</a>
         </div>
     </div>
-
+    <!-- Confirmation to delete the comment -->
     <div class="row justify-content-center mt-3 mb-5">
         <div class="col-md-5 col-sm-12 border-bottom">
             <form method="POST">
@@ -21,7 +21,5 @@
             </form>
         </div>
     </div>
-
-    
 </div>
 {% endblock content %}
