@@ -491,6 +491,7 @@ Please see [TESTING.md](TESTING.md) for all testing performed
 * [How to use *args and **kwargs in Python](https://www.youtube.com/watch?v=TbeP0zv5D18)
 * [Templates Django-allauth](https://github.com/pennersr/django-allauth)
 * [Conventinal Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+* [Cloudinary](https://cloudinary.com/documentation/diagnosing_error_codes_tutorial)
 
 ### 📝 Content 
 

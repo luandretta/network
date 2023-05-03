@@ -18,13 +18,16 @@
         <div class="col-md-8">
             <div class="card shadow-sm">
                 <!-- Background -->
+                {% if profile.bg_pic  %}
                 <img class="card-img-top" src="{{ profile.bg_pic.url }}" alt="background image">
-
+                {% endif %}
                 <div class="text-center">
                     <!-- Profile Picture -->
                     <div>
+                        {% if profile.profile_pic  %}
                         <img src="{{ profile.profile_pic.url }}" class="profile-pic rounded-circle"
                             alt="{{ profile.user.username }}">
+                        {% endif %}
                     </div>
                     <!-- User's data -->
                     {% if profile.name %}
@@ -62,6 +65,7 @@
                     {% endif %}
 
                 </div>
+                <!-- Followers -->
                 <div class="mb-3 text-center">
                     <a href="{% url 'list-followers' profile.pk %}">Followers: {{ number_of_followers }}</a>
                     <p></p>
@@ -81,8 +85,11 @@
                     {% endif %}
                 </div>
             </div>
+        </div>
+    </div>
             <!-- User's posts -->
             {% for post in posts %}
+
             <div class="row justify-content-center mt-3">
                 <div class="col-md-5 col-sm-12 border-bottom">
                     <!-- Author and date -->
@@ -137,5 +144,5 @@
                 </div>
             </div>
             {% endfor %}
-        </div>
+      
         {% endblock content %}

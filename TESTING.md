@@ -23,4 +23,3 @@ The issues listed in the table below were indentified during the development of 
 |04 | Sticky footer overlapping content | Remove class fixed-sm-bottom | Closed |
 |05 | Bullets in nav list | Edit default in CSS nav ul {list-style-type: none;} | Closed |
 |06 | Dropdown menu doesn't display own profile | Change the user.profile.pk to request.user.profile.pk | Closed | 
-

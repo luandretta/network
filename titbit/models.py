@@ -60,10 +60,11 @@ class UserProfile(models.Model):
     bio = models.TextField(max_length=150, blank=True, null=True)
     profile_pic = CloudinaryField('Profile Picture',
                                   default='images/user.png',
-                                  blank=True)
-    bg_pic = CloudinaryField('Background Picture',
-                             default='images/bg.png',
-                             blank=True)
+                                  blank=True,
+                                  null=True)
+    bg_pic = models.ImageField('Background Picture',
+                               blank=True,
+                               default='images/bg.png')
     birth_date = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=100, blank=True, null=True)
     followers = models.ManyToManyField(User, blank=True,
