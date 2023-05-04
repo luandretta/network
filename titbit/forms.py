@@ -6,13 +6,13 @@ class PostForm(forms.ModelForm):
     """
     Form to post a new titbit
     """
-    content = forms.CharField(
-        label='',
-        widget=forms.Textarea(attrs={
-            'rows': '3',
-            'placeholder': 'Post the news :-)',
-        })
-    )
+    content = forms.CharField(required=True,
+                              label='',
+                              widget=forms.widgets.Textarea(attrs={
+                                'rows': '3',
+                                'placeholder': 'Post the news :-)',
+                                'class': 'form-control',
+                                }))
 
     class Meta:
         model = Post

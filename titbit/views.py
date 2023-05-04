@@ -51,7 +51,8 @@ class FollowingPostsListView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         logged_in_user = request.user
         following_posts = Post.objects.filter(
-            author__profile__followers__in=[logged_in_user.id]
+            Q(author__profile__followers__in=[logged_in_user.id]) |
+            Q(author=request.user)
         ).order_by('-posted_on')
         form = PostForm()
 
@@ -72,12 +73,12 @@ class FollowingPostsListView(LoginRequiredMixin, View):
             new_post.author = request.user
             new_post.save()
 
-            context = {
-                'post_list': posts,
-                'form': form,
-            }
-
-        return render(request, 'titbit/feed.html', context)
+            # context = {
+            #     'following_post_list': posts,
+            #     'form': form,
+            # }
+        return redirect('feed')
+        #return render(request, 'titbit/feed.html', context)
 
 
 class PostDetailView(LoginRequiredMixin, View):
