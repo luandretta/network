@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-from cloudinary.models import CloudinaryField
+# from cloudinary.models import CloudinaryField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -58,13 +58,8 @@ class UserProfile(models.Model):
                                 on_delete=models.CASCADE)
     name = models.CharField(max_length=30, blank=True, null=True)
     bio = models.TextField(max_length=150, blank=True, null=True)
-    profile_pic = CloudinaryField('Profile Picture',
-                                  default='images/user.png',
-                                  blank=True,
-                                  null=True)
-    bg_pic = models.ImageField('Background Picture',
-                               blank=True,
-                               default='images/bg.png')
+    profile_pic = models.ImageField(null=True, blank=True, upload_to="images/")
+    bg_pic = models.ImageField(null=True, blank=True, upload_to="images/")
     birth_date = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=100, blank=True, null=True)
     followers = models.ManyToManyField(User, blank=True,
@@ -87,3 +82,14 @@ def save_user_profile(sender, instance, **kwargs):
     Save the instance object (profile)
     """
     instance.profile.save()
+
+
+class Notification(models.Model):
+    # 1 = Like, 2 = Comment, 3 = Follow
+    notification_type = models.IntegerField()
+    to_user = models.ForeignKey(User, related_name='notification_to', on_delete=models.CASCADE, null=True)
+    from_user = models.ForeignKey(User, related_name='notification_from', on_delete=models.CASCADE, null=True)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='+', blank=True, null=True)
+    comment = models.ForeignKey('Comment', on_delete=models.CASCADE, related_name='+', blank=True, null=True)
+    date = models.DateTimeField(default=timezone.now)
+    user_has_seen = models.BooleanField(default=False)

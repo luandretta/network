@@ -20,13 +20,18 @@
                 <!-- Background -->
                 {% if profile.bg_pic  %}
                 <img class="card-img-top" src="{{ profile.bg_pic.url }}" alt="background image">
+                {% else %}
+                <img src="{% static 'titbit/images/bg.png' %}" alt="background image" class="card-img-top">
                 {% endif %}
                 <div class="text-center">
                     <!-- Profile Picture -->
                     <div>
-                        {% if profile.profile_pic  %}
+                        {% if profile.bg_pic.url %}
                         <img src="{{ profile.profile_pic.url }}" class="profile-pic rounded-circle"
                             alt="{{ profile.user.username }}">
+                        {% else %}
+                        <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
+                            class="img-fluid rounded-start">
                         {% endif %}
                     </div>
                     <!-- User's data -->
@@ -63,7 +68,6 @@
                     {% if profile.birth_date %}
                     <p>Birthday: {{ profile.birth_date }} </p>
                     {% endif %}
-
                 </div>
                 <!-- Followers -->
                 <div class="mb-3 text-center">
@@ -101,13 +105,13 @@
                     <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@
                         {{ post.author }}</a>
                     <small class="text-muted"> {{ post.posted_on }}</small>
-                     <!-- Author can edit the post  -->
+                    <!-- Author can edit the post  -->
                     {% if request.user == post.author  %}
                     <a href="{% url 'post-edit' post.pk %}" class="edit">
                         <i class="far fa-edit"></i>
                     </a>
                     {% endif %}
-                     <!-- Author or admin can delete the post -->
+                    <!-- Author or admin can delete the post -->
                     {% if request.user == post.author or request.user.is_superuser %}
                     <a href="{% url 'post-delete' post.pk %}" class="edit">
                         <i class="fas fa-trash"></i>
