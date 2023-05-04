@@ -16,10 +16,15 @@
         <div class="col-md-5 col-sm-12 border-bottom">
             <!-- Author and date -->
             <div>
-                <a href="{% url 'profile' post.author.profile.pk %}">
-                    <img class="rounded-circle post-img" height="50" width="50"
-                        src="{{ post.author.profile.profile_pic.url }}" />
-                </a>
+                <div>
+                    {% if post.author.profile.profile_pic.url %}
+                    <img src="{{ post.author.profile.profile_pic.url }}" class="rounded-circle post-img" height="50"
+                        width="50" alt="{{ profile.user.username }}">
+                    {% else %}
+                    <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
+                        class="rounded-circle post-img" height="50" width="50">
+                    {% endif %}
+                </div>
                 <p class="post-text">
                     <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@ {{ post.author }}</a>
                     <small class="text-muted"> {{ post.posted_on }}</small>
@@ -95,11 +100,18 @@
     {% if comment.is_parent %}
     <div class="row justify-content-center mt-3 mb-5">
         <div class="col-md-5 col-sm-12 border-bottom">
-            <!-- Author and date -->
+            <!-- Author and date from comment-->
             <div>
                 <a href="{% url 'profile' comment.author.profile.pk %}">
-                    <img class="rounded-circle post-img" height="50" width="50"
-                        src="{{ comment.author.profile.profile_pic.url }}" />
+                    <div>
+                        {% if comment.author.profile.profile_pic.url %}
+                        <img src="{{ comment.author.profile.profile_pic.url }}" class="rounded-circle post-img"
+                            height="50" width="50" alt="{{ profile.user.username }}">
+                        {% else %}
+                        <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
+                            class="rounded-circle post-img" height="50" width="50">
+                        {% endif %}
+                    </div>
                 </a>
                 <p class="post-text">
                     <a class="text-primary" href="{% url 'profile' comment.author.profile.pk %}">@
@@ -168,8 +180,15 @@
             <!-- Author and date -->
             <div>
                 <a href="{% url 'profile' child_comment.author.profile.pk %}">
-                    <img class="rounded-circle post-img" height="50" width="50"
-                        src="{{ child_comment.author.profile.profile_pic.url }}" />
+                    <div>
+                        {% if  child_comment.author.profile.profile_pic.url %}
+                        <img src="{{  child_comment.author.profile.profile_pic.url }}" class="rounded-circle post-img"
+                            height="50" width="50" alt="{{ profile.user.username }}">
+                        {% else %}
+                        <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
+                            class="rounded-circle post-img" height="50" width="50">
+                        {% endif %}
+                    </div>
                 </a>
                 <p class="post-text">
                     <a class="text-primary" href="{% url 'profile' child_comment.author.profile.pk %}">@
