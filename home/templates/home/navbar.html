@@ -1,3 +1,5 @@
+{% load custom_tags %}
+
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
@@ -9,14 +11,13 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+             {% if user.is_authenticated %}
              <!-- Feed from following users -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    {% if user.is_authenticated %}
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">                
                     <li class="nav-item">
                         <a href="{% url 'feed' %}">My Feed</a>
                     </li>
-                    {% endif %}
                 </ul>
                 <!-- User search -->
                 <form class="d-flex" method="GET" action="{% url 'profile-search' %}">
@@ -29,8 +30,7 @@
                         </button>
                     </div>
                 </form>
-                <!-- User settings-->
-                {% if user.is_authenticated %}
+                <!-- User settings-->              
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="buton"
                         aria-expanded="false"><i class="fas fa-user"></i></a>
@@ -39,8 +39,11 @@
                         <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a></li>
                     </ul>
                 </div>
-                {% endif %}
+                <div class="nav-item">
+                    {% show_notifications %}
+                </div>
             </div>
+            {% endif %}
         </div>
     </nav>
 </div>
