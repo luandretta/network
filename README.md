@@ -493,6 +493,10 @@ Please see [TESTING.md](TESTING.md) for all testing performed
 * [Conventinal Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 * [Cloudinary](https://cloudinary.com/documentation/diagnosing_error_codes_tutorial)
 * [User Notifications](https://www.youtube.com/watch?v=_JKWYkz597c&list=PLPSM8rIid1a3TkwEmHyDALNuHhqiUiU5A&index=14)
+* [Custom template tags and filters](https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/)
+* [Making queries](https://docs.djangoproject.com/en/4.2/topics/db/queries/#chaining-filters)
+* [How to perform OR condition in django queryset?](https://stackoverflow.com/questions/6567831/how-to-perform-or-condition-in-django-queryset)
+* []()
 
 ### 📝 Content 
 
