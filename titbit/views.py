@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.db.models import Q
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views import View
 from .models import Post, Comment, UserProfile, Notification
@@ -73,10 +73,6 @@ class FollowingPostsListView(LoginRequiredMixin, View):
             new_post.author = request.user
             new_post.save()
 
-            # context = {
-            #     'following_post_list': posts,
-            #     'form': form,
-            # }
         return redirect('feed')
 
 
@@ -85,7 +81,7 @@ class PostDetailView(LoginRequiredMixin, View):
     View an individual post in more detail
     View the comments of this post
     User can comment this post or reply a comment
-    Create Notification type 2
+    Create Notification type 2 (Comment)
     """
     def get(self, request, pk, *args, **kwargs):
         post = Post.objects.get(pk=pk)
@@ -132,7 +128,7 @@ class PostDetailView(LoginRequiredMixin, View):
 class CommentReplyView(LoginRequiredMixin, View):
     """
     Reply a comment
-    Create Notification type
+    Create Notification type 2 (comment)
     """
     def post(self, request, post_pk, pk, *args, **kwargs):
         post = Post.objects.get(pk=post_pk)
@@ -268,11 +264,11 @@ class AddFollower(LoginRequiredMixin, View):
         profile = UserProfile.objects.get(pk=pk)
         profile.followers.add(request.user)
 
-    notification = Notification.objects.create(notification_type=3,
+        notification = Notification.objects.create(notification_type=3,
                                                from_user=request.user,
                                                to_user=profile.user)
 
-    return redirect('profile', pk=profile.pk)
+        return redirect('profile', pk=profile.pk)
 
 
 class RemoveFollower(LoginRequiredMixin, View):
@@ -488,9 +484,22 @@ class FollowNotification(View):
     """
     def get(self, request, notification_pk, profile_pk, *args, **kwargs):
         notification = Notification.objects.get(pk=notification_pk)
-        profile = UserProfile().objects.get(pk=profile_pk)
+        profile = UserProfile.objects.get(pk=profile_pk)
 
         notification.user_has_seen = True
         notification.save()
 
         return redirect('post-detail', pk=profile_pk)
+
+
+class RemoveNotification(View):
+    """
+    Remove the notifications when user has seen
+    """
+    def delete(self, request, notification_pk, *args, **kwargs):
+        notification = Notification.objects.get(pk=notification_pk)
+
+        notification.user_has_seen = True
+        notification.save()
+
+        return HttpResponse('Success', content_type='text/plain')

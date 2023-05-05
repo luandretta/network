@@ -4,7 +4,7 @@ from .views import (
     CommentDeleteView, ProfileView, ProfileEditView, AddFollower,
     RemoveFollower, LikePost, Dislike, UserSearch, FollowingPostsListView,
     ListFollowers, LikeComment, DislikeComment, CommentReplyView,
-    PostNotification, FollowNotification)
+    PostNotification, FollowNotification, RemoveNotification)
 
 
 urlpatterns = [
@@ -38,4 +38,6 @@ urlpatterns = [
           PostNotification.as_view(), name='post-notification'),
      path('notification/<int:notification_pk>/profile/<int:profile_pk>',
           FollowNotification.as_view(), name='follow-notification'),
+     path('notification/delete/<int:notification_pk>',
+          RemoveNotification.as_view(), name='notification-delete'),
 ]
