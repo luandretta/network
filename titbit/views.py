@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views import View
-from .models import Post, Comment, UserProfile
+from .models import Post, Comment, UserProfile, Notification
 from .forms import PostForm, CommentForm
 from django.views.generic.edit import UpdateView, DeleteView
 
@@ -78,18 +78,26 @@ class FollowingPostsListView(LoginRequiredMixin, View):
             #     'form': form,
             # }
         return redirect('feed')
-        #return render(request, 'titbit/feed.html', context)
 
 
 class PostDetailView(LoginRequiredMixin, View):
     """
     View an individual post in more detail
+    View the comments of this post
+    User can comment this post or reply a comment
+    Create Notification type 2
     """
     def get(self, request, pk, *args, **kwargs):
         post = Post.objects.get(pk=pk)
         form = CommentForm()
 
         comments = Comment.objects.filter(post=post).order_by('-posted_on')
+
+        notification = Notification.objects.create(notification_type=2,
+                                                   from_user=request.user,
+                                                   to_user=post.author,
+                                                   post=post)
+
         context = {
             'post': post,
             'form': form,
@@ -122,6 +130,10 @@ class PostDetailView(LoginRequiredMixin, View):
 
 
 class CommentReplyView(LoginRequiredMixin, View):
+    """
+    Reply a comment
+    Create Notification type
+    """
     def post(self, request, post_pk, pk, *args, **kwargs):
         post = Post.objects.get(pk=post_pk)
         parent_comment = Comment.objects.get(pk=pk)
@@ -133,6 +145,12 @@ class CommentReplyView(LoginRequiredMixin, View):
             new_comment.post = post
             new_comment.parent = parent_comment
             new_comment.save()
+
+        notification = Notification.objects.create(notification_type=2,
+                                                   from_user=request.user,
+                                                   to_user=parent_comment.author,
+                                                   comment=new_comment)
+
         return redirect('post-detail', pk=post_pk)
 
 
@@ -244,12 +262,17 @@ class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class AddFollower(LoginRequiredMixin, View):
     """
     Follow another User
+    Notification type 3 (Follow)
     """
     def post(self, request, pk, *args, **kwargs):
         profile = UserProfile.objects.get(pk=pk)
         profile.followers.add(request.user)
 
-        return redirect('profile', pk=profile.pk)
+    notification = Notification.objects.create(notification_type=3,
+                                               from_user=request.user,
+                                               to_user=profile.user)
+
+    return redirect('profile', pk=profile.pk)
 
 
 class RemoveFollower(LoginRequiredMixin, View):
@@ -267,6 +290,7 @@ class LikePost(LoginRequiredMixin, View):
     """
     Like posts
     Users cannot like and dislike the same post
+    Notification type 1 (Like)
     """
     def post(self, request, pk, *args, **kwargs):
         post = Post.objects.get(pk=pk)
@@ -290,6 +314,10 @@ class LikePost(LoginRequiredMixin, View):
 
         if not is_like:
             post.likes.add(request.user)
+            notification = Notification.objects.create(notification_type=1,
+                                                       from_user=request_user,
+                                                       to_user=post.author,
+                                                       post=post)
 
         if is_like:
             post.likes.remove(request.user)
@@ -360,6 +388,10 @@ class LikeComment(LoginRequiredMixin, View):
 
         if not is_like:
             comment.likes.add(request.user)
+            notification = Notification.objects.create(notification_type=1,
+                                                       from_user=request_user,
+                                                       to_user=comment.author,
+                                                       comment=comment)
 
         if is_like:
             comment.likes.remove(request.user)
@@ -434,3 +466,31 @@ class ListFollowers(View):
         }
 
         return render(request, 'titbit/followers_list.html', context)
+
+
+class PostNotification(View):
+    """
+    Display the notifications
+    """
+    def get(self, request, notification_pk, post_pk, *args, **kwargs):
+        notification = Notification.objects.get(pk=notification_pk)
+        post = Post.objects.get(pk=post_pk)
+
+        notification.user_has_seen = True
+        notification.save()
+
+        return redirect('post-detail', pk=post_pk)
+
+
+class FollowNotification(View):
+    """
+    Display the follow notifications
+    """
+    def get(self, request, notification_pk, profile_pk, *args, **kwargs):
+        notification = Notification.objects.get(pk=notification_pk)
+        profile = UserProfile().objects.get(pk=profile_pk)
+
+        notification.user_has_seen = True
+        notification.save()
+
+        return redirect('post-detail', pk=profile_pk)
