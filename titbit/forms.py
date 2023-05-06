@@ -5,6 +5,7 @@ from .models import Post, Comment
 class PostForm(forms.ModelForm):
     """
     Form to post a new titbit
+    Add image to the post
     """
     content = forms.CharField(required=True,
                               label='',
@@ -13,10 +14,11 @@ class PostForm(forms.ModelForm):
                                 'placeholder': 'Post the news :-)',
                                 'class': 'form-control',
                                 }))
+    image = forms.ImageField(required=False)
 
     class Meta:
         model = Post
-        fields = ['content']
+        fields = ['content', 'image']
 
 
 class CommentForm(forms.ModelForm):

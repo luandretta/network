@@ -5,19 +5,16 @@
 {% block content %}
 <div class="container">
     <div class="row mt-5">
-        <div class="col-md-5 col-sm-6">
+        <div class="col-md-8 col-sm-6">
             <a href="{% url 'post-list' %}" class="btn btn-light">Back to Feed</a>
         </div>
     </div>
     <div class="row justify-content-center mt-3">
-        <div class="col-md-5 col-sm-12 border-bottom">
+        <div class="col-md-8 col-sm-12">
             <h5>Update your titbit!</h5>
         </div>
-    </div>
-
-    <div class="row justify-content-center mt-3 mb-5">
-        <div class="col-md-5 col-sm-12 border-bottom">
-            <form method="POST">
+        <div class="col-md-8 col-sm-12 position-relative alert alert-dark" role="alert">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="d-grid gap-2">
@@ -25,8 +22,6 @@
                 </div>
             </form>
         </div>
-    </div>
-
-    
+    </div>  
 </div>
 {% endblock content %}

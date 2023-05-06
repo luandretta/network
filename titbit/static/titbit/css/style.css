@@ -64,6 +64,13 @@ nav ul {
     padding-top: 0.5rem;
 }
 
+.post-image-upload {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px ;
+}
+
 /* -----------------------------------------Comment */
 .child-comment {
     margin-left: 4rem;

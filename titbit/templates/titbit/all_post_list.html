@@ -7,14 +7,14 @@
 {% block content %}
 <div class="container">
     <div class="row justify-content-center mt-3">
-        <div class="col-md-5 col-sm-12">
+        <div class="col-md-8 col-sm-12">
             <h5>Titbit a little bit!</h5>
         </div>
     </div>
 
     <div class="row justify-content-center mt-3 mb-5">
-        <div class="col-md-5 col-sm-12 border-bottom">
-            <form method="POST">
+        <div class="col-md-8 col-sm-12 border-bottom">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="d-grid gap-2">
@@ -26,7 +26,7 @@
 
     {% for post in post_list %}
     <div class="row justify-content-center mt-3">
-        <div class="col-md-5 col-sm-12 border-bottom position-relative">
+        <div class="col-md-8 col-sm-12 position-relative alert alert-dark" role="alert">
             <!-- Author and date -->
             <div>
                 <div>
@@ -58,6 +58,9 @@
             <!-- Content -->
             <div class="position-relative">
                 <p>{{ post.content }}</p>
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="post-image-upload">
+                {% endif %}
                 <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
             </div>
             <div class="d-flex flex-row">

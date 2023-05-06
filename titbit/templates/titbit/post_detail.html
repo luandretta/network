@@ -7,13 +7,13 @@
 {% block content %}
 <div class="container">
     <div class="row mt-5">
-        <div class="col-md-5 col-sm-6">
+        <div class="col-md-8 col-sm-6">
             <a href="{% url 'post-list' %}" class="btn btn-light">Back to Feed</a>
         </div>
     </div>
-
+     <!-- Post detail -->
     <div class="row justify-content-center mt-3">
-        <div class="col-md-5 col-sm-12 border-bottom">
+        <div class="col-md-8 col-sm-12 position-relative alert alert-dark" role="alert">
             <!-- Author and date -->
             <div>
                 <div>
@@ -43,8 +43,12 @@
                 </p>
             </div>
             <!-- Content -->
-            <p>{{ post.content }}</p>
-
+            <div class="position-relative">
+                <p>{{ post.content }}</p>
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="post-image-upload">
+                {% endif %}
+            </div>
             <div class="d-flex flex-row">
                 <!-- Like -->
                 <form method="POST" action="{% url 'post-like' post.pk %}">
@@ -79,13 +83,13 @@
         </div>
     </div>
     <div class="row justify-content-center mt-3">
-        <div class="col-md-5 col-sm-12">
+        <div class="col-md-8 col-sm-12">
             <h5>Add a Comment!</h5>
         </div>
     </div>
     <!-- Add a Comment -->
     <div class="row justify-content-center mt-3 mb-5">
-        <div class="col-md-5 col-sm-12">
+        <div class="col-md-8 col-sm-12">
             <form method="POST">
                 {% csrf_token %}
                 {{ form | crispy }}
@@ -99,7 +103,7 @@
     {% for comment in comments %}
     {% if comment.is_parent %}
     <div class="row justify-content-center mt-3 mb-5">
-        <div class="col-md-5 col-sm-12 border-bottom">
+        <div class="col-md-8 col-sm-12 position-relative alert alert-dark" role="alert">
             <!-- Author and date from comment-->
             <div>
                 <a href="{% url 'profile' comment.author.profile.pk %}">
@@ -163,7 +167,7 @@
     </div>
     <!-- Reply a Comment -->
     <div class="row justify-content-center mt-3 mb-5 d-none" id="{{ comment.pk }}">
-        <div class="col-md-5 col-sm-12">
+        <div class="col-md-8 col-sm-12">
             <form method="POST" action="{% url 'comment-reply' post.pk comment.pk %}">
                 {% csrf_token %}
                 {{ form | crispy }}
@@ -176,7 +180,7 @@
     <!-- Replied comments -->
     {% for child_comment in comment.children %}
     <div class="row justify-content-center mt-2 mb-3 child-comment">
-        <div class="col-md-5 col-sm-12 border-bottom">
+        <div class="col-md-5 col-sm-12 position-relative alert alert-primary" role="alert">
             <!-- Author and date -->
             <div>
                 <a href="{% url 'profile' child_comment.author.profile.pk %}">

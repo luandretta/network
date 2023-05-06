@@ -28,7 +28,7 @@ class AllPostsListView(LoginRequiredMixin, View):
     # Save the new post
     def post(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-posted_on')
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
 
         if form.is_valid():
             new_post = form.save(commit=False)
@@ -66,7 +66,7 @@ class FollowingPostsListView(LoginRequiredMixin, View):
     # Save the new post
     def post(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-posted_on')
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
 
         if form.is_valid():
             new_post = form.save(commit=False)

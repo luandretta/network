@@ -11,12 +11,17 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-             {% if user.is_authenticated %}
-             <!-- Feed from following users -->
+            {% if user.is_authenticated %}
+            <!-- Feed from following users -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">                
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="{% url 'feed' %}">My Feed</a>
+                        <a href="{% url 'feed' %}">Following</a>
+                    </li>
+                    <li class="nav-item">
+                        <div>
+                            {% show_notifications %}
+                        </div>
                     </li>
                 </ul>
                 <!-- User search -->
@@ -30,7 +35,7 @@
                         </button>
                     </div>
                 </form>
-                <!-- User settings-->              
+                <!-- User settings-->
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="buton"
                         aria-expanded="false"><i class="fas fa-user"></i></a>
@@ -38,9 +43,6 @@
                         <li><a class="dropdown-item" href="{% url 'profile' request.user.profile.pk %}">Profile</a></li>
                         <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a></li>
                     </ul>
-                </div>
-                <div class="nav-item">
-                    {% show_notifications %}
                 </div>
             </div>
             {% endif %}
