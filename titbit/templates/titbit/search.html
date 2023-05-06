@@ -15,8 +15,13 @@
             <!-- Result from Users search -->
             <div>
                 <a href="{% url 'profile' profile.pk %}">
-                    <img class="rounded-circle post-img" height="50" width="50"
-                        src="{{ profile.profile_pic.url }}" />
+                    {% if post.author.profile.profile_pic.url %}
+                    <img src="{{ profile.profile_pic.url }}" class="rounded-circle post-img" height="50" width="50"
+                        alt="{{ profile.user.username }}">
+                    {% else %}
+                    <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
+                        class="rounded-circle post-img" height="50" width="50">
+                    {% endif %}
                 </a>
                 <p class="post-text">
                     <a class="text-primary" href="{% url 'profile' profile.pk %}">@ {{ profile.user }}</a>
