@@ -9,6 +9,7 @@ from django.dispatch import receiver
 class Post(models.Model):
     """
     Post Model including autor and time
+    Add image to post
     Like and dislike posts
     """
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -85,7 +86,10 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class Notification(models.Model):
-    # 1 = Like, 2 = Comment, 3 = Follow
+    """
+    Send notifications to user
+    Notifications types: 1 =  Like, 2 = Comment and 3 = Follow
+    """
     notification_type = models.IntegerField()
     to_user = models.ForeignKey(User, related_name='notification_to',
                                 on_delete=models.CASCADE, null=True)

@@ -45,7 +45,7 @@ class AllPostsListView(LoginRequiredMixin, View):
 
 class FollowingPostsListView(LoginRequiredMixin, View):
     """
-    Displays only posts from people who user is following
+    Displays only posts from people who user is following and from user
     Create new post using post form
     """
     def get(self, request, *args, **kwargs):
@@ -89,11 +89,6 @@ class PostDetailView(LoginRequiredMixin, View):
 
         comments = Comment.objects.filter(post=post).order_by('-posted_on')
 
-        notification = Notification.objects.create(notification_type=2,
-                                                   from_user=request.user,
-                                                   to_user=post.author,
-                                                   post=post)
-
         context = {
             'post': post,
             'form': form,
@@ -115,6 +110,11 @@ class PostDetailView(LoginRequiredMixin, View):
             # 'Your comment has been submitted')
 
         comments = Comment.objects.filter(post=post).order_by('-posted_on')
+
+        notification = Notification.objects.create(notification_type=2,
+                                                   from_user=request.user,
+                                                   to_user=post.author,
+                                                   post=post)
 
         context = {
             'post': post,
@@ -265,8 +265,8 @@ class AddFollower(LoginRequiredMixin, View):
         profile.followers.add(request.user)
 
         notification = Notification.objects.create(notification_type=3,
-                                               from_user=request.user,
-                                               to_user=profile.user)
+                                                   from_user=request.user,
+                                                   to_user=profile.user)
 
         return redirect('profile', pk=profile.pk)
 
@@ -311,7 +311,7 @@ class LikePost(LoginRequiredMixin, View):
         if not is_like:
             post.likes.add(request.user)
             notification = Notification.objects.create(notification_type=1,
-                                                       from_user=request_user,
+                                                       from_user=request.user,
                                                        to_user=post.author,
                                                        post=post)
 
@@ -385,7 +385,7 @@ class LikeComment(LoginRequiredMixin, View):
         if not is_like:
             comment.likes.add(request.user)
             notification = Notification.objects.create(notification_type=1,
-                                                       from_user=request_user,
+                                                       from_user=request.user,
                                                        to_user=comment.author,
                                                        comment=comment)
 
@@ -480,7 +480,7 @@ class PostNotification(View):
 
 class FollowNotification(View):
     """
-    Display the follow notifications
+    Notifications for when someone follows you
     """
     def get(self, request, notification_pk, profile_pk, *args, **kwargs):
         notification = Notification.objects.get(pk=notification_pk)
@@ -489,7 +489,7 @@ class FollowNotification(View):
         notification.user_has_seen = True
         notification.save()
 
-        return redirect('post-detail', pk=profile_pk)
+        return redirect('profile', pk=profile_pk)
 
 
 class RemoveNotification(View):
