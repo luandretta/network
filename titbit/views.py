@@ -80,7 +80,7 @@ class PostDetailView(LoginRequiredMixin, View):
     """
     View an individual post in more detail
     View the comments of this post
-    User can comment this post or reply a comment
+    User can comment this post 
     Create Notification type 2 (Comment)
     """
     def get(self, request, pk, *args, **kwargs):
@@ -157,7 +157,7 @@ class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     Boolean expression to UserPassesTextMixin
     """
     model = Post
-    fields = ['content']
+    fields = ['content', 'image']
     template_name = 'titbit/post_edit.html'
 
     def get_success_url(self):
@@ -181,7 +181,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         post = self.get_object()
-        return self.request.user == post.author
+        return self.request.user == post.author or self.request.user.is_superuser
 
 
 class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -199,7 +199,7 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         post = self.get_object()
-        return self.request.user == post.author
+        return self.request.user == post.author or self.request.user.is_superuser
 
 
 class ProfileView(LoginRequiredMixin, View):

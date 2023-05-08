@@ -25,7 +25,7 @@ class Comment(models.Model):
     """
     Comment Model including autor and time
     Like and dislike comments
-    Parent id to share the comment
+    Parent id to reply the comment
     """
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField(max_length=250)

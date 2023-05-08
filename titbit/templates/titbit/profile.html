@@ -31,7 +31,7 @@
                             alt="{{ profile.user.username }}">
                         {% else %}
                         <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
-                            class="img-fluid rounded-start">
+                            class="profile-pic rounded-circle">
                         {% endif %}
                     </div>
                     <!-- User's data -->
@@ -104,7 +104,7 @@
                             alt="{{ profile.user.username }}" height="50" width="50">
                         {% else %}
                         <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
-                            class="post-img rounded-start" height="50" width="50">
+                            class="rounded-circle post-img" height="50" width="50">
                         {% endif %}
                     </div>
                 </a>

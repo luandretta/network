@@ -29,7 +29,7 @@
                     <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@ {{ post.author }}</a>
                     <small class="text-muted"> {{ post.posted_on }}</small>
                     <!-- Author can edit the post -->
-                    {% if request.user == post.author or request.user.is_superuser %}
+                    {% if request.user == post.author %}
                     <a href="{% url 'post-edit' post.pk %}" class="edit">
                         <i class="far fa-edit"></i>
                     </a>
@@ -76,9 +76,6 @@
                         <span> {{ post.dislikes.all.count }}</span>
                     </button>
                 </form>
-                <!-- Comment icon -->
-                <a class="comment-button" href="{% url 'post-detail' post.pk %}">
-                    <i class="fa-regular fa-comment"></i></a>
             </div>
         </div>
     </div>
@@ -102,8 +99,8 @@
     <!-- All comments -->
     {% for comment in comments %}
     {% if comment.is_parent %}
-    <div class="row justify-content-center mt-3 mb-5">
-        <div class="col-md-8 col-sm-12 position-relative alert alert-dark" role="alert">
+    <div class="row justify-content-center mt-1 mb-5">
+        <div class="col-md-8 col-sm-12">
             <!-- Author and date from comment-->
             <div>
                 <a href="{% url 'profile' comment.author.profile.pk %}">
@@ -121,7 +118,7 @@
                     <a class="text-primary" href="{% url 'profile' comment.author.profile.pk %}">@
                         {{ comment.author }}</a>
                     <small class="text-muted"> {{ comment.posted_on }}</small>
-                    {% if request.user == comment.author or request.user.is_superuser%}
+                    {% if request.user == comment.author or request.user.is_superuser %}
                     <a href="{% url 'comment-delete' post.pk comment.pk %}" class="edit">
                         <i class="fas fa-trash"></i>
                     </a>
@@ -159,15 +156,14 @@
                 </form>
                 <!-- Reply a Comment button-->
                 <div>
-                    <button class="comment-button"><i class="fa-regular fa-comment"
-                            onclick="commentReplyToggle('{{ comment.pk }}')"></i></button>
+                    <button class="comment-button"><i class="fa-regular fa-comment" onclick="commentReplyToggle('{{ comment.pk }}')"></i></button>
                 </div>
             </div>
         </div>
     </div>
     <!-- Reply a Comment -->
     <div class="row justify-content-center mt-3 mb-5 d-none" id="{{ comment.pk }}">
-        <div class="col-md-8 col-sm-12">
+        <div class="col-md-5 col-sm-12">
             <form method="POST" action="{% url 'comment-reply' post.pk comment.pk %}">
                 {% csrf_token %}
                 {{ form | crispy }}
@@ -179,8 +175,8 @@
     </div>
     <!-- Replied comments -->
     {% for child_comment in comment.children %}
-    <div class="row justify-content-center mt-2 mb-3 child-comment">
-        <div class="col-md-5 col-sm-12 position-relative alert alert-primary" role="alert">
+    <div class="row justify-content-center  mb-3 child-comment">
+        <div class="col-md-5 col-sm-12">
             <!-- Author and date -->
             <div>
                 <a href="{% url 'profile' child_comment.author.profile.pk %}">
@@ -212,4 +208,5 @@
     {% endif %}
     {% endfor %}
 </div>
+
 {% endblock content %}
