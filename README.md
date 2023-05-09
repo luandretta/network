@@ -4,7 +4,7 @@
 
 ![Titbit](documentation/###.png)
 
-Titbit is  a free social networking site where users broadcast short posts, where each user can create his own post, read, update and delete it, and also like/dislike posts from others users.
+Titbit is  a free social networking site where users broadcast short posts, where each user can sign u, create his own post, read, update and delete it, and also like/dislike posts from others users, follow other users, comment, like/dislike comments or reply a comment.
 
 
 Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
@@ -76,9 +76,6 @@ The aim of this project was to build a site that allows users to easily sign up 
 
 ### User Stories
 
-
-
-
 #### Persona
 
 - - -
@@ -121,12 +118,13 @@ As a registered user of the site, I want to be able to:
 
 * log in to my account, so that I can access the website.
 * log out of my account, so that I can end my session.
-* reset my password, so that I can regain access to my account.
+* have my own profile, so that I can be found from my friends.
 * edit my profile, so that I can update or personalize it.
 * read the new posts, so that I can keep up to date.
 * create, edit, delete and view my posts, so that I can have control of my content.
 * know the date and time a post was created, so that I can know how new or old the post is.
-* like other people's posts, so that I can let them know I enjoyed their posts.
+* post pictures, so that I can share moments or toughts.
+* like or dislike other people's posts, so that I can let them know I enjoyed their posts.
 * follow others users, so that I can view their posts on my feed.
 * unfollow other users, so that I can remove their post from my feed.
 * be followed, so that I can know that other users read my posts.
@@ -136,17 +134,19 @@ As a registered user of the site, I want to be able to:
 
 *Should Have*
 
+* reset my password, so that I can regain access to my account.
 * comment on other people's posts, so that I can be involved in the conversation.
 * edit or delete my comments on other people's posts, so that I can edit or remove comments I no longer want published.
+* reply comments, so that I can interate with others users.
 * read the comments of posts, so that I can know the thoughts from others users and follow them.
 * like other people's comments on posts, so that I can let them know I enjoyed their comment.
-* search for an user or a content, so that I can find either a specific user or a specific content.
-
+* search for an user, so that I can find a specific user.
+* delete other people's comments on my own posts, so that I can remove unwanted commments.
+* be notified when other users comment or like my posts or follow/unfollow me.
 
 
 *Could Have*
 
-* delete other people's comments on my own posts, so that I can remove unwanted commments.
 * reshare other people's posts, so that I can share their thoughts with my followers.
 * message other users, so that I can get in touch with them privately.
 * report posts to admins, so that I can notify inappropriate content.
@@ -156,8 +156,6 @@ As a registered user of the site, I want to be able to:
 
 *Won't Have*
 
-
-* be notified when other users comment or like my posts or follow/unfollow me.
 * call users, so that I can communicate with them more quickly.
 * create communities, so that I can share content by specific theme.
 * write testimonials about other users, so that I can testify about the other users according to the relationship I have with them.
@@ -172,44 +170,58 @@ As an administrator for the site I want to be able to:
 
 *Should Have*
 * remove any content from any user that could be offensive, so that I can moderate the all content.
+* suspend, block or delete users who not respect the rules, so that I can maintain site guidelines.
 
 *Could Have*
 * access a page only for admins to see flagged user posts, so that I can see a list of posts that possibly need to be deleted.
 * unflag a post if a deletion is not neede, so that I can remove it from the flagged posts list.
 
 *Won't Have*
-* suspend, block or delete users who not respect the rules, so that I can maintain site guidelines.
+* Edit the admin panel.
 
 ### Agile
 The Project Boards on GitHub was used to help to organize and prioritize the tasks.
-The Kanban, as an agile project management tool, helped to visualize the tasks and limit the work in progress (WIP) by moving cards between the To do, In progress, Testing and Done columns.
+The Kanban, as an agile project management tool, helped to visualize the tasks and limit the work in progress (WIP) by moving cards between the To do, In progress and Done columns.
 
-#### Burndown Chart
+The MoSCow priorization and labels to user stories were used to priorize and implement the features.
 
-#### User Story Planning
+* Must Have: guaranteed to be delivered (max 60% of stories)
+* Should Have: adds significant value, but not vital (the rest ~20% of stories)
+* Could Have: has small impact if left out (20% of stories)
+* Won't Have: not a priority for this iteration
 
 
 </details>
 
-
+- - - 
 
 ## 📝 Design
-- - - 
+
 
 <details>
 <summary>👇</summary>
 
 ### Colour Scheme
 
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Dark charcoal| ![#333](https://via.placeholder.com/10/333?text=+)  #333|
+| Light blue | ![#d2dfef](https://via.placeholder.com/10/d2dfef?text=+)  #d2dfef|
+| Blue | ![#89b1d6](https://via.placeholder.com/10/3b81c0?text=+)  #89b1d6 |
+| Dark blue | ![#3b81c0](https://via.placeholder.com/10/3b81c0?text=+)  #3b81c0 |
+| Rosa | ![#e95b95](https://via.placeholder.com/10/e95b95?text=+) #e95b95 |
 
 
-![Colour Scheme for Titbit](documentation/###.png)
 
 ### Typography
 
+The []() was used for the Logo Titbit in memory of the orkut platform.
 
+![Typography Braah One](documentation/images/braah-one.png)
 
-I have used [Roboto](https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap) for the body text on the site. Roboto is a sans-serif font which allows it to be legible and is a great choice for accessibility.
+The  [Roboto 300 light](https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap) was used for the body text on the site. Roboto is a sans-serif font which allows it to be legible and is a great choice for accessibility.
+
+![Typography Roboto](documentation/images/roboto.png)
 
 
 
@@ -246,9 +258,11 @@ Wireframes were created for mobile, tablet and desktop using Balsamiq.
 
 ### Database Schema & User Journey
 
-#### **User Journey**
+#### User Journey
 
-![User Journey](documentation/user-journey.png)
+![User Journey](documentation/images/user-journey.drawio.png)
+
+#### Database Schema
 
 </details>
 
@@ -265,9 +279,16 @@ Wireframes were created for mobile, tablet and desktop using Balsamiq.
 The website is comprised of X pages which are extended from a base template.
 
 * Home page
-* Login page
 * Register page
+* Login page
+* Logout page
 * Profile page
+* Edit profile page
+* Feed all posts
+* Feed from following
+* Post detail
+* Edit post
+* Delete post
 * Error page
 
 ### Elements found on each page
@@ -286,7 +307,7 @@ The website is comprised of X pages which are extended from a base template.
 
   ![User not logged in Navbar](documentation/not-loggedin-navbar.png)
 
-* Footer - A footer is displayed on all pages of the website and contains the copyright year, this is updated to the current year using [JavaScript](titbit/static/js/script.js).
+* Footer - A footer is displayed on all pages of the website.
 
   ![Footer](documentation/footer.png)
 
@@ -324,7 +345,7 @@ In future implementations I would like to:
 
 * Add change and reset password functionality to the profile section.
 * Give users the option to delete their account in the profile section.
-* Allow admin to be able to delete posts that contain offensive material.
+* Allow admin to be able to delete or block users.
 * Prepopulate the login fields after a user registers on the site and is redirected to the login page - this is good UX as we shouldn't expect a user to fill in the form with information we already have. 
 
 ### 🗣️ Accessibility
@@ -343,9 +364,6 @@ I have been mindful during coding to ensure that the website is as accessible fr
 
 ## ⚒️ Technologies Used 
 
-- - -
-
-
 <details>
 <summary>👇</summary>
 
@@ -356,9 +374,9 @@ HTML, CSS, Javascript, Python
 
 ### Databases Used
 
-[🐘 ElephantSQL](https://www.elephantsql.com/) - See [Database Migration to ElephantSQL](#database-migration-to-elephantsql) section for more information.
+[🐘 ElephantSQL](https://www.elephantsql.com/)
 
-[Cloudinary]
+[Cloudinary](https://cloudinary.com/)
 
 ### Frameworks Used
 
@@ -369,7 +387,7 @@ HTML, CSS, Javascript, Python
 ### Libraries & Packages Used
 
 
-### Programs Used 
+### ⛑ Programs Used 
 
 [Pip](https://pypi.org/project/pip/) - Tool for installing python packages.
 
@@ -417,7 +435,7 @@ While researching the best way to handle errors in a Flask application using blu
 
 ### Deployment
 
-### Local Development
+###  🏡 Local Development
 
 #### How to Fork
 
