@@ -257,7 +257,7 @@ Wireframes were created for mobile, tablet and desktop using Balsamiq.
 ![Error Page](documentation/wireframes/error.png)
 
 ### Database Schema & User Journey
-
+ 
 #### User Journey
 
 ![User Journey](documentation/images/user-journey.drawio.png)
