@@ -1,9 +1,27 @@
+/*  ------------------------------------GOOGLE FONT IMPORT */
+  @import url('https://fonts.googleapis.com/css2?family=Braah+One&family=Roboto:wght@300&display=swap');
+
+
+/*  ------------------------------------ROOT VARIABLES */
+:root {
+    --blue: #D2DFEF;
+    --light-blue: #E2E8FD;
+    --powder-blue: #B4D1EC;
+    --dark-blue: #3B81C0;
+    --rose: #E95B95;
+    --black: #333;
+}
+
+
 * {
     margin: 0;
     padding: 0;
     border: none;
+    background-color: var(--light-blue);
+    outline: 1px solid red;
 }
 
+/*  -----------------------------------------BODY */
 body {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
@@ -11,19 +29,48 @@ body {
     margin-left: auto;
     margin-right: auto;
     scroll-behavior: smooth;
+    padding-top: 65px;
 }
 
+h1 {
+    font-family: 'Braah One', sans-serif;
+    font-size: 130%;
+    color: var(--dark-blue);
+}
 
 a {
     text-decoration: none;
-    color: #333;
+}
+
+/*  -----------------------------------------Nav */
+#logo {
+    color:var(--rose);
+    font-size: 160%;
+    font-family: 'Braah One', sans-serif;
 }
 
 nav ul {
     list-style-type: none;
-    color: #333;
+    color: var(--dark-blue);
 }
 
+/*  -----------------------------------------Home */
+
+.card-image {
+    object-fit: cover;
+    max-height: 300px;
+}
+
+.small-btn {
+    background-color: var(--dark-blue);
+    color: var(--light-blue);
+    margin-right: 8px;
+}
+
+.small-btn:hover {
+    background-color: var(--black);
+    color: var(--light-blue);
+}
 
 /*  -----------------------------------------Profile */
 .card-img-top {
