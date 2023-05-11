@@ -28,4 +28,5 @@ The issues listed in the table below were indentified during the development of 
 |09 | Inpunt form doesn't clean after submit | Add class form-control | Closed |
 |10 | Default profile_pic doesn't display | Add boolean to templates | Closed |
 |11 | Reply comment icon button doesn't work. Parent_id was not found. | Remove '' from argument in the function. | Closed |
-|12 | Default profile picture doesn't be displayed at followers_list. | Edit the template followers_list with boolean | Closed |
+|12 | Default profile picture doesn't be displayed at followers_list. | Edit the template followers_list with boolean | Closed | 
+|13 | ConnectionRefusedError at /accounts/password/reset/ |  | Open |
