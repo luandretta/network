@@ -49,47 +49,48 @@
         <!-- Navbar-->
         {% include 'home/navbar.html' %}
     </header>
-    <main>
-        {% block body %}
-        <!-- Messages -->
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endfor %}
 
-        {% endif %}
+    {% block body %}
+    <!-- Messages -->
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
 
-        {% block content %}
-        <!-- Content Goes here -->
-        {% endblock content %}
-        {% endblock %}
+    {% endif %}
 
-        {% block extra_body %}
-        {% endblock %}
-    </main>
+    {% block content %}
+    <!-- Content Goes here -->
+    {% endblock content %}
+    {% endblock %}
+
+    {% block extra_body %}
+    {% endblock %}
+
     <!-- Footer -->
-    <footer class="text-center bg-blue">          
-                <!-- Section: Social media -->
-                <p class="bg-blue">Get in touch:
-                    <!-- Linkedin -->
-                    <a class="btn btn-floating m-1" href="https://www.linkedin.com/in/luandretta/"
-                        target="_blank" rel="nofollow" role="button"><i class="fab fa-linkedin-in"></i></a>
-                    <!-- Github -->
-                    <a class="btn btn-floating" href="https://github.com/luandretta" target="_blank"
-                        rel="nofollow" role="button"><i class="fab fa-github"></i></a>
-                </p>
-                <!-- Copyright -->
-                <small>
-                    <p class="bg-blue">
-                        Developed By <a href="https://github.com/luandretta" target="_blank" rel="nofollow" id="author">
-                            Lucimeri Andretta </a> for Code Institute's Portfolio Project 4 - 2023
-                    </p>
-                </small>
-            </div>
+    <footer class="text-center bg-blue">
+        <!-- Section: Social media -->
+        <p class="bg-blue">Get in touch:
+            <!-- Linkedin -->
+            <a class="btn btn-floating m-1" href="https://www.linkedin.com/in/luandretta/" target="_blank"
+                rel="nofollow" role="button"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Github -->
+            <a class="btn btn-floating" href="https://github.com/luandretta" target="_blank" rel="nofollow"
+                role="button"><i class="fab fa-github"></i></a>
+        </p>
+        <!-- Copyright -->
+        <small>
+            <p class="bg-blue">
+                Developed By <a href="https://github.com/luandretta" target="_blank" rel="nofollow" id="author">
+                    Lucimeri Andretta </a> for Code Institute's Portfolio Project 4 - 2023
+            </p>
+        </small>
+        </div>
         </div>
     </footer>
 </body>
+
 </html>

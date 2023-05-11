@@ -2,10 +2,10 @@
 {% load static %}
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark px-2">
+    <nav class="navbar fixed-top navbar-expand-lg px-2">
         <div class="container-fluid">
             <!-- Logo redirects to general feed if user is authenticated -->
-            <a id="logo"  class="navbar-brand" 
+            <a id="logo" 
             {% if user.is_authenticated %} 
             href="{% url 'post-list' %}" 
             {% else %}
@@ -22,35 +22,36 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="{% url 'feed' %}">Following</a>
+                        <a class="black" href="{% url 'feed' %}">Following</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item black">
                         <div>
                             {% show_notifications %}
                         </div>
                     </li>
                 </ul>
+                <!-- User settings-->
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle black" data-bs-toggle="dropdown" role="buton"
+                        aria-expanded="false"><i class="fas fa-user black"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a class="dropdown-item black" href="{% url 'profile' request.user.profile.pk %}">My Profile</a>
+                        </li>
+                        <li><a class="dropdown-item black" href="{% url 'account_logout' %}">Sign Out</a></li>
+                    </ul>
+                </div>
                 <!-- User search -->
                 <form class="d-flex" method="GET" action="{% url 'profile-search' %}">
                     <div class="input-group">
-                        <span class="input-group-text" id="basic-addon1">@</span>
+                        <span class="input-group-text black" id="basic-addon1">@</span>
                         <input type="text" class="form-control" placeholder="Username" aria-label="Username"
                             aria-describedby="basic-addon1" name="query" value="{{ request.GET.query }}">
                         <button class="search-btn" type="submit">
-                            <i class="fas fa-search ml-4"></i>
+                            <i class="fas fa-search ml-4 mr-4"></i>
                         </button>
                     </div>
                 </form>
-                <!-- User settings-->
-                <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="buton"
-                        aria-expanded="false"><i class="fas fa-user"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'profile' request.user.profile.pk %}">My Profile</a>
-                        </li>
-                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a></li>
-                    </ul>
-                </div>
+                
             </div>
             {% endif %}
         </div>

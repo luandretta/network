@@ -20,17 +20,17 @@
     padding: 0;
     border: none;
     background-color: var(--light-blue);
-    /* outline: 1px solid red; */
+    /* outline: 1px solid red;  */
+    box-sizing: border-box;
 }
 
 /*  -----------------------------------------BODY */
 html, body {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
-    max-width: 100%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 2000px;
+    min-height: 100vh;
+    margin-left: 0 auto;
     scroll-behavior: smooth;
     background-color: var(--light-blue);
 }
@@ -39,14 +39,10 @@ body {
      padding-top: 65px;
 }
 
-body > footer {
-    position: sticky;
-    top: 100vh;
-}
-
-h1 {
+h1, h2 {
     font-family: 'Braah One', sans-serif;
-    font-size: 130%;
+    font-size: 150%;
+    letter-spacing: 0.125rem;
     color: var(--dark-blue);
 }
 
@@ -54,16 +50,27 @@ a {
     text-decoration: none;
 }
 
+/*  -----------------------------------------Colors */
+.rose {
+    color: var(--rose);
+}
+
+.black {
+    color: var(--black);
+}
+
+
 /*  -----------------------------------------Nav */
 #logo {
     color:var(--rose);
-    font-size: 160%;
+    font-size: 200%;
     font-family: 'Braah One', sans-serif;
+    line-height: 65px;
+    margin-right: 20px;
 }
 
 nav ul {
     list-style-type: none;
-    color: var(--dark-blue);
 }
 
 /*  -----------------------------------------Home */
@@ -93,7 +100,7 @@ nav ul {
 
 /*  -----------------------------------------Buttons */
 .small-btn {
-    background-color: var(--dark-blue);
+    background-color: var(--aegean-blue);
     color: var(--light-blue);
     margin-right: 8px;
 }
@@ -192,6 +199,13 @@ nav ul {
 }
 
 /*  -----------------------------------------Footer */
+footer {
+    bottom: 0;
+    height: auto;
+    width: 100vw;
+    padding: 10px;
+}
+
 .bg-blue {
     color: var(--light-blue);
     background-color:var(--aegean-blue)
