@@ -20,7 +20,7 @@
     padding: 0;
     border: none;
     background-color: var(--light-blue);
-    /* outline: 1px solid red;  */
+    outline: 1px solid red; 
     box-sizing: border-box;
 }
 
@@ -81,6 +81,12 @@ nav ul {
 }
 
 /*  -----------------------------------------Profile */
+.profile-card {
+    border: 0.4px solid var(--aegean-blue);
+    border-radius: 8px;
+    padding: 0;
+}
+
 .card-img-top {
     max-height: 300px;
     object-fit: cover;
