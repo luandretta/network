@@ -8,8 +8,10 @@
     --light-blue: #E2E8FD;
     --powder-blue: #B4D1EC;
     --dark-blue: #3B81C0;
+    --aegean-blue: #1F456E;
     --rose: #E95B95;
     --black: #333;
+    --white: #f1f1f1;
 }
 
 
@@ -18,18 +20,28 @@
     padding: 0;
     border: none;
     background-color: var(--light-blue);
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
 }
 
 /*  -----------------------------------------BODY */
-body {
+html, body {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
-    max-width: 2000px;
+    max-width: 100%;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     scroll-behavior: smooth;
-    padding-top: 65px;
+    background-color: var(--light-blue);
+}
+
+body {
+     padding-top: 65px;
+}
+
+body > footer {
+    position: sticky;
+    top: 100vh;
 }
 
 h1 {
@@ -61,17 +73,6 @@ nav ul {
     max-height: 300px;
 }
 
-.small-btn {
-    background-color: var(--dark-blue);
-    color: var(--light-blue);
-    margin-right: 8px;
-}
-
-.small-btn:hover {
-    background-color: var(--black);
-    color: var(--light-blue);
-}
-
 /*  -----------------------------------------Profile */
 .card-img-top {
     max-height: 300px;
@@ -87,10 +88,21 @@ nav ul {
 }
 
 .edit {
-    color: #333;
+    color: var(--black);
 }
 
 /*  -----------------------------------------Buttons */
+.small-btn {
+    background-color: var(--dark-blue);
+    color: var(--light-blue);
+    margin-right: 8px;
+}
+
+.small-btn:hover {
+    background-color: var(--rose);
+    color: var(--aegean-blue);
+}
+
 .like-button,
 .comment-button,
 .search-btn {
@@ -141,7 +153,7 @@ nav ul {
 
 .dropdown-content {
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: var(--white);
     min-width: 350px;
     box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -149,14 +161,14 @@ nav ul {
 }  
 
 .dropdown-content a {
-    color: #000;
+    color: var(--black);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: var(--white);
 }
 
 .dropdown-item-parent {
@@ -177,4 +189,32 @@ nav ul {
     color: rgb(180, 25, 25);
     transition: 0.3s;
     cursor: pointer
+}
+
+/*  -----------------------------------------Footer */
+.bg-blue {
+    color: var(--light-blue);
+    background-color:var(--aegean-blue)
+}
+
+footer i {
+    color:var(--white);
+    background-color: var(--dark-blue);
+    padding: 5px;
+    border-radius: 8px;
+}
+
+footer i:hover {
+    color:var(--rose);
+    background-color: var(--white);
+}
+
+#author {
+    color: var(--powder-blue);
+    padding: 3px;
+    background-color: var(--aegean-blue);
+}
+
+#author:hover {
+    color: var(--rose);
 }

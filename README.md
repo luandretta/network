@@ -215,7 +215,7 @@ The MoSCow priorization and labels to user stories were used to priorize and imp
 
 ### Typography
 
-The []() was used for the Logo Titbit in memory of the orkut platform.
+The [Braah One](https://fonts.google.com/specimen/Braah+One?query=braa) was used for the Logo Titbit in memory of the orkut platform.
 
 ![Typography Braah One](documentation/images/braah-one.png)
 
