@@ -121,6 +121,12 @@ nav ul {
 }
 
 /*  -----------------------------------------Post */
+.post-card {
+    border: solid 0.4px var(--aegean-blue);
+    border-radius: 8px;
+    padding: 15px;
+}
+
 .post-img {
     float: left;
     margin-right: 1rem;
@@ -138,8 +144,21 @@ nav ul {
 }
 
 /* -----------------------------------------Comment */
+.comment-card {
+    border: solid 0.4px var(--rose);
+    border-radius: 8px;
+    padding: 15px;
+}
+
 .child-comment {
     margin-left: 4rem;
+}
+
+.reply-card {
+    border: solid 0.4px var(--rose);
+    border-radius: 8px;
+    padding: 05px;
+    background-color: var(--light-blue);
 }
 
 /* ----------------------------------------Notifications */
@@ -169,6 +188,7 @@ nav ul {
 
 .dropdown-content a {
     color: var(--black);
+    background-color: var(--white);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -204,6 +224,7 @@ footer {
     height: auto;
     width: 100vw;
     padding: 10px;
+    margin-top: 15px;
 }
 
 .bg-blue {

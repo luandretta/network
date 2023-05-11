@@ -12,8 +12,9 @@
         </div>
     </div>
      <!-- Post detail -->
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-8 col-sm-12 position-relative alert alert-dark" role="alert">
+     <div class="row justify-content-center mt-3">
+        <h1 class="text-center">Post detail</h1>
+        <div class="col col-md-8 col-sm-12 position-relative post-card">
             <!-- Author and date -->
             <div>
                 <div>
@@ -81,7 +82,7 @@
     </div>
     <div class="row justify-content-center mt-3">
         <div class="col-md-8 col-sm-12">
-            <h5>Add a Comment!</h5>
+            <h2 class="text-center">Add a Comment!</h2>
         </div>
     </div>
     <!-- Add a Comment -->
@@ -91,7 +92,7 @@
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="d-grid gap-2">
-                    <button class="btn btn-success mt-3">Comment!</button>
+                    <button class="btn small-btn mt-3">Comment!</button>
                 </div>
             </form>
         </div>
@@ -99,8 +100,8 @@
     <!-- All comments -->
     {% for comment in comments %}
     {% if comment.is_parent %}
-    <div class="row justify-content-center mt-1 mb-5">
-        <div class="col-md-8 col-sm-12">
+    <div class="row justify-content-center mt-3">
+        <div class="col col-md-8 col-sm-12 position-relative comment-card">
             <!-- Author and date from comment-->
             <div>
                 <a href="{% url 'profile' comment.author.profile.pk %}">
@@ -163,20 +164,20 @@
     </div>
     <!-- Reply a Comment -->
     <div class="row justify-content-center mt-3 mb-5 d-none" id="{{ comment.pk }}">
-        <div class="col-md-5 col-sm-12">
+        <div class="col-md-8 col-sm-12">
             <form method="POST" action="{% url 'comment-reply' post.pk comment.pk %}">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="d-grid gap-2">
-                    <button class="btn btn-success mt-3">Reply!</button>
+                    <button class="btn small-btn mt-3">Reply!</button>
                 </div>
             </form>
         </div>
     </div>
     <!-- Replied comments -->
     {% for child_comment in comment.children %}
-    <div class="row justify-content-center  mb-3 child-comment">
-        <div class="col-md-5 col-sm-12">
+    <div class="row justify-content-center  mt-3 child-comment">
+        <div class="col col-md-8 col-sm-12 reply-card">
             <!-- Author and date -->
             <div>
                 <a href="{% url 'profile' child_comment.author.profile.pk %}">
