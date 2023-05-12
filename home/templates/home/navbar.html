@@ -2,7 +2,7 @@
 {% load static %}
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg px-2">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light px-2">
         <div class="container-fluid">
             <!-- Logo redirects to general feed if user is authenticated -->
             <a id="logo" 
@@ -35,9 +35,9 @@
                     <a class="nav-link dropdown-toggle black" data-bs-toggle="dropdown" role="buton"
                         aria-expanded="false"><i class="fas fa-user black"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a class="dropdown-item black" href="{% url 'profile' request.user.profile.pk %}">My Profile</a>
+                        <li><a class="dropdown-item dropdown-user black" href="{% url 'profile' request.user.profile.pk %}">My Profile</a>
                         </li>
-                        <li><a class="dropdown-item black" href="{% url 'account_logout' %}">Sign Out</a></li>
+                        <li><a class="dropdown-item dropdown-user black" href="{% url 'account_logout' %}">Sign Out</a></li>
                     </ul>
                 </div>
                 <!-- User search -->
@@ -50,8 +50,7 @@
                             <i class="fas fa-search ml-4 mr-4"></i>
                         </button>
                     </div>
-                </form>
-                
+                </form> 
             </div>
             {% endif %}
         </div>

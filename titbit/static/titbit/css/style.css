@@ -36,12 +36,12 @@ html, body {
 }
 
 body {
-     padding-top: 65px;
+     padding-top: 70px;
 }
 
 h1, h2 {
     font-family: 'Braah One', sans-serif;
-    font-size: 150%;
+    font-size: 180%;
     letter-spacing: 0.125rem;
     color: var(--dark-blue);
 }
@@ -59,6 +59,11 @@ a {
     color: var(--black);
 }
 
+.bg-blue {
+    color: var(--light-blue);
+    background-color:var(--aegean-blue)
+}
+
 
 /*  -----------------------------------------Nav */
 #logo {
@@ -71,6 +76,15 @@ a {
 
 nav ul {
     list-style-type: none;
+    color: var(--black);
+}
+
+.dropdown-user {
+    background-color: var(--white);
+}
+
+.dropdown-user:hover {
+    color: var(--rose);
 }
 
 /*  -----------------------------------------Home */
@@ -123,7 +137,7 @@ nav ul {
     border: none;
     box-shadow: none;
     margin-left: 4px !important;
-    color: #333;
+    color: var(--black);
 }
 
 /*  -----------------------------------------Post */
@@ -186,7 +200,7 @@ nav ul {
 .dropdown-content {
     position: absolute;
     background-color: var(--white);
-    min-width: 350px;
+    min-width: 280px;
     box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
     z-index: 1;
     font-size: 0.9rem;
@@ -201,7 +215,7 @@ nav ul {
 }
 
 .dropdown-content a:hover {
-    background-color: var(--white);
+    color: var(--rose);
 }
 
 .dropdown-item-parent {
@@ -211,15 +225,18 @@ nav ul {
 
 .dropdown-item-close {
     position: absolute;
+    background-color: var(--white);
     top: 0;
     right:0;
     font-size: 1.8rem;
     padding-right: 5px;
     transition: 0.3s;
+
 }
 
 .dropdown-item-close:hover {
-    color: rgb(180, 25, 25);
+    background-color: rgb(180, 25, 25);
+    color: var(--white);
     transition: 0.3s;
     cursor: pointer
 }
@@ -231,11 +248,6 @@ footer {
     width: 100vw;
     padding: 10px;
     margin-top: 15px;
-}
-
-.bg-blue {
-    color: var(--light-blue);
-    background-color:var(--aegean-blue)
 }
 
 footer i {
