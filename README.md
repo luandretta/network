@@ -514,7 +514,7 @@ Please see [TESTING.md](TESTING.md) for all testing performed
 * [Custom template tags and filters](https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/)
 * [Making queries](https://docs.djangoproject.com/en/4.2/topics/db/queries/#chaining-filters)
 * [How to perform OR condition in django queryset?](https://stackoverflow.com/questions/6567831/how-to-perform-or-condition-in-django-queryset)
-* []()
+* [Django and Static Assets](https://devcenter.heroku.com/articles/django-assets)
 
 ### 📝 Content 
 

@@ -29,4 +29,6 @@ The issues listed in the table below were indentified during the development of 
 |10 | Default profile_pic doesn't display | Add boolean to templates | Closed |
 |11 | Reply comment icon button doesn't work. Parent_id was not found. | Remove '' from argument in the function. | Closed |
 |12 | Default profile picture doesn't be displayed at followers_list. | Edit the template followers_list with boolean | Closed | 
-|13 | ConnectionRefusedError at /accounts/password/reset/ |  | Open |
+|13 | ConnectionRefusedError at /accounts/password/reset/ | Google and Gitpod don't see eye-to-eye and will not send emails from a Google SMPT account.  | Open |
+|14 | Skip collestactic at Heroky during deployment | Run the command **python manage.py collectstatic** then deploy the project again. | Closed|
+
