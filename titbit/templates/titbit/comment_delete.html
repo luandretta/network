@@ -5,13 +5,13 @@
 <div class="container">
     <!-- Confirmation to delete the comment -->
     <div class="row justify-content-center mt-3 mb-5">
-        <div class="col-md-8 col-sm-12 border-bottom">
+        <div class="col-md-8 col-sm-12 text-center">
             <form method="POST">
                 {% csrf_token %}
-                <h5>Attention</h5>
+                <h1>Attention</h1>
                 <p>You are about to delete this comment, this cannot be undone!</p>
                 <div class="d-grid gap-2">
-                    <a href="{% url 'post-detail' object.post.pk %}" class="btn btn-secondary">Back to Post</a>
+                    <a href="{% url 'post-detail' object.post.pk %}" class="btn small-btn">Back to Post</a>
                     <button class="btn btn-danger mt-3">DELETE</button>
                 </div>
             </form>

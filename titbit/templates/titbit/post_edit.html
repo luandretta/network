@@ -3,22 +3,22 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
+<div class="container mb-5">
     <div class="row mt-5">
         <div class="col-md-8 col-sm-6">
-            <a href="{% url 'post-list' %}" class="btn btn-light">Back to Feed</a>
+            <a href="{% url 'post-list' %}" class="btn small-btn">Back to Feed</a>
         </div>
     </div>
     <div class="row justify-content-center mt-3">
-        <div class="col-md-8 col-sm-12">
-            <h5>Update your titbit!</h5>
+        <div class="col-md-8 col-sm-12 text-center">
+            <h1>Update your titbit!</h1>
         </div>
-        <div class="col-md-8 col-sm-12 position-relative alert alert-dark" role="alert">
+        <div class="col-md-8 col-sm-12 position-relative alert" role="alert">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="d-grid gap-2">
-                    <button class="btn btn-success mt-3">Submit!</button>
+                    <button class="btn small-btn mt-3">Submit!</button>
                 </div>
             </form>
         </div>

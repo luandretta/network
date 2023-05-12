@@ -164,7 +164,7 @@
     </div>
     <!-- Reply a Comment -->
     <div class="row justify-content-center mt-3 mb-5 d-none" id="{{ comment.pk }}">
-        <div class="col-md-8 col-sm-12">
+        <div class="col-md-6 col-sm-12">
             <form method="POST" action="{% url 'comment-reply' post.pk comment.pk %}">
                 {% csrf_token %}
                 {{ form | crispy }}

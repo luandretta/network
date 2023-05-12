@@ -2,20 +2,21 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
+<div class="container mb-5">
     <div class="row mt-5">
         <div class="col-md-5 col-sm-6">
-            <a href="{% url 'post-list' %}" class="btn btn-light">Back To Feed</a>
+            <a href="{% url 'post-list' %}" class="btn small-btn">Back To Feed</a>
         </div>
     </div>
-
+    <!-- Result from Users search -->
+    <h1 class="text-center mt-5">Users found:</h1>
+    {% if profile_list %}
     {% for profile in profile_list %}
     <div class="row justify-content-center mt-3">
-        <div class="col-md-8 col-sm-12 border-bottom position-relative">
-            <!-- Result from Users search -->
+        <div class="col col-md-4 col-sm-12 position-relative post-card">
             <div>
                 <a href="{% url 'profile' profile.pk %}">
-                    {% if post.author.profile.profile_pic.url %}
+                    {% if profile.profile_pic.url %}
                     <img src="{{ profile.profile_pic.url }}" class="rounded-circle post-img" height="50" width="50"
                         alt="{{ profile.user.username }}">
                     {% else %}
@@ -27,12 +28,17 @@
                     <a class="text-primary" href="{% url 'profile' profile.pk %}">@ {{ profile.user }}</a>
                 </p>
             </div>
-            {% if profile.location %}
-            <p>{{ profile.location }}</p>
-            {% endif %}
-            <p>Followers: {{ profile.followers.all.count }}</p>
+            <p>
+                {% if profile.location %}
+                {{ profile.location }} -
+                {% endif %}
+                {{ profile.followers.all.count }} followers
+            </p>
         </div>
     </div>
     {% endfor %}
+    {% else %}
+    <p class="text-center">Sorry, no User was found... Try with another letter!</p>
+    {% endif %}
 </div>
 {% endblock content %}

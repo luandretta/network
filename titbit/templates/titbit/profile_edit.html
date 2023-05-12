@@ -5,25 +5,25 @@
 {% block extra_title %}- @{{ profile.user }}{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container mb-5">
     <div class="row mt-5">
         <div class="col-md-8 col-sm-6">
-            <a href="{% url 'profile' object.pk %}" class="btn btn-light">Back to Profile</a>
+            <a href="{% url 'profile' object.pk %}" class="btn small-btn">Back to Profile</a>
         </div>
     </div>
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-8 col-sm-12 border-bottom">
-            <h5>Update your profile!</h5>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8 col-sm-12 text-center">
+            <h1>Update your profile!</h1>
         </div>
     </div>
 
     <div class="row justify-content-center mt-3 mb-5">
-        <div class="col-md-8 col-sm-12 border-bottom">
+        <div class="col-md-8 col-sm-12">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="d-grid gap-2">
-                    <button class="btn btn-success mt-3">Submit!</button>
+                    <button class="btn small-btn mt-3">Submit!</button>
                 </div>
             </form>
         </div>
