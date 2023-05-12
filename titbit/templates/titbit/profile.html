@@ -5,37 +5,45 @@
 {% block extra_title %}- @{{ profile.user }}{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container mb-5 mx-1">
     <div class="row mt-3">
         <!-- Back to Feed Button -->
         <div class="col-md-3 col-sm-6">
             <a href="{% url 'post-list' %}" class="btn small-btn">Back to Feed</a>
         </div>
     </div>
-
     <div class="row justify-content-center mt-3">
-            <!-- Profile Card -->
-            <div class="col-md-8 col-sm-12  profile-card">
-                <!-- Background -->
-                {% if profile.bg_pic  %}
-                <img class="card-img-top" src="{{ profile.bg_pic.url }}" alt="background image">
-                {% else %}
-                <img src="{% static 'titbit/images/bg.png' %}" alt="background image" class="card-img-top">
-                {% endif %}
-                <div class="text-center">
-                    <!-- Profile Picture -->
-                    <div>
-                        {% if profile.profile_pic.url %}
-                        <img src="{{ profile.profile_pic.url }}" class="profile-pic rounded-circle"
-                            alt="{{ profile.user.username }}">
-                        {% else %}
-                        <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
-                            class="profile-pic rounded-circle">
+        <!-- Profile Card -->
+        <div class="col-md-5 col-md-8 col-sm-12  profile-card">
+            <!-- Background -->
+            {% if profile.bg_pic  %}
+            <img class="card-img-top" src="{{ profile.bg_pic.url }}" alt="background image">
+            {% else %}
+            <img src="{% static 'titbit/images/bg.png' %}" alt="background image" class="card-img-top">
+            {% endif %}
+            <div class="text-center">
+                <!-- Profile Picture -->
+                <div>
+                    {% if profile.profile_pic.url %}
+                    <img src="{{ profile.profile_pic.url }}" class="profile-pic rounded-circle"
+                        alt="{{ profile.user.username }}">
+                    {% else %}
+                    <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
+                        class="profile-pic rounded-circle">
+                    {% endif %}
+                </div>
+                <!-- User's data -->
+                {% if profile.name %}
+                <h3 class="py-4">{{ profile.name }}
+                    <span>
+                        {% if request.user == user %}
+                        <a href="{% url 'profile-edit' profile.pk %}" class="edit">
+                            <i class="far fa-edit"></i>
+                        </a>
                         {% endif %}
-                    </div>
-                    <!-- User's data -->
-                    {% if profile.name %}
-                    <h3 class="py-4">{{ profile.name }}
+                    </span>
+                    {% else %}
+                    <h3 class="py-4">{{ user.username }}
                         <span>
                             {% if request.user == user %}
                             <a href="{% url 'profile-edit' profile.pk %}" class="edit">
@@ -43,128 +51,121 @@
                             </a>
                             {% endif %}
                         </span>
-                        {% else %}
-                        <h3 class="py-4">{{ user.username }}
-                            <span>
-                                {% if request.user == user %}
-                                <a href="{% url 'profile-edit' profile.pk %}" class="edit">
-                                    <i class="far fa-edit"></i>
-                                </a>
-                                {% endif %}
-                            </span>
-                        </h3>
-                        {% endif %}
                     </h3>
+                    {% endif %}
+                </h3>
+                {% if profile.bio %}
+                <p class="mx-2">{{ profile.bio }}</p>
+                {% endif %}
 
-                    {% if profile.bio %}
-                    <p>{{ profile.bio }}</p>
-                    {% endif %}
+                {% if profile.location %}
+                <p>Location: {{ profile.location }} </p>
+                {% endif %}
 
-                    {% if profile.location %}
-                    <p>Location: {{ profile.location }} </p>
-                    {% endif %}
-
-                    {% if profile.birth_date %}
-                    <p>Birthday: {{ profile.birth_date }} </p>
-                    {% endif %}
-                </div>
-                <!-- Followers -->
-                <div class="text-center">
-                    <a href="{% url 'list-followers' profile.pk %}">Followers: {{ number_of_followers }}</a>
-                    <p></p>
-                    {% if user == request.user %}
-                    {% else %}
-                    {% if is_following %}
-                    <form method="POST" action="{% url 'remove-follower' profile.pk %}">
-                        {% csrf_token %}
-                        <button class="btn btn-outline-danger" type="submit">Unfollow</button>
-                    </form>
-                    {% else %}
-                    <form method="POST" action="{% url 'add-follower' profile.pk %}">
-                        {% csrf_token %}
-                        <button class="btn btn-outline-success" type="submit">Follow</button>
-                    </form>
-                    {% endif %}
-                    {% endif %}
-                </div>
+                {% if profile.birth_date %}
+                <p>Birthday: {{ profile.birth_date }} </p>
+                {% endif %}
+            </div>
+            <!-- Followers -->
+            <div class="text-center mb-3">
+                <a href="{% url 'list-followers' profile.pk %}">Followers: {{ number_of_followers }}</a>
+                <p></p>
+                {% if user == request.user %}
+                {% else %}
+                {% if is_following %}
+                <form method="POST" action="{% url 'remove-follower' profile.pk %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-danger" type="submit">Unfollow</button>
+                </form>
+                {% else %}
+                <form method="POST" action="{% url 'add-follower' profile.pk %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-success" type="submit">Follow</button>
+                </form>
+                {% endif %}
+                {% endif %}
             </div>
         </div>
-        <!-- User's posts -->
-        {% for post in posts %}
-        <div class="row justify-content-center mt-3">
-            <div class="col col-md-8 col-sm-12 position-relative post-card">
-                <!-- Author and date -->
-                <div>
-                    <a href="{% url 'profile' post.author.profile.pk %}">
-                        <div>
-                            {% if profile.profile_pic.url %}
-                            <img src="{{ profile.profile_pic.url }}" class="post-img rounded-circle"
-                                alt="{{ profile.user.username }}" height="50" width="50">
-                            {% else %}
-                            <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
-                                class="rounded-circle post-img" height="50" width="50">
-                            {% endif %}
-                        </div>
+    </div>
+
+    <!-- User's posts -->
+    <h1 class="text-center mt-5">{{ user.username}}' posts</h1>
+    {% for post in posts %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-md-8 col-sm-12 position-relative post-card">
+            <!-- Author and date -->
+            <div>
+                <a href="{% url 'profile' post.author.profile.pk %}">
+                    <div>
+                        {% if profile.profile_pic.url %}
+                        <img src="{{ profile.profile_pic.url }}" class="post-img rounded-circle"
+                            alt="{{ profile.user.username }}" height="50" width="50">
+                        {% else %}
+                        <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
+                            class="rounded-circle post-img" height="50" width="50">
+                        {% endif %}
+                    </div>
+                </a>
+                <p class="post-text">
+                    <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@
+                        {{ post.author }}</a>
+                    <small class="text-muted"> {{ post.posted_on }}</small>
+                    <!-- Author can edit the post  -->
+                    {% if request.user == post.author  %}
+                    <a href="{% url 'post-edit' post.pk %}" class="edit">
+                        <i class="far fa-edit"></i>
                     </a>
-                    <p class="post-text">
-                        <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@
-                            {{ post.author }}</a>
-                        <small class="text-muted"> {{ post.posted_on }}</small>
-                        <!-- Author can edit the post  -->
-                        {% if request.user == post.author  %}
-                        <a href="{% url 'post-edit' post.pk %}" class="edit">
-                            <i class="far fa-edit"></i>
-                        </a>
-                        {% endif %}
-                        <!-- Author or admin can delete the post -->
-                        {% if request.user == post.author or request.user.is_superuser %}
-                        <a href="{% url 'post-delete' post.pk %}" class="edit">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                        {% endif %}
-                    </p>
-                </div>
-                <!-- Content -->
-                <div class="position-relative">
-                    <p>{{ post.content }}</p>
-                    {% if post.image %}
-                    <img src="{{ post.image.url }}" class="post-image-upload">
                     {% endif %}
-                    <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
-                </div>
-
-                <div class="d-flex flex-row">
-                    <!-- Like -->
-                    <form method="POST" action="{% url 'post-like' post.pk %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{ request.path }}">
-                        <button class="like-button" type="submit">
-                            {% if request.user in post.likes.all %}
-                            <i class="fa-solid fa-thumbs-up"></i>
-                            {% else %}
-                            <i class="fa-regular fa-thumbs-up"></i>
-                            {% endif %}
-                            <span> {{ post.likes.all.count }}</span>
-                        </button>
-                    </form>
-                    <!-- Dislike -->
-                    <form method="POST" action="{% url 'dislike' post.pk %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{ request.path }}">
-                        <button class="like-button" type="submit">
-                            {% if request.user in post.dislikes.all %}
-                            <i class="fa-solid fa-thumbs-down"></i>
-                            {% else %}
-                            <i class="fa-regular fa-thumbs-down"></i>
-                            {% endif %}
-                            <span> {{ post.dislikes.all.count }}</span>
-                        </button>
-                    </form>
-                    <!-- Comment -->
-                    <a class="comment-button" href="{% url 'post-detail' post.pk %}">
-                        <i class="fa-regular fa-comment"></i></a>
-                </div>
+                    <!-- Author or admin can delete the post -->
+                    {% if request.user == post.author or request.user.is_superuser %}
+                    <a href="{% url 'post-delete' post.pk %}" class="edit">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    {% endif %}
+                </p>
+            </div>
+            <!-- Content -->
+            <div class="position-relative">
+                <p>{{ post.content }}</p>
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="post-image-upload">
+                {% endif %}
+                <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
+            </div>
+            <div class="d-flex flex-row">
+                <!-- Like -->
+                <form method="POST" action="{% url 'post-like' post.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button class="like-button" type="submit">
+                        {% if request.user in post.likes.all %}
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        {% else %}
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        {% endif %}
+                        <span> {{ post.likes.all.count }}</span>
+                    </button>
+                </form>
+                <!-- Dislike -->
+                <form method="POST" action="{% url 'dislike' post.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button class="like-button" type="submit">
+                        {% if request.user in post.dislikes.all %}
+                        <i class="fa-solid fa-thumbs-down"></i>
+                        {% else %}
+                        <i class="fa-regular fa-thumbs-down"></i>
+                        {% endif %}
+                        <span> {{ post.dislikes.all.count }}</span>
+                    </button>
+                </form>
+                <!-- Comment -->
+                <a class="comment-button" href="{% url 'post-detail' post.pk %}">
+                    <i class="fa-regular fa-comment"></i></a>
             </div>
         </div>
-        {% endfor %}
-        {% endblock content %}
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
