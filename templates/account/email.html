@@ -7,8 +7,8 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="row justify-content-center">
-  <div class="col-md-6 col-sm-12">
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6 col-sm-12 mb-5">
     <h1>{% trans "E-mail Addresses" %}</h1>
     {% if user.emailaddress_set.all %}
     <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
