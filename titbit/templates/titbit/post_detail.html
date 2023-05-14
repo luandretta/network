@@ -11,8 +11,8 @@
             <a href="{% url 'post-list' %}" class="btn small-btn">Back to Feed</a>
         </div>
     </div>
-     <!-- Post detail -->
-     <div class="row justify-content-center mt-3">
+    <!-- Post detail -->
+    <div class="row justify-content-center mt-3">
         <h1 class="text-center mt-3">Post detail</h1>
         <div class="col col-md-8 col-sm-12 position-relative post-card">
             <!-- Author and date -->
@@ -119,6 +119,13 @@
                     <a class="text-primary" href="{% url 'profile' comment.author.profile.pk %}">@
                         {{ comment.author }}</a>
                     <small class="text-muted"> {{ comment.posted_on }}</small>
+                    <!-- Author can edit the comment -->
+                    {% if request.user == post.author %}
+                    <a href="{% url 'comment-edit' post.pk comment.pk %}" class="edit">
+                        <i class="far fa-edit"></i>
+                    </a>
+                    {% endif %}
+                    <!-- Author or admin can delete the comment -->
                     {% if request.user == comment.author or request.user.is_superuser %}
                     <a href="{% url 'comment-delete' post.pk comment.pk %}" class="edit">
                         <i class="fas fa-trash"></i>
@@ -169,7 +176,8 @@
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="d-grid gap-2">
-                    <button class="btn small-btn mt-3">Reply!</button>
+                    <p>Attention! Your reply cannot be edited. But can be deleted!</P>
+                    <button class="btn small-btn mt-3">Reply anyway!</button>
                 </div>
             </form>
         </div>
@@ -194,7 +202,8 @@
                 <p class="post-text">
                     <a class="text-primary" href="{% url 'profile' child_comment.author.profile.pk %}">@
                         {{ child_comment.author }}</a>
-                    <small class="text-muted"> {{ child_comment.posted_on }}</small>
+                    <small class="text-muted"> {{ child_comment.posted_on }}</small>                 
+                    <!-- Author or admin can delete the reply -->
                     {% if request.user == child_comment.author  or request.user.is_superuser %}
                     <a href="{% url 'comment-delete' post.pk child_comment.pk %}" class="edit">
                         <i class="fas fa-trash"></i>

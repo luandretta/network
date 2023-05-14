@@ -169,6 +169,25 @@ class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user == post.author
 
 
+class CommentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """
+    Edit the comment
+    Redirect to the previous page through the primary key
+    Boolean expression to UserPassesTextMixin
+    """
+    model = Comment
+    fields = ['comment']
+    template_name = 'titbit/comment_edit.html'
+
+    def get_success_url(self):
+        pk = self.kwargs['post_pk']
+        return reverse_lazy('post-detail', kwargs={'pk': pk})
+
+    def test_func(self):
+        comment = self.get_object()
+        return self.request.user == comment.author
+
+
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
     Delete the post

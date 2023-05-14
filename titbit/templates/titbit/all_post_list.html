@@ -42,7 +42,7 @@
                         {{ post.author }}</a>
                     <small class="text-muted"> {{ post.posted_on }}</small>
                     <!-- Author can edit the post -->
-                    {% if request.user == post.author or request.user.is_superuser %}
+                    {% if request.user == post.author %}
                     <a href="{% url 'post-edit' post.pk %}" class="edit">
                         <i class="far fa-edit"></i>
                     </a>

@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="row mt-5">
+        <div class="col-md-8 col-sm-6">
+            <a href="{% url 'post-list' %}" class="btn small-btn">Back to Feed</a>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-8 col-sm-12 text-center">
+            <h1>Update your comment!</h1>
+        </div>
+        <div class="col-md-8 col-sm-12 position-relative alert" role="alert">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2">
+                    <button class="btn small-btn mt-3">Submit!</button>
+                </div>
+            </form>
+        </div>
+    </div>  
+</div>
+{% endblock content %}

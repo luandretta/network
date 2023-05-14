@@ -9,6 +9,7 @@ function commentReplyToggle(parent_id) {
     }
 }
 
+
 // Toggle to show notifications
 function showNotifications() {
     const container = document.getElementById('notification-container');
@@ -19,6 +20,7 @@ function showNotifications() {
         container.classList.add('d-none');
     }
 }
+
 
 // Cookie to the Notifications
 function getCookie(name) {
