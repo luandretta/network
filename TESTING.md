@@ -32,3 +32,11 @@ The issues listed in the table below were indentified during the development of 
 |13 | ConnectionRefusedError at /accounts/password/reset/ | Google and Gitpod don't see eye-to-eye and will not send emails from a Google SMPT account.  | Open |
 |14 | Skip collestactic at Heroky during deployment | Run the command **python manage.py collectstatic** then deploy the project again. | Closed|
 
+Error 13 -
+Using:
+```bash
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
+```
+
+works like a charm im Backend

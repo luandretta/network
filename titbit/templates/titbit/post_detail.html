@@ -120,7 +120,7 @@
                         {{ comment.author }}</a>
                     <small class="text-muted"> {{ comment.posted_on }}</small>
                     <!-- Author can edit the comment -->
-                    {% if request.user == post.author %}
+                    {% if request.user == comment.author %}
                     <a href="{% url 'comment-edit' post.pk comment.pk %}" class="edit">
                         <i class="far fa-edit"></i>
                     </a>

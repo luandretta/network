@@ -1,0 +1,21 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: [Titbit] Password Reset E-mail
+From: webmaster@localhost
+To: luandretta14@gmail.com
+Date: Mon, 15 May 2023 12:01:03 -0000
+Message-ID: <168415206380.1862.9292686220998454201@localhost>
+
+Hello from Titbit!
+
+You're receiving this e-mail because you or someone else has requested a password for your user account.
+It can be safely ignored if you did not request a password reset. Click the link below to reset your password.
+
+http://localhost:8000/accounts/password/reset/key/3-bo8pdr-5041b5896654275f7785931e7616915d/
+
+In case you forgot, your username is Marlos.
+
+Thank you for using Titbit!
+titbit-network.herokuapp.com
+-------------------------------------------------------------------------------

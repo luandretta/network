@@ -50,6 +50,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    color: var(--rose);
+}
+
 /*  -----------------------------------------Colors */
 .rose {
     color: var(--rose);
