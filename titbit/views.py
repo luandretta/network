@@ -21,10 +21,10 @@ class AllPostsListView(LoginRequiredMixin, View):
 
         paginator = Paginator(posts, 4)
         page_num = request.GET.get('page')
-        posts = paginator.get_page(page_num)
+        posts_paginator = paginator.get_page(page_num)
 
         context = {
-            'post_list': posts,
+            'post_list': posts_paginator,
             'form': form,
             'page_num': page_num,
         }
@@ -243,9 +243,9 @@ class ProfileView(LoginRequiredMixin, View):
         user = profile.user
         posts = Post.objects.filter(author=user).order_by('-posted_on')
 
-        paginator = Paginator(posts, 4)
+        paginator = Paginator(posts, 2)
         page_num = request.GET.get('page')
-        posts = paginator.get_page(page_num)
+        posts_paginator = paginator.get_page(page_num)
 
         followers = profile.followers.all()
 
@@ -264,7 +264,7 @@ class ProfileView(LoginRequiredMixin, View):
         context = {
             'user': user,
             'profile': profile,
-            'posts': posts,
+            'posts': posts_paginator,
             'number_of_followers': number_of_followers,
             'is_following': is_following,
             'page_num': page_num,
@@ -475,9 +475,12 @@ class UserSearch(View):
         profile_list = UserProfile.objects.filter(
             Q(user__username__icontains=query)
         )
+        paginator = Paginator(profile_list, 3)
+        page_num = request.GET.get('page')
+        profile_list_paginator = paginator.get_page(page_num)
 
         context = {
-            'profile_list': profile_list,
+            'profile_list': profile_list_paginator,
         }
 
         return render(request, 'titbit/search.html', context)
@@ -493,11 +496,11 @@ class ListFollowers(View):
 
         paginator = Paginator(followers, 2)
         page_num = request.GET.get('page')
-        followers = paginator.get_page(page_num)
+        followers_paginator = paginator.get_page(page_num)
 
         context = {
             'profile': profile,
-            'followers': followers,
+            'followers': followers_paginator,
             'page_num': page_num,
         }
 

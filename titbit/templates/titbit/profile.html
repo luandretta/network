@@ -175,10 +175,15 @@
                 <a class="page-link" tabindex="-1" href="#" aria-disabled="true">Newer Posts</a>
             </li>
             {% endif %}
-            {% for i in posts.paginator %}
+            {% for i in posts.paginator.page_range %}
             <li class="page-item">
-                <a class="page-link {% if i == posts.number %} active {% endif %}"
+                {% if i == posts.number %}
+                <a class="page-link  rose"
                     href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                {% else %}
+                <a class="page-link"
+                    href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                {% endif %}
             </li>
             {% endfor %}
             {% if posts.has_next %}
