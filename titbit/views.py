@@ -491,9 +491,14 @@ class ListFollowers(View):
         profile = UserProfile.objects.get(pk=pk)
         followers = profile.followers.all()
 
+        paginator = Paginator(followers, 2)
+        page_num = request.GET.get('page')
+        followers = paginator.get_page(page_num)
+
         context = {
             'profile': profile,
             'followers': followers,
+            'page_num': page_num,
         }
 
         return render(request, 'titbit/followers_list.html', context)
