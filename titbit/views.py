@@ -26,6 +26,7 @@ class AllPostsListView(LoginRequiredMixin, View):
         context = {
             'post_list': posts,
             'form': form,
+            'page_num': page_num,
         }
 
         return render(request, 'titbit/all_post_list.html', context)
@@ -63,11 +64,12 @@ class FollowingPostsListView(LoginRequiredMixin, View):
 
         paginator = Paginator(following_posts, 4)
         page_num = request.GET.get('page')
-        posts = paginator.get_page(page_num)
+        following_posts = paginator.get_page(page_num)
 
         context = {
             'following_post_list': following_posts,
             'form': form,
+            'page_num': page_num,
         }
 
         return render(request, 'titbit/feed.html', context)

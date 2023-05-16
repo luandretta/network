@@ -34,8 +34,8 @@
             <div>
                 <div>
                     {% if post.author.profile.profile_pic.url %}
-                    <img src="{{ post.author.profile.profile_pic.url }}" class="rounded-circle post-img" height="50" width="50"
-                        alt="{{ profile.user.username }}">
+                    <img src="{{ post.author.profile.profile_pic.url }}" class="rounded-circle post-img" height="50"
+                        width="50" alt="{{ profile.user.username }}">
                     {% else %}
                     <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
                         class="rounded-circle post-img" height="50" width="50">
@@ -94,14 +94,46 @@
                     </button>
                 </form>
                 <!-- Comment -->
-                <a class="comment-button" href="{% url 'post-detail' post.pk %}"> 
+                <a class="comment-button" href="{% url 'post-detail' post.pk %}">
                     <i class="fa-regular fa-comment"></i></a>
             </div>
         </div>
     </div>
     {% endfor %}
+     <!-- Pagination -->
+    <nav aria-label="Post navigation">
+        <ul class="pagination justify-content-center mt-5">
+            {% if following_post_list.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ following_post_list.previous_page_number }}">Newer
+                    Posts</a></li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" href="#" aria-disabled="true">Newer Posts</a>
+            </li>
+            {% endif %}
+            {% for i in following_post_list.paginator %}
+            <li class="page-item">
+                <a class="page-link {% if i == following_post_list.number %} active {% endif %}"
+                    href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+            </li>
+            {% endfor %}
+            {% if post_list.has_next %}
+            <li class="page-item">
+                <a href="?page={{ following_post_list.next_page_number }}" class="btn">Older Posts</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" href="#" aria-disabled="true">Older Posts></a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+
     {% else %}
     <h5 class="text-center p-3">Try to follow other users...</h5>
     {% endif %}
+   
+    
+    
 </div>
 {% endblock content %}
