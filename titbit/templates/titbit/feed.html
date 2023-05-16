@@ -107,22 +107,22 @@
             <li class="page-item"><a class="page-link" href="?page={{ following_post_list.previous_page_number }}">Newer
                     Posts</a></li>
             {% else %}
-            <li class="page-item disabled">
+            <li class="page-item d-none">
                 <a class="page-link" tabindex="-1" href="#" aria-disabled="true">Newer Posts</a>
             </li>
             {% endif %}
             {% for i in following_post_list.paginator %}
             <li class="page-item">
-                <a class="page-link {% if i == following_post_list.number %} active {% endif %}"
+                <a class="page-link {% if following_post_list.number == page_number %} rose {% endif %}"
                     href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
             </li>
             {% endfor %}
             {% if post_list.has_next %}
             <li class="page-item">
-                <a href="?page={{ following_post_list.next_page_number }}" class="btn">Older Posts</a>
+                <a href="?page={{ following_post_list.next_page_number }}" class="page-link">Older Posts</a>
             </li>
             {% else %}
-            <li class="page-item disabled">
+            <li class="page-item d-none">
                 <a class="page-link" tabindex="-1" href="#" aria-disabled="true">Older Posts></a>
             </li>
             {% endif %}

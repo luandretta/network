@@ -243,6 +243,10 @@ class ProfileView(LoginRequiredMixin, View):
         user = profile.user
         posts = Post.objects.filter(author=user).order_by('-posted_on')
 
+        paginator = Paginator(posts, 4)
+        page_num = request.GET.get('page')
+        posts = paginator.get_page(page_num)
+
         followers = profile.followers.all()
 
         if len(followers) == 0:
@@ -263,6 +267,7 @@ class ProfileView(LoginRequiredMixin, View):
             'posts': posts,
             'number_of_followers': number_of_followers,
             'is_following': is_following,
+            'page_num': page_num,
         }
 
         return render(request, 'titbit/profile.html', context)
