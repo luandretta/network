@@ -6,11 +6,12 @@
 
 {% block content %}
 <div class="container mb-5">
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center mt-3">
         <div class="col col-lg-6 col-md-8 col-sm-12 m-auto text-center p-3">
             <h1>Titbit a little bit!</h1>
         </div>
     </div>
+    <!-- Form to titbit -->
     <div class="row justify-content-center mt-2 mb-5">
         <div class="col-md-8 col-sm-12 border-bottom">
             <form method="POST" enctype="multipart/form-data">
@@ -22,7 +23,7 @@
             </form>
         </div>
     </div>
-
+    <!-- All posts list -->
     {% for post in post_list %}
     <div class="row justify-content-center mt-3">
         <div class="col col-md-8 col-sm-12 position-relative post-card">
@@ -97,5 +98,31 @@
         </div>
     </div>
     {% endfor %}
+    <!-- Pagination -->
+    <!-- {% if post_list.has_other_pages %} -->
+    <nav aria-label="Post navigation">
+        <ul class="pagination justify-content-center mt-5">
+            {% if post_list.has_previous %}
+            <li class="page-item"><a href="?page={{ post_list.previous_page_number }}" class="btn small-btn">Newer
+                    Posts</a></li>
+            {% else %}
+            <li class="page-item disabled"><a class="page-link" tabindex="-1" href="#" aria-disabled="true">
+                    <span aria-hidden="true">&laquo;</span></a>
+            </li>
+            {% endif %}
+            {% for i in post_list.paginator %}
+            <li class="page-item"><a class="page-link {% if i == page_number %} rose {% endif %}" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+            {% endfor %}
+            {% if post_list.has_next %}
+            <li class="page-item"><a href="?page={{ post_list.next_page_number }}" class="btn small-btn">Older
+                    Posts</a></li>
+            {% else %}
+            <li class="page-item disabled"><a class="page-link" tabindex="-1" href="#" aria-disabled="true">
+                    <span aria-hidden="true">&raquo;</span></a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    <!-- {% endif %} -->
 </div>
 {% endblock content %}

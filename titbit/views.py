@@ -7,6 +7,7 @@ from django.views import View
 from .models import Post, Comment, UserProfile, Notification
 from .forms import PostForm, CommentForm
 from django.views.generic.edit import UpdateView, DeleteView
+from django.core.paginator import Paginator
 
 
 class AllPostsListView(LoginRequiredMixin, View):
@@ -17,6 +18,10 @@ class AllPostsListView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-posted_on')
         form = PostForm()
+
+        paginator = Paginator(posts, 4)
+        page_num = request.GET.get('page')
+        posts = paginator.get_page(page_num)
 
         context = {
             'post_list': posts,
@@ -55,6 +60,10 @@ class FollowingPostsListView(LoginRequiredMixin, View):
             Q(author=request.user)
         ).order_by('-posted_on')
         form = PostForm()
+
+        paginator = Paginator(following_posts, 4)
+        page_num = request.GET.get('page')
+        posts = paginator.get_page(page_num)
 
         context = {
             'following_post_list': following_posts,
