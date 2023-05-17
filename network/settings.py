@@ -109,7 +109,6 @@ LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = 'post-list'
 LOGOUT_REDIRECT_URL = ''
 
-
 WSGI_APPLICATION = 'network.wsgi.application'
 
 

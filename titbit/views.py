@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib import messages
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views import View
 from .models import Post, Comment, UserProfile, Notification
@@ -40,6 +41,7 @@ class AllPostsListView(LoginRequiredMixin, View):
             new_post = form.save(commit=False)
             new_post.author = request.user
             new_post.save()
+            messages.success(request, ('Your titbit has been posted!'))
 
             context = {
                 'post_list': posts,
@@ -56,42 +58,27 @@ class FollowingPostsListView(LoginRequiredMixin, View):
     """
     def get(self, request, *args, **kwargs):
         logged_in_user = request.user
-        following_posts = Post.objects.filter(
-            Q(author__profile__followers__in=[logged_in_user.id]) |
-            Q(author=request.user)
+        following = Post.objects.filter(
+            Q(author__profile__followers__in=[logged_in_user.id]) 
         ).order_by('-posted_on')
-        form = PostForm()
 
-        paginator = Paginator(following_posts, 4)
+        paginator = Paginator(following, 4)
         page_num = request.GET.get('page')
         following_posts = paginator.get_page(page_num)
 
         context = {
             'following_post_list': following_posts,
-            'form': form,
-            'page_num': page_num,
         }
 
         return render(request, 'titbit/feed.html', context)
 
-    # Save the new post
-    def post(self, request, *args, **kwargs):
-        posts = Post.objects.all().order_by('-posted_on')
-        form = PostForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            new_post = form.save(commit=False)
-            new_post.author = request.user
-            new_post.save()
-
-        return redirect('feed')
 
 
 class PostDetailView(LoginRequiredMixin, View):
     """
     View an individual post in more detail
     View the comments of this post
-    User can comment this post 
+    User can comment this post
     Create Notification type 2 (Comment)
     """
     def get(self, request, pk, *args, **kwargs):
@@ -103,7 +90,7 @@ class PostDetailView(LoginRequiredMixin, View):
         context = {
             'post': post,
             'form': form,
-            'comments': comments,
+            'comments': comments
         }
 
         return render(request, 'titbit/post_detail.html', context)
@@ -117,8 +104,7 @@ class PostDetailView(LoginRequiredMixin, View):
             new_comment.author = request.user
             new_comment.post = post
             new_comment.save()
-            # messages.add_message(request, messages.SUCCESS,
-            # 'Your comment has been submitted')
+            messages.success(request, ('Your comment has been posted!'))
 
         comments = Comment.objects.filter(post=post).order_by('-posted_on')
 
@@ -152,6 +138,7 @@ class CommentReplyView(LoginRequiredMixin, View):
             new_comment.post = post
             new_comment.parent = parent_comment
             new_comment.save()
+            messages.success(request, ('Your reply has been posted!'))
 
         notification = Notification.objects.create(notification_type=2,
                                                    from_user=request.user,

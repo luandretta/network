@@ -164,7 +164,8 @@
                 </form>
                 <!-- Reply a Comment button-->
                 <div>
-                    <button class="comment-button"><i class="fa-regular fa-comment" onclick="commentReplyToggle('{{ comment.pk }}')"></i></button>
+                    <button class="comment-button"><i class="fa-regular fa-comment"
+                            onclick="commentReplyToggle('{{ comment.pk }}')"></i></button>
                 </div>
             </div>
         </div>
@@ -202,7 +203,7 @@
                 <p class="post-text">
                     <a class="text-primary" href="{% url 'profile' child_comment.author.profile.pk %}">@
                         {{ child_comment.author }}</a>
-                    <small class="text-muted"> {{ child_comment.posted_on }}</small>                 
+                    <small class="text-muted"> {{ child_comment.posted_on }}</small>
                     <!-- Author or admin can delete the reply -->
                     {% if request.user == child_comment.author  or request.user.is_superuser %}
                     <a href="{% url 'comment-delete' post.pk child_comment.pk %}" class="edit">
