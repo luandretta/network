@@ -5,18 +5,14 @@
 {% block extra_title %}- My Feed {% endblock %}
 
 {% block content %}
+<!-- Feed from following -->
 <div class="container mb-5">
-    
-
     <div class="row justify-content-center mt-3">
         <div class="col-md-8 col-sm-12">
             <h1 class="text-center mt-5">Following feed</h1>
         </div>
-    </div>
-    <!-- Feed from following -->
-    {% if following_post_list %}
-    {% for post in following_post_list %}
-    <div class="row justify-content-center mt-3">
+        {% if following_post_list %}
+        {% for post in following_post_list %}
         <div class="col col-md-8 col-sm-12 position-relative post-card">
             <!-- Author and date -->
             <div>
@@ -88,7 +84,7 @@
         </div>
     </div>
     {% endfor %}
-     <!-- Pagination -->
+    <!-- Pagination -->
     <nav aria-label="Post navigation">
         <ul class="pagination justify-content-center mt-5">
             {% if following_post_list.has_previous %}
@@ -102,11 +98,9 @@
             {% for i in following_post_list.paginator.page_range %}
             <li class="page-item">
                 {% if i == following_post_list.number %}
-                <a class="page-link  rose"
-                    href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                <a class="page-link  rose" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
                 {% else %}
-                <a class="page-link"
-                    href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                <a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
                 {% endif %}
             </li>
             {% endfor %}
@@ -121,10 +115,9 @@
             {% endif %}
         </ul>
     </nav>
-
     {% else %}
     <h5 class="text-center p-3">Try to follow other users...</h5>
     {% endif %}
-  
+
 </div>
 {% endblock content %}

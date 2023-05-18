@@ -4,7 +4,7 @@
 
 ![Titbit](documentation/###.png)
 
-Titbit is  a free social networking site where users broadcast short posts, where each user can sign u, create his own post, read, update and delete it, and also like/dislike posts from others users, follow other users, comment, like/dislike comments or reply a comment.
+Titbit is  a free social networking site where users broadcast short posts, where each user can sign up, create his own post, read, update and delete it, and also like/dislike posts from others users, follow other users, comment, like/dislike comments or reply a comment.
 
 
 Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
@@ -72,7 +72,7 @@ Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
 - - -
 
 
-The aim of this project was to build a site that allows users to easily sign up and keep up with titbits.
+The aim of this project was to build a site that allows users to easily sign, keep up with titbits and interact with others users.
 
 ### User Stories
 
@@ -134,13 +134,12 @@ As a registered user of the site, I want to be able to:
 
 *Should Have*
 
-* reset my password, so that I can regain access to my account.
 * comment on other people's posts, so that I can be involved in the conversation.
 * edit or delete my comments on other people's posts, so that I can edit or remove comments I no longer want published.
 * reply comments, so that I can interate with others users.
 * read the comments of posts, so that I can know the thoughts from others users and follow them.
 * like other people's comments on posts, so that I can let them know I enjoyed their comment.
-* search for an user, so that I can find a specific user.
+* search for an user, so that I can find a specific user to follow him.
 * delete other people's comments on my own posts, so that I can remove unwanted commments.
 * be notified when other users comment or like my posts or follow/unfollow me.
 
@@ -148,9 +147,9 @@ As a registered user of the site, I want to be able to:
 *Could Have*
 
 * reshare other people's posts, so that I can share their thoughts with my followers.
-* message other users, so that I can get in touch with them privately.
 * report posts to admins, so that I can notify inappropriate content.
 * block users, so that I can hide my content from unwanted users.
+* reset my password, so that I can regain access to my account.
  
 
 
@@ -158,6 +157,7 @@ As a registered user of the site, I want to be able to:
 
 * call users, so that I can communicate with them more quickly.
 * create communities, so that I can share content by specific theme.
+* message other users, so that I can get in touch with them privately.
 * write testimonials about other users, so that I can testify about the other users according to the relationship I have with them.
 
 
@@ -170,14 +170,16 @@ As an administrator for the site I want to be able to:
 
 *Should Have*
 * remove any content from any user that could be offensive, so that I can moderate the all content.
-* suspend, block or delete users who not respect the rules, so that I can maintain site guidelines.
+* Edit the admin panel.
+
 
 *Could Have*
 * access a page only for admins to see flagged user posts, so that I can see a list of posts that possibly need to be deleted.
-* unflag a post if a deletion is not neede, so that I can remove it from the flagged posts list.
+* unflag a post if a deletion is not needed, so that I can remove it from the flagged posts list.
 
 *Won't Have*
-* Edit the admin panel.
+* suspend, block or delete users who not respect the rules, so that I can maintain site guidelines.
+
 
 ### Agile
 The Project Boards on GitHub was used to help to organize and prioritize the tasks.
@@ -197,11 +199,12 @@ The MoSCow priorization and labels to user stories were used to priorize and imp
 
 ## 📝 Design
 
-
 <details>
 <summary>👇</summary>
 
 ### Colour Scheme
+
+The design is quite simple to not disctract the users. The CSS variables were used to easily update the global colour scheme by changing only one value, instead of everywhere in the CSS file.
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
@@ -210,12 +213,13 @@ The MoSCow priorization and labels to user stories were used to priorize and imp
 | Blue | ![#89b1d6](https://via.placeholder.com/10/3b81c0?text=+)  #89b1d6 |
 | Dark blue | ![#3b81c0](https://via.placeholder.com/10/3b81c0?text=+)  #3b81c0 |
 | Rosa | ![#e95b95](https://via.placeholder.com/10/e95b95?text=+) #e95b95 |
+| Red | ![#e95b95](https://via.placeholder.com/10/e95b95?text=+) #e95b95 |
 
 
 
 ### Typography
 
-The [Braah One](https://fonts.google.com/specimen/Braah+One?query=braa) was used for the Logo Titbit in memory of the orkut platform.
+The [Braah One](https://fonts.google.com/specimen/Braah+One?query=braa) was used for the Logo Titbit and header elements in memory of the orkut platform.
 
 ![Typography Braah One](documentation/images/braah-one.png)
 
@@ -223,38 +227,80 @@ The  [Roboto 300 light](https://fonts.googleapis.com/css?family=Roboto:300,400,5
 
 ![Typography Roboto](documentation/images/roboto.png)
 
+[Font Awesome](https://fontawesome.com/icons/) icons were used throughout the site, such as the logo icon and social media icons in the footer.
+
 
 
 ### Imagery
 
 * [Emojis](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
+* Pictures from Error pages were dowloaded from [Pexels](https://www.pexels.com/) and edited at [Canva](https://www.canva.com/)
 
 
 
 ### Wireframes
 
-Wireframes were created for mobile, tablet and desktop using Balsamiq.
+Wireframes were created for mobile, tablet and desktop using [Balsamiq](https://balsamiq.com/).
 
-#### __Home Page__
+#### Home Page (Landing Page)
 
 ![Home Page](documentation/wireframes/home.png)
 
-#### __Register Page__
+#### Sing Up
 
-![Register Page](documentation/wireframes/register.png)
+![Sing Up](documentation/wireframes/register.png)
 
-#### __Login Page__
+#### Sing In
 
 ![Login Page](documentation/wireframes/login.png)
 
-#### __Profile Page__
+#### Sing Out
+
+![Login Page](documentation/wireframes/login.png)
+
+#### Profile
+
+![Profile Page](documentation/wireframes/profile.png)
+
+#### Edit Profile
+
+![Profile Page](documentation/wireframes/profile.png)
+
+#### Search Result
+
+![Profile Page](documentation/wireframes/profile.png)
+
+#### All Posts
+
+![Profile Page](documentation/wireframes/profile.png)
+
+#### Following Feed
+
+![Profile Page](documentation/wireframes/profile.png)
+
+#### Post Detail
+
+![Profile Page](documentation/wireframes/profile.png)
+
+#### Delete Post
+
+![Profile Page](documentation/wireframes/profile.png)
+
+#### Edit Post
 
 ![Profile Page](documentation/wireframes/profile.png)
 
 
-#### __Error Page__
+#### Followers
+
+![Profile Page](documentation/wireframes/profile.png)
+
+
+#### Error Pages
 
 ![Error Page](documentation/wireframes/error.png)
+
+
 
 ### Database Schema & User Journey
  
@@ -264,6 +310,31 @@ Wireframes were created for mobile, tablet and desktop using Balsamiq.
 
 #### Database Schema
 
+* **Diagram**
+An entitiy relationship diagram was created to help the visualization the relationships of the data structures and mapped it out.
+![Entity Diagram]()
+
+* **Models**
+Models created for this application:
+
+1. **Allauth User Model**
+This User Model was built using [Django's Allauth Library](https://django-allauth.readthedocs.io/en/latest/overview.html)
+
+2. **Post Model**
+
+| **PK** | **id** (unique) | Type | Notes |
+| --- | --- | --- | --- |
+| **FK** | author | ForeignKey | FK to **User** model |
+|  | image | ImageField | |
+|  | content | TextField | |
+|  | posted_on | DateTimeField | |
+|  | likes | ManyToMany | M2M to **User** model |
+|  | dislikes | ManyToMany | M2M to **User** model |
+
+
+3. **Allauth User Model**
+
+4. **Allauth User Model**
 </details>
 
 
@@ -276,28 +347,85 @@ Wireframes were created for mobile, tablet and desktop using Balsamiq.
 <details>
 <summary>👇</summary>
 
+### Pages
+
 The website is comprised of X pages which are extended from a base template.
 
-* Home page
-* Register page
-* Login page
-* Logout page
-* Profile page
-* Edit profile page
-* Feed all posts
-* Feed from following
-* Post detail
-* Edit post
-* Delete post
-* Error page
+1. **Home Page** (Landing Page) 
+ This is the page a user lands on when arriving at the site for the first time or before they've logged in if they don't have an active session. It welcomes them to the site and gives them the option to either sign up for an account or log in to an existing account.
+[Home Page]()
+
+2. **Sing Up Page**
+This is where the user can create an account for themselves by entering their e-mail address, desired username and password twice to confirm. If the user accidentally comes to this page instead of the login page they can get to the right page using the link in the card text.
+[Home Page]()
+
+3. **Login Page**
+This is where users with existing accounts can log in with either their username or e-mail and password. They can choose to let their browser remember them if they plan on returning to the site on the same device to avoid having to log in again. There's a link to the sign up page too if the user accidentally navigated to this page instead of trying to create an account. If the user forgets their password they can click the link to reset it.
+[Home Page]()
+
+4. **Logout Page**
+When the user wants to finish their session and logout, they can do so from the nav menu. When a user clicks the logout button they're met with a page asking them to confirm they want to log out. They're redirected to the landing page if they click the confirmation button and a message pops up confirming that they've logged out.
+[Home Page]()
+
+5. Profile page
+The profile contains a card with the user's information including profile picture, background image, display name, username, bio, number of posts and number of followers. If the user is viewing their own profile then they'll have an icon to edit their profile. If they're viewing another user's profile then they'll have a button to follow or unfollow that user. The profile also includes a list of posts and a form to create a new post if the user is on their own profile.
+[Home Page]()
+
+6. Edit profile page
+This is where the user can edit their profile details including their display name, bio, profile and background pictures. The user can also remove their profile picture or background image and revert back to the default from here. There's a button to bring them back to their profile if they decide not to make any edits.
+[Home Page]()
+
+7. Feed all posts
+This feed shows every single post on the website from all users. It allows the user to find new users to follow and connect with.
+[Home Page]()
+
+8. Following feed
+This is the user's main feed containing posts only from users they have followed. At the top of the feed there's an area for the user to create a post. There's buttons to switch between the user's following feed and the all posts feed containing every post from every site user. Posts are displayed in chronological order from newest to oldest. If the user isn't following anyone or the people they're following has no posts, a message will appear saying "It's very quiet here..." which will prompt the user to follow more users to start seeing posts in this feed.
+[Following Feed]()
+
+9. Post detail
+When a user clicks on a post in their feed, they're brought to the individual post page. Here they have the same options as in the feed in being able to like and flag/report a post. Under the post a user can see a list of comments on the post and a form to add their own comment to the post.
+[Home Page]()
+
+10. Edit post
+[Home Page]()
+
+11. Delete post
+Posts can be deleted by the post author by clicking on the delete icon. When deleting a post, the user is brought to a confirmation page to avoid posts being deleted accidentally. There's a button to bring them back to the post if the user changes their mind about deleting their post.
+[Home Page]()
+
+12. Edit Comment
+
+Comments can be edited by the user that created it. Clicking the edit icon brings them to a page where they can see their comment and make changes before hitting a button to save it. There's also a button to bring them back to the post where the comment was made if they hit the edit button by mistake.
+
+13. Delete Comment
+
+Comments can be deleted by the comment author or the original posts author by clicking on the delete icon. Similar to when deleting a post, users are brought to a confirmation page to avoid comments being deleted accidentally. There's a button to bring them back to the post they commented on if the user changes their mind about deleting the comment.
+
+12. Search 
+Users can search people and posts on the site. If their search matches then a list of both users and posts containing their search will appear. If the search has no results in either then both lists will let the user know there was no match. If there's a user but no post matching the query then the user list will contain matching queries and the post one will let them know there's no posts for their search and the same for the opposite. The page also contains a button to bring the user back to the feed.
+[Home Page]()
+
+13. Followers
+If the user has followers, you can click on the follower count on their profile to see a list of their followers. You can click on the profiles in the list to view them and follow them if you want.
+[Home Page]()
+
+14. Error pages
+Error Pages
+
+If a user ends up on a page that either doesn't exist or that they shouldn't be on (regular user using admin panel link or trying to delete other user's post through a link) then they'll be shown an error page with a button to bring them back to their feed.
+
+[Home Page]()
+
 
 ### Elements found on each page
 
-* Favicon 
+* **Logo** Favicon 
 
   ![Titbit favicon](documentation/favicon.png)
 
-* Navbar - The Navbar is displayed on all pages of the website and allows users to navigate the site with ease. The navbar is comprised of a logo, the sites name, links to navigate the site and a search bar. The links on the navbar will vary depending on whether a user is logged into their account.
+* **Navigation** 
+The Navbar is displayed on all pages of the website and allows users to navigate the site with ease. The navbar is comprised of a logo, the sites name, links to navigate the site and a search bar. The links on the navbar will vary depending on whether a user is logged into their account.The nav menu contains everything the user will need to navigate the site. The site logo always appears on the site menu with the other items only showing for logged in users. The menu contains an admin panel that only shows up if the logged in user is an admin. From the nav menu, user's can go to their feed, their message inbox, their profile, view their notifications if they have any, search the site for posts and users using the search bar and log out.
 
   **User logged in Navbar**
   
@@ -307,45 +435,54 @@ The website is comprised of X pages which are extended from a base template.
 
   ![User not logged in Navbar](documentation/not-loggedin-navbar.png)
 
-* Footer - A footer is displayed on all pages of the website.
+* **Footer** 
+The footer appears across the website and includes information about me as the developer with links to my Twitter, Linkedin and GitHub pages. This lets the user get to know me as the developer and connect on these platforms if they wish. 
+
 
   ![Footer](documentation/footer.png)
 
-- - -
 
-### Home Page
+### Forms
 
-![Home Page](documentation/home-page.png)
+The application has Post, Comment and Reply Forms, described below:
+* Post Form
+This is where the user will create their posts. It appears in both the following and all posts feed along with the user's own profile. There's a prompt in the form for the user to "Share with your tribe...".
+[Home Page]()
 
-### Login Page
+* Comment Form
+[Home Page]()
 
-![Log in Page](documentation/login-page.png)
+* Reply a Comment Form
+[Home Page]()
 
-### Register Page
 
-![Register Page](documentation/register-page.png)
+### Other Elements
 
-### Profile Page
+* Posts
 
-![Profile Page](documentation/profile-page.png)
+* Comments
+Post comments are viewed under a post and similar to posts, can be liked. Comments can be deleted by the comment author or post author and edited by the comment author.
 
-### News Page
+* Reply a comment
 
-![News Page](documentation/news-page.png)
+* Back Button
 
-### Error Page
+* Notifications
+Whenever a user follows someone, likes a post or comment, comments on a post, or messages someone, the other user receives a notification. The notifications tab on the nav menu shows a red dot with the number of unread notifications and when a user clicks it a dropdown will appear with a list of their notifications. If a user clicks on the notification it will bring them to the user, post, or message thread to do with the notification. If they want to remove a notification without going to the associated page, they can click the red x to delete it.
 
-![Error Page](documentation/error-page.png)
+* Pagination
+Both following and all posts feeds as well as profiles have pagination implemented so if more than 10 posts appear in the feed then buttons appear at the bottom to split the feed into individual pages with a maximum of 10 posts on a page. This is to increase the user experience and make the site content easier to digest. If the user is on the first page of pagination then only one button will appear saying "Older Posts" and if they're on the last page then a single button will appear and say "Newer Posts" if there's more than 2 pages of posts then anything in between with contain both buttons to change between pages.
+
+* 
 
 - - -
 
 ### 🧠 Future Implementations 
 
-In future implementations I would like to:
+Besides the features were registered as Won't Have in the MoSCoW prioritization in the [User Stories](#user-stories), the future implementations I would like to:
 
-* Add change and reset password functionality to the profile section.
-* Give users the option to delete their account in the profile section.
-* Allow admin to be able to delete or block users.
+* Add change password functionality to the profile section.
+* Apply paginator on Post Detail Page.
 * Prepopulate the login fields after a user registers on the site and is redirected to the login page - this is good UX as we shouldn't expect a user to fill in the form with information we already have. 
 
 ### 🗣️ Accessibility
@@ -370,21 +507,25 @@ I have been mindful during coding to ensure that the website is as accessible fr
 
 ### 🌎 Languages Used
 
-HTML, CSS, Javascript, Python
+* HTML - main site content
+* CSS - site desing and layout
+* CSS :root variables - custom properties
+* Javascript - user interaction
+* Python - back-end programming language
 
 ### Databases Used
 
-[🐘 ElephantSQL](https://www.elephantsql.com/)
+* [🐘 ElephantSQL](https://www.elephantsql.com/) - Postgres database
 
-[Cloudinary](https://cloudinary.com/)
+* [Cloudinary](https://cloudinary.com/) - Online static file storage
 
 ### Frameworks Used
 
+[Django](https://www.djangoproject.com/) - Python framework
+
 [Flask](https://pypi.org/project/Flask/) - A micro framework.
 
-[Bootstrap](https://getbootstrap.com/) - version 5.2.3 - CSS Framework.
-
-### Libraries & Packages Used
+[Bootstrap](https://getbootstrap.com/) - Version 5.2.3 - CSS Framework.
 
 
 ### ⛑ Programs Used 
@@ -399,7 +540,15 @@ HTML, CSS, Javascript, Python
 
 [Github](https://github.com/) - To save and store the files for the website.
 
+[Gitpod](https://gitpod.io/workspaces) - Cloud-based IDE for development.
+
+[Heroku](https://git-scm.com/) -  Hosting the deployed back-end site.
+
 [Google Fonts](https://fonts.google.com/) - To import the fonts used on the website.
+
+[Balsamiq](https://balsamiq.com/wireframes/) - To create site wireframes.
+
+[Canva](https://canva.com/) - To create images.
 
 [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) - To troubleshoot and test features, solve issues with responsiveness and styling.
 

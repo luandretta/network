@@ -59,7 +59,7 @@ class FollowingPostsListView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         logged_in_user = request.user
         following = Post.objects.filter(
-            Q(author__profile__followers__in=[logged_in_user.id]) 
+            Q(author__profile__followers__in=[logged_in_user.id])
         ).order_by('-posted_on')
 
         paginator = Paginator(following, 4)
@@ -71,7 +71,6 @@ class FollowingPostsListView(LoginRequiredMixin, View):
         }
 
         return render(request, 'titbit/feed.html', context)
-
 
 
 class PostDetailView(LoginRequiredMixin, View):
