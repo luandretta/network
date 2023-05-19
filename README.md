@@ -9,10 +9,10 @@ Titbit is  a free social networking site where users broadcast short posts, wher
 
 Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
 
-![GitHub last commit](https://img.shields.io/github/last-commit/luandretta/titbit?style=for-the-badge)
-![GitHub contributors](https://img.shields.io/github/contributors/luandretta/titbit?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/luandretta/titbit?style=for-the-badge)
-![GitHub top language](https://img.shields.io/github/languages/top/luandretta/titbit?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/luandretta/network?style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/luandretta/network?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/luandretta/network?style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/luandretta/network?style=for-the-badge)
 
 ## 🚀 CONTENTS
 
@@ -129,6 +129,8 @@ As a registered user of the site, I want to be able to:
 * unfollow other users, so that I can remove their post from my feed.
 * be followed, so that I can know that other users read my posts.
 * view the number of likes on each post, so that I can see which is the most popular or viral.
+* read the comments of posts, so that I can know the thoughts from others users and follow them.
+* like other people's comments on posts, so that I can let them know I enjoyed their comment.
 
 
 
@@ -137,8 +139,6 @@ As a registered user of the site, I want to be able to:
 * comment on other people's posts, so that I can be involved in the conversation.
 * edit or delete my comments on other people's posts, so that I can edit or remove comments I no longer want published.
 * reply comments, so that I can interate with others users.
-* read the comments of posts, so that I can know the thoughts from others users and follow them.
-* like other people's comments on posts, so that I can let them know I enjoyed their comment.
 * search for an user, so that I can find a specific user to follow him.
 * delete other people's comments on my own posts, so that I can remove unwanted commments.
 * be notified when other users comment or like my posts or follow/unfollow me.
@@ -168,8 +168,10 @@ As a registered user of the site, I want to be able to:
 
 As an administrator for the site I want to be able to:
 
-*Should Have*
+*Must Have*
 * remove any content from any user that could be offensive, so that I can moderate the all content.
+
+*Should Have*
 * Edit the admin panel.
 
 
@@ -205,6 +207,7 @@ The MoSCow priorization and labels to user stories were used to priorize and imp
 ### Colour Scheme
 
 The design is quite simple to not disctract the users. The CSS variables were used to easily update the global colour scheme by changing only one value, instead of everywhere in the CSS file.
+The red color was used only on Delete Button to call attention.
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
@@ -213,7 +216,7 @@ The design is quite simple to not disctract the users. The CSS variables were us
 | Blue | ![#89b1d6](https://via.placeholder.com/10/3b81c0?text=+)  #89b1d6 |
 | Dark blue | ![#3b81c0](https://via.placeholder.com/10/3b81c0?text=+)  #3b81c0 |
 | Rosa | ![#e95b95](https://via.placeholder.com/10/e95b95?text=+) #e95b95 |
-| Red | ![#e95b95](https://via.placeholder.com/10/e95b95?text=+) #e95b95 |
+| Red | ![#BB2D3B](https://via.placeholder.com/10/BB2D3B?text=+) #BB2D3B |
 
 
 
@@ -314,6 +317,7 @@ Wireframes were created for mobile, tablet and desktop using [Balsamiq](https://
 An entitiy relationship diagram was created to help the visualization the relationships of the data structures and mapped it out.
 ![Entity Diagram]()
 
+
 * **Models**
 Models created for this application:
 
@@ -331,10 +335,47 @@ This User Model was built using [Django's Allauth Library](https://django-allaut
 |  | likes | ManyToMany | M2M to **User** model |
 |  | dislikes | ManyToMany | M2M to **User** model |
 
+3. **Comment Model**
 
-3. **Allauth User Model**
+| **PK** | **id** (unique) | Type | Notes |
+| --- | --- | --- | --- |
+| **FK** | author | ForeignKey | FK to **User** model |
+|  |comment | TextField | |
+|  | posted_on | DateTimeField | |
+| **FK** | post| ForeignKey | FK to **Post** model|
+|  | likes | ManyToMany | M2M to **User** model |
+|  | dislikes | ManyToMany | M2M to **User** model |
+| **FK**  | parent | ForeignKey | |
 
-4. **Allauth User Model**
+
+4. **Profile Model**
+
+| **PK** | **id** (unique) | Type | Notes |
+| --- | --- | --- | --- |
+| **FK** | user | OneToOne | FK to **User** model |
+|  | name | CharField | |
+|  | bio | TextField | |
+|  | profile_pic | CloudinaryField | |
+|  | bg_pic | CloudinaryField | |
+|  | birth_date | DateField | |
+|  | location | CharField | |
+|  | followers | ManyToMany | M2M to **User** model |
+
+
+
+5. **Notification**
+
+
+| **PK** | **id** (unique) | Type | Notes |
+| --- | --- | --- | --- |
+| | notification_type | IntegerField | |
+| **FK** | to_user | ForeignKey | FK to **User** model |
+| **FK** | from_user | ForeignKey | FK to **User** model |
+| **FK** | post | ForeignKey | FK to **Post** model |
+| **FK** | comment | ForeignKey | FK to **Comment** model |
+| | date | DateTimeField | |
+| | user_has_seen | BooleanField | |
+
 </details>
 
 
@@ -352,77 +393,104 @@ This User Model was built using [Django's Allauth Library](https://django-allaut
 The website is comprised of X pages which are extended from a base template.
 
 1. **Home Page** (Landing Page) 
- This is the page a user lands on when arriving at the site for the first time or before they've logged in if they don't have an active session. It welcomes them to the site and gives them the option to either sign up for an account or log in to an existing account.
+ The Home page is the landing page when the users arrive at the site for the first time or before they've logged in if they don't have an active session. They are welcome with two options buttons to either sign up for an account or log in to an existing account.
 [Home Page]()
 
 2. **Sing Up Page**
-This is where the user can create an account for themselves by entering their e-mail address, desired username and password twice to confirm. If the user accidentally comes to this page instead of the login page they can get to the right page using the link in the card text.
+The users can create an account for themselves by entering their e-mail address, desired username and password twice to confirm. The username musst be unique.
+Once the user is registered, a profile is created with default images.
+If the user accidentally comes to this page instead of the login page they can get to the right page using the link in the card text.
 [Home Page]()
 
 3. **Login Page**
-This is where users with existing accounts can log in with either their username or e-mail and password. They can choose to let their browser remember them if they plan on returning to the site on the same device to avoid having to log in again. There's a link to the sign up page too if the user accidentally navigated to this page instead of trying to create an account. If the user forgets their password they can click the link to reset it.
+The registered users can log in with either their username or e-mail and password. They can choose to let their browser remember them if they plan on returning to the site on the same device to avoid having to log in again. 
+There's a link to the sign up page too if the user accidentally navigated to this page instead of trying to create an account. If the user forgets their password they can click the link to reset it.
 [Home Page]()
 
 4. **Logout Page**
-When the user wants to finish their session and logout, they can do so from the nav menu. When a user clicks the logout button they're met with a page asking them to confirm they want to log out. They're redirected to the landing page if they click the confirmation button and a message pops up confirming that they've logged out.
+When the user wants to finish their session and logout, they can do so from the nav menu. When a user clicks the logout button they're met with a page asking them to confirm they want to log out. 
+They're redirected to the landing page if they click the confirmation button and a message pops up confirming that they've logged out.
 [Home Page]()
 
-5. Profile page
-The profile contains a card with the user's information including profile picture, background image, display name, username, bio, number of posts and number of followers. If the user is viewing their own profile then they'll have an icon to edit their profile. If they're viewing another user's profile then they'll have a button to follow or unfollow that user. The profile also includes a list of posts and a form to create a new post if the user is on their own profile.
+5. **Profile page**
+The profile contains a card with the user's information including name, profile picture, background image, bio, location, birth date, number of followers and owns posts. 
+If the user doesn't upload a profile picture or background image his profile has default pictures.
+The list of posts has a paginator and the author of the posts can edit or delete own posts. In case of inappropriate content the admin can delete the posts as well. By clicking on the comment icon, the user will see the post in detail.
+If the user is viewing their own profile then they'll have an icon to edit their profile. If they're viewing another user's profile then they'll have a button to follow or unfollow that user.
+The user can click on the followers link to know who the followers are. 
+There are a button under the left side menu for the option to go back to the main feed (all posts list).
 [Home Page]()
 
-6. Edit profile page
-This is where the user can edit their profile details including their display name, bio, profile and background pictures. The user can also remove their profile picture or background image and revert back to the default from here. There's a button to bring them back to their profile if they decide not to make any edits.
+6. **Edit profile page**
+The user can edit their profile details including their name, profile picture, background image, bio, location and birth date. The user can also remove their profile picture or background image. 
+There's a button to bring them back to their profile if they decide not to make any edits.
 [Home Page]()
 
-7. Feed all posts
-This feed shows every single post on the website from all users. It allows the user to find new users to follow and connect with.
+7. **All posts list**
+This main feed shows every single post on the website from all users. It allows the user to find new users to follow and connect with. At the top of the feed there's an area for the user to create a post.
+Each post is composed of the author, his profile picture, date and time of publication, content and icons for liking or commenting. It is possible to publish photos as content.
+Posts are displayed in chronological order from newest to oldest and there are a paginator avoiding infinite scroll.
+If the author of the post is viewing own post then there are more icons, one to edit and other to delete this post.
+Each post is clickable and permit the user to see the post in detail like its comments and replies.
+The user can like or dislike each post.
+This feed can be accessed by clicking on the Titbit logo when the user is logged in.
 [Home Page]()
 
-8. Following feed
-This is the user's main feed containing posts only from users they have followed. At the top of the feed there's an area for the user to create a post. There's buttons to switch between the user's following feed and the all posts feed containing every post from every site user. Posts are displayed in chronological order from newest to oldest. If the user isn't following anyone or the people they're following has no posts, a message will appear saying "It's very quiet here..." which will prompt the user to follow more users to start seeing posts in this feed.
+8. **Following feed**
+The following feed containing posts only from users they have followed. 
+Posts are displayed exactly as on the "All Posts List" and offer the same options
+If the user isn't following anyone or the people they're following has no posts, a message will appear saying "Try to follow other users..." which will prompt the user to follow more users to start seeing posts in this feed.
 [Following Feed]()
 
-9. Post detail
-When a user clicks on a post in their feed, they're brought to the individual post page. Here they have the same options as in the feed in being able to like and flag/report a post. Under the post a user can see a list of comments on the post and a form to add their own comment to the post.
+9. **Post detail**
+Clicking on a post redirects the site to the  post details page. Below the post, the user will be able to comment on this post via the form and also read all the comments.
+By clicking on the comment icon in a comment, all the replies from this comment will be displayed and the user can also reply it.
 [Home Page]()
 
-10. Edit post
+10. **Edit post**
+The author can edit his post by clicking on the edit icon presents in his own posts. After edition the user need to submit it clicking on the button. 
+There are a button to go back without edition.
 [Home Page]()
 
-11. Delete post
-Posts can be deleted by the post author by clicking on the delete icon. When deleting a post, the user is brought to a confirmation page to avoid posts being deleted accidentally. There's a button to bring them back to the post if the user changes their mind about deleting their post.
+11. **Delete post**
+Posts can be deleted by the post author or admin by clicking on the delete icon. When deleting a post, the user is brought to a confirmation page to avoid posts being deleted accidentally. There's a button to bring them back to the post if the user changes their mind about deleting their post.
 [Home Page]()
 
-12. Edit Comment
+12. **Edit Comment**
+The author can edit his comment by clicking on the edit icon presents in his own posts. After edition the user need to submit it clicking on the button. 
+There's also a button to bring them back to the post where the comment was made if they hit the edit button by mistake.
 
-Comments can be edited by the user that created it. Clicking the edit icon brings them to a page where they can see their comment and make changes before hitting a button to save it. There's also a button to bring them back to the post where the comment was made if they hit the edit button by mistake.
+13. **Delete Comment**
+Comments can be deleted by the comment author or the original posts author or admin by clicking on the delete icon. 
+Users are brought to a confirmation page to avoid comments being deleted accidentally. 
+There's a button to bring them back to the post they commented on if the user changes their mind about deleting the comment.
 
-13. Delete Comment
-
-Comments can be deleted by the comment author or the original posts author by clicking on the delete icon. Similar to when deleting a post, users are brought to a confirmation page to avoid comments being deleted accidentally. There's a button to bring them back to the post they commented on if the user changes their mind about deleting the comment.
-
-12. Search 
-Users can search people and posts on the site. If their search matches then a list of both users and posts containing their search will appear. If the search has no results in either then both lists will let the user know there was no match. If there's a user but no post matching the query then the user list will contain matching queries and the post one will let them know there's no posts for their search and the same for the opposite. The page also contains a button to bring the user back to the feed.
+12. **Search** 
+The Username Search Input is on navbar and if the search matches users a list containing all users will displayed.
+If the search has no results will let the user know there was no match. 
+The page also contains a button to bring the user back to the feed.
 [Home Page]()
 
-13. Followers
-If the user has followers, you can click on the follower count on their profile to see a list of their followers. You can click on the profiles in the list to view them and follow them if you want.
+13. **Followers**
+If the user has followers, you can click on the follower count link on their profile to see a list of their followers. 
+The user can click on the profiles in the list to view them and follow them if he want.
 [Home Page]()
 
-14. Error pages
-Error Pages
-
-If a user ends up on a page that either doesn't exist or that they shouldn't be on (regular user using admin panel link or trying to delete other user's post through a link) then they'll be shown an error page with a button to bring them back to their feed.
+14. **Error pages**
+If a user ends up on a page that either doesn't exist or that they shouldn't be on then they'll be shown an error page with a button to bring them back to their feed.
+There are 403, 404, 405 and 500 error pages.
 
 [Home Page]()
 
 
 ### Elements found on each page
 
-* **Logo** Favicon 
+* **Favicon**
+The favicon is displayed next to the page title in the browser tab.
 
-  ![Titbit favicon](documentation/favicon.png)
+![Titbit favicon](documentation/favicon.png)
+
+* **Logo** 
 
 * **Navigation** 
 The Navbar is displayed on all pages of the website and allows users to navigate the site with ease. The navbar is comprised of a logo, the sites name, links to navigate the site and a search bar. The links on the navbar will vary depending on whether a user is logged into their account.The nav menu contains everything the user will need to navigate the site. The site logo always appears on the site menu with the other items only showing for logged in users. The menu contains an admin panel that only shows up if the logged in user is an admin. From the nav menu, user's can go to their feed, their message inbox, their profile, view their notifications if they have any, search the site for posts and users using the search bar and log out.

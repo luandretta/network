@@ -11,37 +11,39 @@
         <div class="col-md-8 col-sm-12">
             <h1 class="text-center mt-5">Following feed</h1>
         </div>
-        {% if following_post_list %}
-        {% for post in following_post_list %}
-        <div class="col col-md-8 col-sm-12 position-relative post-card">
+    </div>
+
+    {% if following_post_list %}
+    {% for post in following_post_list %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-md-8 col-sm-12 position-relative post-card">
             <!-- Author and date -->
             <div>
-                <div>
-                    {% if post.author.profile.profile_pic.url %}
-                    <img src="{{ post.author.profile.profile_pic.url }}" class="rounded-circle post-img" height="50"
-                        width="50" alt="{{ profile.user.username }}">
-                    {% else %}
-                    <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
-                        class="rounded-circle post-img" height="50" width="50">
-                    {% endif %}
-                </div>
-                <p class="post-text">
-                    <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@ {{ post.author }}</a>
-                    <small class="text-muted"> {{ post.posted_on }}</small>
-                    <!-- Author can edit the post -->
-                    {% if request.user == post.author %}
-                    <a href="{% url 'post-edit' post.pk %}" class="edit">
-                        <i class="far fa-edit"></i>
-                    </a>
-                    {% endif %}
-                    <!-- Author or admin can delete the post -->
-                    {% if request.user == post.author or request.user.is_superuser %}
-                    <a href="{% url 'post-delete' post.pk %}" class="edit">
-                        <i class="fas fa-trash"></i>
-                    </a>
-                    {% endif %}
-                </p>
+                {% if post.author.profile.profile_pic.url %}
+                <img src="{{ post.author.profile.profile_pic.url }}" class="rounded-circle post-img" height="50"
+                    width="50" alt="{{ profile.user.username }}">
+                {% else %}
+                <img src="{% static 'titbit/images/user.png' %}" alt="{{profile.user.username}}"
+                    class="rounded-circle post-img" height="50" width="50">
+                {% endif %}
             </div>
+            <p class="post-text">
+                <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@ {{ post.author }}</a>
+                <small class="text-muted"> {{ post.posted_on }}</small>
+                <!-- Author can edit the post -->
+                {% if request.user == post.author %}
+                <a href="{% url 'post-edit' post.pk %}" class="edit">
+                    <i class="far fa-edit"></i>
+                </a>
+                {% endif %}
+                <!-- Author or admin can delete the post -->
+                {% if request.user == post.author or request.user.is_superuser %}
+                <a href="{% url 'post-delete' post.pk %}" class="edit">
+                    <i class="fas fa-trash"></i>
+                </a>
+                {% endif %}
+            </p>
+
             <!-- Content -->
             <div class="position-relative">
                 <p>{{ post.content }}</p>
