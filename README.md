@@ -491,9 +491,15 @@ The favicon is displayed next to the page title in the browser tab.
 ![Titbit favicon](documentation/favicon.png)
 
 * **Logo** 
+The logo is displayed on the left side menu with the title Titbit.
+Clicking on it redicts to all posts, if the user is logged in.
 
 * **Navigation** 
-The Navbar is displayed on all pages of the website and allows users to navigate the site with ease. The navbar is comprised of a logo, the sites name, links to navigate the site and a search bar. The links on the navbar will vary depending on whether a user is logged into their account.The nav menu contains everything the user will need to navigate the site. The site logo always appears on the site menu with the other items only showing for logged in users. The menu contains an admin panel that only shows up if the logged in user is an admin. From the nav menu, user's can go to their feed, their message inbox, their profile, view their notifications if they have any, search the site for posts and users using the search bar and log out.
+The Navbar is displayed on all pages of the website and allows users to navigate the site with ease. 
+The navbar is comprised of a logo, the sites name, links to navigate the site, user icon and a search bar.
+In the landing page has only the logo and title, the user muss be logged in to navigate the site.
+Once the user is logged in the navbar displays more options, like following posts, notifications, user search and the user icon with the profile and logout link options.
+Due to responsiveness, a hamburger menu is used.
 
   **User logged in Navbar**
   
@@ -504,44 +510,62 @@ The Navbar is displayed on all pages of the website and allows users to navigate
   ![User not logged in Navbar](documentation/not-loggedin-navbar.png)
 
 * **Footer** 
-The footer appears across the website and includes information about me as the developer with links to my Twitter, Linkedin and GitHub pages. This lets the user get to know me as the developer and connect on these platforms if they wish. 
-
+The footer appears across the website and includes information about the developer with links to Linkedin and GitHub. This lets the user get in touch and connect on these platforms if they wish. 
 
   ![Footer](documentation/footer.png)
 
 
 ### Forms
 
-The application has Post, Comment and Reply Forms, described below:
-* Post Form
-This is where the user will create their posts. It appears in both the following and all posts feed along with the user's own profile. There's a prompt in the form for the user to "Share with your tribe...".
+The application has Post and Comment Forms, described below:
+
+* **Post Form**
+The user can create their posts at the all posts lists page, that will be displayed own profile and following feed (if he is followed). 
+There are a content inpunt and an image input.
+There's a placeholder in the form for the user to "Post the news :-)".
 [Home Page]()
 
-* Comment Form
-[Home Page]()
+* **Comment Form**
 
-* Reply a Comment Form
+[Home Page]()
+The user can comment posts clicking on the post then filling the comment form and submit it at the post detail page.
+There is only a content input. Clicking on the comment will bring up the reply input that is using the same comment form to submit the reply.
+
 [Home Page]()
 
 
 ### Other Elements
 
-* Posts
+* **Posts**
+Each post is composed of the author, his profile picture, date and time of publication, content and icons for liking or commenting and have a dark blue border for better UX. It is possible to publish photos as content.
+Posts are displayed in chronological order from newest to oldest and there are a paginator avoiding infinite scroll.
+If the author of the post is viewing own post then there are more icons, one to edit and other to delete this post.
+The admin has power to delete posts with inappropriate content.
+Each post is clickable and permit the user to see the post in detail like its comments and replies.
+The user can like or dislike each post and see the how many likes and dislikes the post has.
 
-* Comments
-Post comments are viewed under a post and similar to posts, can be liked. Comments can be deleted by the comment author or post author and edited by the comment author.
 
-* Reply a comment
+* **Comments**
+Comments are viewed under a post at post detail page and are very similar to posts, can be liked or disliked and has a rose border.
+Comments can be deleted by the comment author or post author and edited only by the comment author.
 
-* Back Button
+* **Reply a comment**
+Replies are displayed under the comment parent and has a rose border as well, but a margin left to be different as the comment.
+When the user click on the comment icon on the comment will appear the reply form and the information that the reply cannot be edited and only deleted from reply author.
+The admin can delete it as well.
 
-* Notifications
-Whenever a user follows someone, likes a post or comment, comments on a post, or messages someone, the other user receives a notification. The notifications tab on the nav menu shows a red dot with the number of unread notifications and when a user clicks it a dropdown will appear with a list of their notifications. If a user clicks on the notification it will bring them to the user, post, or message thread to do with the notification. If they want to remove a notification without going to the associated page, they can click the red x to delete it.
+* **Back Buttons**
+Back buttons allow users to easily go back if they want to go back or abort the edit or delete options. There are a hover effect changing the blue color  to rose to gain attention.
 
-* Pagination
-Both following and all posts feeds as well as profiles have pagination implemented so if more than 10 posts appear in the feed then buttons appear at the bottom to split the feed into individual pages with a maximum of 10 posts on a page. This is to increase the user experience and make the site content easier to digest. If the user is on the first page of pagination then only one button will appear saying "Older Posts" and if they're on the last page then a single button will appear and say "Newer Posts" if there's more than 2 pages of posts then anything in between with contain both buttons to change between pages.
+* **Notifications**
+There are three types of notifications: like, comment and follow that permit the user knows what's going on.
+The notifications tab on the nav menu shows the number of unread notifications and when a user clicks it a dropdown will appear with a list of their notifications. If a user clicks on the notification it will bring them to the user or post, to do with the notification. 
+If the user wants to remove a notification without going to the associated page, they can click the X to delete it.
 
-* 
+* **Pagination**
+The pagination is implemented in the all posts list, following feed, posts on profile page, followers and search results avoiding infinite scroll and increase the user experience.
+The user can easily navigate with the paginator.
+
 
 - - -
 
@@ -580,6 +604,7 @@ I have been mindful during coding to ensure that the website is as accessible fr
 * CSS :root variables - custom properties
 * Javascript - user interaction
 * Python - back-end programming language
+
 
 ### Databases Used
 
