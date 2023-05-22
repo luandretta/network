@@ -185,8 +185,8 @@
     </div>
     <!-- Replied comments -->
     {% for child_comment in comment.children %}
-    <div class="row justify-content-center  mt-3 child-comment">
-        <div class="col col-md-8 col-sm-12 reply-card">
+    <div class="row justify-content-center  mt-3">
+        <div class="col col-md-6 col-sm-12 reply-card">
             <!-- Author and date -->
             <div>
                 <a href="{% url 'profile' child_comment.author.profile.pk %}">

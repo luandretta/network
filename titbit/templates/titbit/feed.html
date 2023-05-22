@@ -90,11 +90,10 @@
     <nav aria-label="Post navigation">
         <ul class="pagination justify-content-center mt-5">
             {% if following_post_list.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page={{ following_post_list.previous_page_number }}">Newer
-                    Posts</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ following_post_list.previous_page_number }}"><span aria-hidden="true">&laquo;</span></a></li>
             {% else %}
             <li class="page-item d-none">
-                <a class="page-link" tabindex="-1" href="#" aria-disabled="true">Newer Posts</a>
+                <a class="page-link" tabindex="-1" href="#" aria-disabled="true"><span aria-hidden="true">&laquo;</span></a>
             </li>
             {% endif %}
             {% for i in following_post_list.paginator.page_range %}
@@ -108,11 +107,11 @@
             {% endfor %}
             {% if following_post_list.has_next %}
             <li class="page-item">
-                <a href="?page={{ following_post_list.next_page_number }}" class="page-link">Older Posts</a>
+                <a href="?page={{ following_post_list.next_page_number }}" class="page-link"><span aria-hidden="true">&raquo;</span></a>
             </li>
             {% else %}
             <li class="page-item d-none">
-                <a class="page-link" tabindex="-1" href="#" aria-disabled="true">Older Posts></a>
+                <a class="page-link" tabindex="-1" href="#" aria-disabled="true"><span aria-hidden="true">&raquo;</span></a>
             </li>
             {% endif %}
         </ul>

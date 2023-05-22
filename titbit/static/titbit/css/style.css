@@ -37,6 +37,9 @@ html, body {
 
 body {
      padding-top: 70px;
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
 }
 
 h1, h2 {
@@ -174,15 +177,10 @@ nav ul {
     padding: 15px;
 }
 
-.child-comment {
-    margin-left: 4rem;
-}
-
 .reply-card {
-    border: solid 0.4px var(--rose);
+    border: solid 0.4px var(--dark-blue);
     border-radius: 8px;
-    padding: 05px;
-    background-color: var(--light-blue);
+    padding: 5px;
 }
 
 /* ----------------------------------------Notifications */
@@ -251,7 +249,7 @@ footer {
     height: auto;
     width: 100vw;
     padding: 10px;
-    margin-top: 15px;
+    margin-top: auto;
 }
 
 footer i {
