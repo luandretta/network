@@ -22,9 +22,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="black" href="{% url 'feed' %}">Following</a>
+                        <a class="black px-2" href="{% url 'feed' %}">Following</a>
                     </li>
-                    <li class="nav-item black">
+                    <li class="nav-item">
+                        <a class="black px-2" href="{% url 'profile-list' %}">Users</a>
+                    </li>
+                    <li class="nav-item black px-2">
                         <div>
                             {% show_notifications %}
                         </div>
