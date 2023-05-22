@@ -576,6 +576,9 @@ Besides the features were registered as Won't Have in the MoSCoW prioritization 
 * Add change password functionality to the profile section.
 * Apply paginator on Post Detail Page.
 * Prepopulate the login fields after a user registers on the site and is redirected to the login page - this is good UX as we shouldn't expect a user to fill in the form with information we already have. 
+* Business Profile.
+* Advertisements.
+* App for smartphones.
 
 ### 🗣️ Accessibility
 
@@ -759,6 +762,8 @@ Please see [TESTING.md](TESTING.md) for all testing performed
 * [Django and Static Assets](https://devcenter.heroku.com/articles/django-assets)
 * [POP, IMAP, and SMTP settings for Outlook.com](https://support.microsoft.com/en-us/office/pop-imap-and-smtp-settings-for-outlook-com-d088b986-291d-42b8-9564-9c414e2aa040)
 * [How to Send Email with Django](https://www.abstractapi.com/guides/django-send-email)
+* [Testing Tools](https://docs.djangoproject.com/en/4.2/topics/testing/tools/#django.test.Client.get)
+* [Unit Test](https://adamj.eu/tech/2020/06/15/how-to-unit-test-a-django-form/)
 
 ### 📝 Content 
 
