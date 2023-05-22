@@ -58,12 +58,21 @@ class UserProfile(models.Model):
                                 verbose_name='user',
                                 related_name='profile',
                                 on_delete=models.CASCADE)
-    name = models.CharField(max_length=30, blank=True, null=True)
-    bio = models.TextField(max_length=150, blank=True, null=True)
-    profile_pic = CloudinaryField(null=True, blank=True)
-    bg_pic = CloudinaryField(null=True, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
-    location = models.CharField(max_length=100, blank=True, null=True)
+    name = models.CharField('Name:',
+                            max_length=30,
+                            blank=True,
+                            null=True)
+    bio = models.TextField('Bio (max 150 characters):',
+                           max_length=150,
+                           blank=True,
+                           null=True,)
+
+    profile_pic = CloudinaryField('Profile Picture', null=True, blank=True)
+    bg_pic = CloudinaryField('Background Picture', null=True, blank=True)
+    birth_date = models.DateField('Birthday (YYYY-MM-DD)',
+                                  null=True, blank=True)
+    location = models.CharField('Location', max_length=30, blank=True,
+                                null=True)
     followers = models.ManyToManyField(User, blank=True,
                                        related_name='followers')
 

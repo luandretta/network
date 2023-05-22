@@ -2,7 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block extra_title %}- @{{ profile.user }}{% endblock %}
+{% block extra_title %}- Update your profile {% endblock %}
 
 {% block content %}
 <div class="container mb-5">
@@ -26,8 +26,8 @@
                     <button class="btn small-btn mt-3">Submit!</button>
                 </div>
             </form>
-            <p class="mt-5">If you want to change your password, then please
-                <a href="{% url 'account_change_password' %}">click hier</a>.</p>
+            <h5 class="mt-5 text-center">If you want to change your password, then please
+                <a href="{% url 'account_change_password' %}">click hier</a>.</h5>
         </div>
     </div> 
 </div>
