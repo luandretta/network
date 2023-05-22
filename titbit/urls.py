@@ -4,7 +4,8 @@ from .views import (
     CommentDeleteView, ProfileView, ProfileEditView, AddFollower,
     RemoveFollower, LikePost, Dislike, UserSearch, FollowingPostsListView,
     ListFollowers, LikeComment, DislikeComment, CommentReplyView,
-    PostNotification, FollowNotification, RemoveNotification, CommentEditView)
+    PostNotification, FollowNotification, RemoveNotification, CommentEditView,
+    ProfileListView)
 
 
 urlpatterns = [
@@ -27,6 +28,7 @@ urlpatterns = [
      path('post/<int:pk>/like/', LikePost.as_view(), name='post-like'),
      path('post/<int:pk>/dislike/', Dislike.as_view(), name='dislike'),
      path('profile/<int:pk>/', ProfileView.as_view(), name='profile'),
+     path('profile-list/', ProfileListView.as_view(), name='profile-list'),
      path('profile/edit/<int:pk>/', ProfileEditView.as_view(),
           name='profile-edit'),
      path('profile/<int:pk>/followers', ListFollowers.as_view(),

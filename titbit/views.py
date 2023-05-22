@@ -261,6 +261,16 @@ class ProfileView(LoginRequiredMixin, View):
         return render(request, 'titbit/profile.html', context)
 
 
+class ProfileListView(LoginRequiredMixin, View):
+    """
+    View from User's List Profile
+    """
+    def get(self, request):
+        profiles = UserProfile.objects.all()
+
+        return render(request, 'titbit/profile_list.html', {"profiles": profiles})
+
+
 class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     Edit the own profile
