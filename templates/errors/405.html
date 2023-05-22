@@ -10,14 +10,13 @@
             <div class="card border-0">
                 <img src="{% static 'titbit/images/error-405.png' %}" class="card-image" alt="Error 405">
                 <div class="card-body">
-                    <h1 class="display-2">Ooops, page not found</h1>
-                    <p class="mt-3 lead">Looks like you got lost along the way.</p>
+                    <h1 class="display-2">Method Not Allowed</h1>
+                    <p class="mt-3 lead">Lost?</p>
                     <div class="d-flex justify-content-center  m">
-                        <a  {% if user.is_authenticated %} 
-                        href="{% url 'post-list' %}" 
-                        {% else %}
-                        href="{% url 'index' %}" 
-                        {% endif %} class="btn small-btn">Back to Titbit</a>
+                        <p>There's no place like
+                            <a {% if user.is_authenticated %} href="{% url 'post-list' %}" {% else %}
+                                href="{% url 'index' %}" {% endif %} class="btn small-btn">home</a>.
+                        </p>
                     </div>
                 </div>
             </div>
