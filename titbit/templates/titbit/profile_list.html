@@ -45,8 +45,8 @@
     <!-- Pagination -->
     <nav aria-label="Post navigation">
         <ul class="pagination justify-content-center mt-5">
-            {% if profile_list.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page={{ profile_list.previous_page_number }}">
+            {% if profiles.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ profiles.previous_page_number }}">
                     <span aria-hidden="true">&laquo;</span></a></li>
             {% else %}
             <li class="page-item d-none">
@@ -54,9 +54,9 @@
                         aria-hidden="true">&laquo;</span></a>
             </li>
             {% endif %}
-            {% for i in profile_list.paginator.page_range %}
+            {% for i in profiles.paginator.page_range %}
             <li class="page-item">
-                {% if i == profile_list.number %}
+                {% if i == profiles.number %}
                 <a class="page-link  rose"
                     href="?query={{ request.GET.query }}&page={{ forloop.counter }}">{{ forloop.counter }}</a>
                 {% else %}
@@ -65,9 +65,9 @@
                 {% endif %}
             </li>
             {% endfor %}
-            {% if profile_list.has_next %}
+            {% if profiles.has_next %}
             <li class="page-item">
-                <a href="?page={{ profile_list.next_page_number }}" class="page-link"><span
+                <a href="?page={{ profiles.next_page_number }}" class="page-link"><span
                         aria-hidden="true">&raquo;</span></a>
             </li>
             {% else %}

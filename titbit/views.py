@@ -268,7 +268,15 @@ class ProfileListView(LoginRequiredMixin, View):
     def get(self, request):
         profiles = UserProfile.objects.all()
 
-        return render(request, 'titbit/profile_list.html', {"profiles": profiles})
+        paginator = Paginator(profiles, 5)
+        page_num = request.GET.get('page')
+        profile_list = paginator.get_page(page_num)
+
+        context = {
+            'profiles': profile_list,
+        }
+
+        return render(request, 'titbit/profile_list.html', context)
 
 
 class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
