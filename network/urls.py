@@ -15,11 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from allauth.account import views as allauth_views
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
+    path(
+        'accounts/password/change/',
+        login_required(
+            allauth_views.PasswordChangeView.as_view(
+                success_url=reverse_lazy('post-list')
+            )
+        ),
+        name='account_change_password'
+    ),
     path('accounts/', include('allauth.urls')),
     path('titbit/', include('titbit.urls')),
 ]

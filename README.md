@@ -764,6 +764,7 @@ Please see [TESTING.md](TESTING.md) for all testing performed
 * [How to Send Email with Django](https://www.abstractapi.com/guides/django-send-email)
 * [Testing Tools](https://docs.djangoproject.com/en/4.2/topics/testing/tools/#django.test.Client.get)
 * [Unit Test](https://adamj.eu/tech/2020/06/15/how-to-unit-test-a-django-form/)
+* [Redirect after successful password change](https://github.com/pennersr/django-allauth/issues/468)
 
 ### 📝 Content 
 

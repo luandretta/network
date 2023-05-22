@@ -41,6 +41,7 @@ class AllPostsListView(LoginRequiredMixin, View):
             new_post = form.save(commit=False)
             new_post.author = request.user
             new_post.save()
+            form = PostForm()
             messages.success(request, ('Your titbit has been posted!'))
 
             context = {
@@ -103,6 +104,7 @@ class PostDetailView(LoginRequiredMixin, View):
             new_comment.author = request.user
             new_comment.post = post
             new_comment.save()
+            form = CommentForm()
             messages.success(request, ('Your comment has been posted!'))
 
         comments = Comment.objects.filter(post=post).order_by('-posted_on')
