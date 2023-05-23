@@ -1,4 +1,4 @@
 {% load account %}
 {% load i18n %}
 {% user_display user as name %}
-{% blocktrans %}Welcome to Titbit! Successfully signed in as {{name}}. Now you can update your Profile! Click on the user icon in the menu, then on the profile and on the icon to edit it!{% endblocktrans %}
+{% blocktrans %}Welcome to Titbit! Successfully signed in as {{name}}.{% endblocktrans %}
