@@ -394,14 +394,21 @@ The website is comprised of X pages which are extended from a base template.
 The users can create an account for themselves by entering their e-mail address, desired username and password twice to confirm. The username musst be unique.
 Once the user is registered, a profile is created with default images.
 If the user accidentally comes to this page instead of the login page they can get to the right page using the link in the card text.
-![Sing Up Page]()
+![Sing Up Page](documentation/images/sign-up.png)
 
-3. **Login Page**
+3. **Sign In Page**
+
 The registered users can log in with either their username or e-mail and password. They can choose to let their browser remember them if they plan on returning to the site on the same device to avoid having to log in again. 
 There's a link to the sign up page too if the user accidentally navigated to this page instead of trying to create an account. If the user forgets their password they can click the link to reset it.
-[Home Page]()
+
+![Sign In Page](documentation/images/sign-in.png)
+
+When the user is registered he will be redirected to the main feed and a welcome message will be displayed.
+
+![Sign In Page](documentation/images/sign-in-message.png)
 
 4. **Logout Page**
+
 When the user wants to finish their session and logout, they can do so from the nav menu. When a user clicks the logout button they're met with a page asking them to confirm they want to log out. 
 ![Sign out Page](documentation/images/sing-out.png)
 
@@ -410,6 +417,7 @@ They're redirected to the landing page if they click the confirmation button and
 ![Sign out Page](documentation/images/sing-out-confirmation.png)
 
 5. **Profile page**
+
 The profile contains a card with the user's information including name, profile picture, background image, bio, location, birth date, number of followers and owns posts. 
 If the user doesn't upload a profile picture or background image his profile has default pictures.
 The list of posts has a paginator and the author of the posts can edit or delete own posts. In case of inappropriate content the admin can delete the posts as well. By clicking on the comment icon, the user will see the post in detail.
@@ -420,13 +428,18 @@ There are a button under the left side menu for the option to go back to the mai
 
 ![Profile other User](documentation/images/profile-other-user.png)
 
+![Profile Default Picture](documentation/images/profile-default.png)
+
+
 6. **Edit profile page**
+
 The user can edit their profile details including their name, profile picture, background image, bio, location and birth date. The user can also remove their profile picture or background image. 
 There's a button to bring them back to their profile if they decide not to make any edits.
 
 ![Edit Profile Page](documentation/images/profile-update.png)
 
 7. **All posts list**
+
 This main feed shows every single post on the website from all users. It allows the user to find new users to follow and connect with. At the top of the feed there's an area for the user to create a post.
 Each post is composed of the author, his profile picture, date and time of publication, content and icons for liking or commenting. It is possible to publish photos as content.
 Posts are displayed in chronological order from newest to oldest and there are a paginator avoiding infinite scroll.
@@ -434,35 +447,54 @@ If the author of the post is viewing own post then there are more icons, one to 
 Each post is clickable and permit the user to see the post in detail like its comments and replies.
 The user can like or dislike each post.
 This feed can be accessed by clicking on the Titbit logo when the user is logged in.
-[Home Page]()
+![All Posts List](documentation/images/feed.png)
+
+![All Posts List](documentation/images/feed-paginator.png)
 
 8. **Following feed**
+
 The following feed containing posts only from users they have followed. 
 Posts are displayed exactly as on the "All Posts List" and offer the same options
 
-[Following Feed]()
+![Following Feed](documentation/images/following-feed.png)
 
 If the user isn't following anyone or the people they're following has no posts, a message will appear saying "Try to follow other users..." which will prompt the user to follow more users to start seeing posts in this feed.
 
-![Home Page](documentation/images/no-following.png)
+![Following Feed](documentation/images/no-following.png)
 
 9. **Post detail**
+
 Clicking on a post redirects the site to the  post details page. Below the post, the user will be able to comment on this post via the form and also read all the comments.
+
+![Post detail Page](documentation/images/post-detail.png)
+
 By clicking on the comment icon in a comment, all the replies from this comment will be displayed and the user can also reply it.
-[Home Page]()
+
+![Post detail Page](documentation/images/reply-comment.png)
+
+The comment has a rose border and the reply is small and has a blue border for the user to easily identify what is a comment and what is a reply.
+
+![Post detail Page](documentation/images/comment.png)
 
 10. **Edit post**
+
 The author can edit his post by clicking on the edit icon presents in his own posts. After edition the user need to submit it clicking on the button. 
 There are a button to go back without edition.
-[Home Page]()
 
-11. **Delete post**
+![Edit post Page](documentation/images/post-edit.png)
+
+11. **Delete Post**
+
 Posts can be deleted by the post author or admin by clicking on the delete icon. When deleting a post, the user is brought to a confirmation page to avoid posts being deleted accidentally. There's a button to bring them back to the post if the user changes their mind about deleting their post.
-[Home Page]()
+
+![Delete Post Page](documentation/images/post-delete.png)
 
 12. **Edit Comment**
+
 The author can edit his comment by clicking on the edit icon presents in his own posts. After edition the user need to submit it clicking on the button. 
 There's also a button to bring them back to the post where the comment was made if they hit the edit button by mistake.
+
+![Edit Comment Page](documentation/images/comment-edit.png)
 
 13. **Delete Comment**
 Comments can be deleted by the comment author or the original posts author or admin by clicking on the delete icon. 
@@ -480,9 +512,11 @@ If the user has followers, you can click on the follower count link on their pro
 The user can click on the profiles in the list to view them and follow them if he want.
 ![Home Page](documentation/images/)
 
+14. **Users**
+There's a list from all users.
+![Home Page](documentation/images/)
 
-
-14. **Error pages**
+15. **Error pages**
 If a user ends up on a page that either doesn't exist or that they shouldn't be on then they'll be shown an error page with a button to bring them back to their feed.
 There are 403, 404, 405 and 500 error pages.
 
