@@ -246,62 +246,54 @@ The  [Roboto 300 light](https://fonts.googleapis.com/css?family=Roboto:300,400,5
 Wireframes were created for mobile, tablet and desktop using [Balsamiq](https://balsamiq.com/).
 
 #### Home Page (Landing Page)
+The home page is the landing page that the user will access if he has not yet started a Titbit session, i.e. if the user is not logged in.
 
-![Home Page](documentation/wireframes/home.png)
+![Home Page](documentation/wireframes/w-home.png)
 
-#### Sing Up
+#### Sing Up, sing In and Change Password
+There's a form according to the purpose of the page, but the layout are the same
 
-![Sing Up](documentation/wireframes/register.png)
-
-#### Sing In
-
-![Login Page](documentation/wireframes/login.png)
+![Sing Up, sing In and Change Password](documentation/wireframes/w-singup.png)
 
 #### Sing Out
+There's a confirmation to avoid mistakes.
 
-![Login Page](documentation/wireframes/login.png)
+![Sing Out](documentation/wireframes/w-singout.png)
 
 #### Profile
 
-![Profile Page](documentation/wireframes/profile.png)
+![Profile Page](documentation/wireframes/w-profile.png)
 
 #### Edit Profile
 
-![Profile Page](documentation/wireframes/profile.png)
+![Edit Profile Page](documentation/wireframes/w-update-profile.png)
 
-#### Search Result
+#### Search Result, Users and Followers
+User results list as required.
 
-![Profile Page](documentation/wireframes/profile.png)
+![Profile Page](documentation/wireframes/w-users.png)
 
-#### All Posts
+#### All Posts and Following 
 
-![Profile Page](documentation/wireframes/profile.png)
+![All Posts and Following](documentation/wireframes/w-feed.png)
 
-#### Following Feed
-
-![Profile Page](documentation/wireframes/profile.png)
 
 #### Post Detail
 
-![Profile Page](documentation/wireframes/profile.png)
+![Post Detail Page](documentation/wireframes/w-post-detail.png)
 
-#### Delete Post
+#### Delete Confirmation
 
-![Profile Page](documentation/wireframes/profile.png)
+![Delete Confirmation](documentation/wireframes/w-delete.png)
 
-#### Edit Post
+#### Edit Post and Comment
 
-![Profile Page](documentation/wireframes/profile.png)
-
-
-#### Followers
-
-![Profile Page](documentation/wireframes/profile.png)
+![Edit Post and Comment](documentation/wireframes/w-edit.png)
 
 
 #### Error Pages
 
-![Error Page](documentation/wireframes/error.png)
+![Error Pages](documentation/wireframes/w-error.png)
 
 
 
