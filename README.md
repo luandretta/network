@@ -1,10 +1,9 @@
 # TITBIT
 
-![Welcome to Titbit](documentation/##.png)
+![Welcome to Titbit](documentation/images/home.png)
 
-![Titbit](documentation/###.png)
 
-Titbit is  a free social networking site where users broadcast short posts, where each user can sign up, create his own post, read, update and delete it, and also like/dislike posts from others users, follow other users, comment, like/dislike comments or reply a comment.
+Titbit is  a free social networking site where users broadcast short posts, where each user can sign up, create his own post, read, update and delete it, and also like/dislike posts from others users, follow them, comment posts, like/dislike comments or reply a comment.
 
 
 Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
@@ -72,7 +71,7 @@ Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
 - - -
 
 
-The aim of this project was to build a site that allows users to easily sign, keep up with titbits and interact with others users.
+The aim of this project was to build a site that allows users to easily sign, keep up with titbits and interact with others users who are free to share their thoughts.
 
 ### User Stories
 
@@ -81,7 +80,6 @@ The aim of this project was to build a site that allows users to easily sign, ke
 - - -
 
 The target audience for Titbit are:
-* over 18 years;
 * titbit lovers all around the world;
 * would like to stay informed;
 * would like to promote something;
@@ -384,7 +382,7 @@ This User Model was built using [Django's Allauth Library](https://django-allaut
 
 The website is comprised of X pages which are extended from a base template.
 
-1. **Home Page** (Landing Page) 
+1. **Home Page** 
 
  The Home page is the landing page when the users arrive at the site for the first time or before they've logged in if they don't have an active session. They are welcome with two options buttons to either sign up for an account or log in to an existing account.
 ![Home Page](documentation/images/home.png)
@@ -424,11 +422,15 @@ The list of posts has a paginator and the author of the posts can edit or delete
 If the user is viewing their own profile then they'll have an icon to edit their profile. If they're viewing another user's profile then they'll have a button to follow or unfollow that user.
 The user can click on the followers link to know who the followers are. 
 There are a button under the left side menu for the option to go back to the main feed (all posts list).
+
+* Own Profile
 ![Own Profile](documentation/images/profile.png)
 
+* Profile other User
 ![Profile other User](documentation/images/profile-other-user.png)
 
-![Profile Default Picture](documentation/images/profile-default.png)
+* Default Pictures
+![Profile Default Pictures](documentation/images/profile-default.png)
 
 
 6. **Edit profile page**
@@ -448,6 +450,7 @@ Each post is clickable and permit the user to see the post in detail like its co
 The user can like or dislike each post.
 This feed can be accessed by clicking on the Titbit logo when the user is logged in.
 ![All Posts List](documentation/images/feed.png)
+
 
 ![All Posts List](documentation/images/feed-paginator.png)
 
@@ -497,62 +500,91 @@ There's also a button to bring them back to the post where the comment was made 
 ![Edit Comment Page](documentation/images/comment-edit.png)
 
 13. **Delete Comment**
+
 Comments can be deleted by the comment author or the original posts author or admin by clicking on the delete icon. 
 Users are brought to a confirmation page to avoid comments being deleted accidentally. 
 There's a button to bring them back to the post they commented on if the user changes their mind about deleting the comment.
+![Delete Comment Page](documentation/images/comment-delete.png)
 
 12. **Search** 
+
 The Username Search Input is on navbar and if the search matches users a list containing all users will displayed.
 If the search has no results will let the user know there was no match. 
 The page also contains a button to bring the user back to the feed.
-[Home Page]()
+![Search](documentation/images/search.png)
+
+In case the search result does not show any results the user will be informed.
+![Search](documentation/images/search-no-user.png)
 
 13. **Followers**
+
 If the user has followers, you can click on the follower count link on their profile to see a list of their followers. 
 The user can click on the profiles in the list to view them and follow them if he want.
-![Home Page](documentation/images/)
+
+![Followers](documentation/images/followers.png)
 
 14. **Users**
+
 There's a list from all users.
-![Home Page](documentation/images/)
+![Users](documentation/images/users.png)
+
 
 15. **Error pages**
+
 If a user ends up on a page that either doesn't exist or that they shouldn't be on then they'll be shown an error page with a button to bring them back to their feed.
 There are 403, 404, 405 and 500 error pages.
 
-[Home Page]()
+Error 403
+[Error 403](documentation/images/error-403.png)
 
+Error 404
+[Error 404](documentation/images/error-404.png)
+
+Error 405
+[Error 405](documentation/images/error-405.png)
+
+
+Error 500
+[Error 500](documentation/images/error-500.png)
 
 ### Elements found on each page
-
-* **Favicon**
-The favicon is displayed next to the page title in the browser tab.
-
-![Titbit favicon](documentation/favicon.png)
 
 * **Logo** 
 The logo is displayed on the left side menu with the title Titbit.
 Clicking on it redicts to all posts, if the user is logged in.
+![Titbit favicon](documentation/images/favicon.png)
 
 * **Navigation** 
 The Navbar is displayed on all pages of the website and allows users to navigate the site with ease. 
-The navbar is comprised of a logo, the sites name, links to navigate the site, user icon and a search bar.
+The navbar is comprised of a logo, the sites name, following posts, users list, notifications, user icon with dropdown menu and a search bar.
 In the landing page has only the logo and title, the user muss be logged in to navigate the site.
+
+* Landing Page (User not logged in)
+
+![User not logged in Navbar](documentation/images/navbar-landing.png)
+
 Once the user is logged in the navbar displays more options, like following posts, notifications, user search and the user icon with the profile and logout link options.
+
+* User logged in Navbar
+  
+![User logged in Navbar](documentation/images/navbar-loggedin.png)
+
 Due to responsiveness, a hamburger menu is used.
 
-  **User logged in Navbar**
-  
-  ![User logged in Navbar](documentation/logged-in-navbar.png)
+* Hamburger menu
+![Hamburger menu closed](documentation/images/navbar-hamburger.png)
+![Hamburger menu opened](documentation/images/navbar-hamburger-open.png)
 
-  **User not logged in Navbar**
+Clicking on the user icon, the user can access your own profile and sign out.
 
-  ![User not logged in Navbar](documentation/not-loggedin-navbar.png)
+* User dropdown menu
+![User dropdown menu](documentation/images/user-icon.png)
 
 * **Footer** 
+
 The footer appears across the website and includes information about the developer with links to Linkedin and GitHub. This lets the user get in touch and connect on these platforms if they wish. 
 
-  ![Footer](documentation/footer.png)
+![Footer](documentation/images/footer.png)
 
 
 ### Forms
@@ -577,16 +609,25 @@ There is only a content input. Clicking on the comment will bring up the reply i
 ### Other Elements
 
 * **Posts**
+
 Each post is composed of the author, his profile picture, date and time of publication, content and icons for liking or commenting and have a dark blue border for better UX. It is possible to publish photos as content.
 Posts are displayed in chronological order from newest to oldest and there are a paginator avoiding infinite scroll.
 If the author of the post is viewing own post then there are more icons, one to edit and other to delete this post.
 The admin has power to delete posts with inappropriate content.
+
+Own Post
+![Post](documentation/images/post-owner.png)
+
 Each post is clickable and permit the user to see the post in detail like its comments and replies.
 The user can like or dislike each post and see the how many likes and dislikes the post has.
 
+Post from other user
+![Post](documentation/images/post.png)
 
 * **Comments**
 Comments are viewed under a post at post detail page and are very similar to posts, can be liked or disliked and has a rose border.
+
+![Comment](documentation/images/comment-one.png)
 
 
 Comments can be deleted by the comment author or post author and edited only by the comment author. There's the option to go back to the post or delete.
@@ -595,9 +636,14 @@ Comments can be deleted by the comment author or post author and edited only by 
 
 
 * **Reply a comment**
-Replies are displayed under the comment parent and has a rose border as well, but a margin left to be different as the comment.
+Replies are displayed under the comment parent, small and has a blue border.
+
+![Comment and Reply](documentation/images/comment.png)
+
 When the user click on the comment icon on the comment will appear the reply form and the information that the reply cannot be edited and only deleted from reply author.
 The admin can delete it as well.
+
+![Reply](documentation/images/reply-comment.png)
 
 * **Back Buttons**
 Back buttons allow users to easily go back if they want to go back or abort the edit or delete options. 
@@ -611,11 +657,18 @@ There are a hover effect changing the blue color  to rose to gain attention.
 * **Notifications**
 There are three types of notifications: like, comment and follow that permit the user knows what's going on.
 The notifications tab on the nav menu shows the number of unread notifications and when a user clicks it a dropdown will appear with a list of their notifications. If a user clicks on the notification it will bring them to the user or post, to do with the notification. 
+
+![Notifications](documentation/images/notifications.png)
+
 If the user wants to remove a notification without going to the associated page, they can click the X to delete it.
 
+![Notifications](documentation/images/notifications-close.png)
+
 * **Pagination**
-The pagination is implemented in the all posts list, following feed, posts on profile page, followers and search results avoiding infinite scroll and increase the user experience.
+The pagination is implemented in the all posts list, following feed, posts on profile page, followers, users and search results avoiding infinite scroll and increase the user experience.
 The user can easily navigate with the paginator.
+
+![Pagination](documentation/images/pagination.png)
 
 
 - - -
@@ -625,11 +678,15 @@ The user can easily navigate with the paginator.
 Besides the features were registered as Won't Have in the MoSCoW prioritization in the [User Stories](#user-stories), the future implementations I would like to:
 
 * Add change password functionality to the profile section.
+* Add calendar to birth date.
 * Apply paginator on Post Detail Page.
 * Prepopulate the login fields after a user registers on the site and is redirected to the login page - this is good UX as we shouldn't expect a user to fill in the form with information we already have. 
 * Business Profile.
 * Advertisements.
 * App for smartphones.
+* Refactor the like and dislike code for front-end to avoid rendering.
+* Events page.
+* 
 
 ### 🗣️ Accessibility
 
@@ -713,9 +770,6 @@ While researching the best way to handle errors in a Flask application using blu
 
 ### Defensive Programming
 
-- - - 
-
-### Database Migration to ElephantSQL
 
 
 - - -

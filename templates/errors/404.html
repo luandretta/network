@@ -12,12 +12,11 @@
                 <div class="card-body">
                     <h1 class="display-2">Dude! Where's my page?</h1>
                     <p class="mt-3 lead">Breath in, and on the out breath, go back and try again.</p>
-                    <p>
-                        Back to <span class="d-flex justify-content-center  m">
-                            <a {% if user.is_authenticated %} href="{% url 'post-list' %}" {% else %}
-                                href="{% url 'index' %}" {% endif %} class="rose"> Titbit</a>
-                        </span> and remember: you haven't seen anything.
-                    </p>
+                    <div class="d-flex justify-content-center">
+                        <a {% if user.is_authenticated %} href="{% url 'post-list' %}" {% else %}
+                            href="{% url 'index' %}" {% endif %} class="btn small-btn">Back to Titbit</a>
+                    </div>
+                    <p>And remember: you haven't seen anything.</p>
                 </div>
             </div>
         </div>

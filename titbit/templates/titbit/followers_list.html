@@ -12,7 +12,7 @@
     </div>
     <!--Followers-->
     <div class="row justify-content-center mt-3">
-        <div class="col-md-5 col-sm-12">
+        <div class="col-md-4 col-sm-12">
             {% if profile.name %}
             <h1>Followers for {{ profile.name }}</h1>
             {% else %}
@@ -23,7 +23,7 @@
     {% if followers %}
     {% for follower in followers %}
     <div class="row justify-content-center mt-3">
-        <div class="col col-md-6 col-sm-12 position-relative post-card">
+        <div class="col col-md-4 col-sm-12 position-relative post-card">
             <a href="{% url 'profile' follower.profile.pk %}" class="post-link">
                 <div>
                     {% if follower.profile.profile_pic.url %}
