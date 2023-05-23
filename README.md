@@ -385,14 +385,16 @@ This User Model was built using [Django's Allauth Library](https://django-allaut
 The website is comprised of X pages which are extended from a base template.
 
 1. **Home Page** (Landing Page) 
+
  The Home page is the landing page when the users arrive at the site for the first time or before they've logged in if they don't have an active session. They are welcome with two options buttons to either sign up for an account or log in to an existing account.
-[Home Page]()
+![Home Page](documentation/images/home.png)
 
 2. **Sing Up Page**
+
 The users can create an account for themselves by entering their e-mail address, desired username and password twice to confirm. The username musst be unique.
 Once the user is registered, a profile is created with default images.
 If the user accidentally comes to this page instead of the login page they can get to the right page using the link in the card text.
-[Home Page]()
+![Sing Up Page]()
 
 3. **Login Page**
 The registered users can log in with either their username or e-mail and password. They can choose to let their browser remember them if they plan on returning to the site on the same device to avoid having to log in again. 
@@ -401,8 +403,11 @@ There's a link to the sign up page too if the user accidentally navigated to thi
 
 4. **Logout Page**
 When the user wants to finish their session and logout, they can do so from the nav menu. When a user clicks the logout button they're met with a page asking them to confirm they want to log out. 
+![Sign out Page](documentation/images/sing-out.png)
+
 They're redirected to the landing page if they click the confirmation button and a message pops up confirming that they've logged out.
-[Home Page]()
+
+![Sign out Page](documentation/images/sing-out-confirmation.png)
 
 5. **Profile page**
 The profile contains a card with the user's information including name, profile picture, background image, bio, location, birth date, number of followers and owns posts. 
@@ -411,12 +416,15 @@ The list of posts has a paginator and the author of the posts can edit or delete
 If the user is viewing their own profile then they'll have an icon to edit their profile. If they're viewing another user's profile then they'll have a button to follow or unfollow that user.
 The user can click on the followers link to know who the followers are. 
 There are a button under the left side menu for the option to go back to the main feed (all posts list).
-[Home Page]()
+![Own Profile](documentation/images/profile.png)
+
+![Profile other User](documentation/images/profile-other-user.png)
 
 6. **Edit profile page**
 The user can edit their profile details including their name, profile picture, background image, bio, location and birth date. The user can also remove their profile picture or background image. 
 There's a button to bring them back to their profile if they decide not to make any edits.
-[Home Page]()
+
+![Edit Profile Page](documentation/images/profile-update.png)
 
 7. **All posts list**
 This main feed shows every single post on the website from all users. It allows the user to find new users to follow and connect with. At the top of the feed there's an area for the user to create a post.
@@ -431,8 +439,12 @@ This feed can be accessed by clicking on the Titbit logo when the user is logged
 8. **Following feed**
 The following feed containing posts only from users they have followed. 
 Posts are displayed exactly as on the "All Posts List" and offer the same options
-If the user isn't following anyone or the people they're following has no posts, a message will appear saying "Try to follow other users..." which will prompt the user to follow more users to start seeing posts in this feed.
+
 [Following Feed]()
+
+If the user isn't following anyone or the people they're following has no posts, a message will appear saying "Try to follow other users..." which will prompt the user to follow more users to start seeing posts in this feed.
+
+![Home Page](documentation/images/no-following.png)
 
 9. **Post detail**
 Clicking on a post redirects the site to the  post details page. Below the post, the user will be able to comment on this post via the form and also read all the comments.
@@ -466,7 +478,9 @@ The page also contains a button to bring the user back to the feed.
 13. **Followers**
 If the user has followers, you can click on the follower count link on their profile to see a list of their followers. 
 The user can click on the profiles in the list to view them and follow them if he want.
-[Home Page]()
+![Home Page](documentation/images/)
+
+
 
 14. **Error pages**
 If a user ends up on a page that either doesn't exist or that they shouldn't be on then they'll be shown an error page with a button to bring them back to their feed.
@@ -515,15 +529,15 @@ The application has Post and Comment Forms, described below:
 The user can create their posts at the all posts lists page, that will be displayed own profile and following feed (if he is followed). 
 There are a content inpunt and an image input.
 There's a placeholder in the form for the user to "Post the news :-)".
-[Home Page]()
+![Post Form](documentation/images/post-form.png)
 
 * **Comment Form**
 
-[Home Page]()
+
 The user can comment posts clicking on the post then filling the comment form and submit it at the post detail page.
 There is only a content input. Clicking on the comment will bring up the reply input that is using the same comment form to submit the reply.
 
-[Home Page]()
+![Comment Form](documentation/images/comment-form.png)
 
 
 ### Other Elements
@@ -539,7 +553,12 @@ The user can like or dislike each post and see the how many likes and dislikes t
 
 * **Comments**
 Comments are viewed under a post at post detail page and are very similar to posts, can be liked or disliked and has a rose border.
-Comments can be deleted by the comment author or post author and edited only by the comment author.
+
+
+Comments can be deleted by the comment author or post author and edited only by the comment author. There's the option to go back to the post or delete.
+
+![Comment Delete](documentation/images/comment-delete.png)
+
 
 * **Reply a comment**
 Replies are displayed under the comment parent and has a rose border as well, but a margin left to be different as the comment.
@@ -547,7 +566,13 @@ When the user click on the comment icon on the comment will appear the reply for
 The admin can delete it as well.
 
 * **Back Buttons**
-Back buttons allow users to easily go back if they want to go back or abort the edit or delete options. There are a hover effect changing the blue color  to rose to gain attention.
+Back buttons allow users to easily go back if they want to go back or abort the edit or delete options. 
+
+![Back Button](documentation/images/back-button.png)
+
+There are a hover effect changing the blue color  to rose to gain attention.
+
+![Back Hover](documentation/images/back-button-hover.png)
 
 * **Notifications**
 There are three types of notifications: like, comment and follow that permit the user knows what's going on.
