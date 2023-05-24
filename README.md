@@ -73,6 +73,39 @@ Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
 
 The aim of this project was to build a site that allows users to easily sign, keep up with titbits and interact with others users who are free to share their thoughts.
 
+
+### Agile
+The Agile Tool was used to help to organize and prioritize the tasks using Project Boards on GitHub.
+A Template for issues was created to speed up the process of adding User Stories to this project. In the repositorie, head over to the settings, then Set Up Templates on the Features. The Issue Template helps to add enough information to the card, so the Developer knoks what are the MVP Points to address.
+![Issues template](documentation/images/set-up-template.png)
+
+![Issues template](documentation/images/user-story-template.png)
+
+A Sheet was created to help gathering details to place in each card. 
+
+The MoSCow priorization and customized labels to user stories were used to priorize and implement the features.
+
+
+* Must Have: guaranteed to be delivered (max 60% of stories)
+* Should Have: adds significant value, but not vital (the rest ~20% of stories)
+* Could Have: has small impact if left out (20% of stories)
+* Won't Have: not a priority for this iteration
+
+![Labels](documentation/images/labels.png)
+
+The allocation the User Stories to Milestones helps in planning the Sprints.
+7 Milestones were created.
+![Milestones](documentation/images/milestones-1.png)
+![Milestones](documentation/images/milestones-2.png)
+
+The Kanban Board, as an agile project management tool, helped to visualize the tasks and limit the work in progress (WIP) by moving cards between the To do, In progress and Done columns.
+![Kanban Board](documentation/images/network-board.png)
+
+The Table View was used to sorted the issus according to labels, milestones or status.
+![Table with issues](documentation/images/network-table.png)
+
+- - -
+
 ### User Stories
 
 #### Persona
@@ -87,7 +120,6 @@ The target audience for Titbit are:
 * would like to influence people;
 * wants to make jokes;
 * would like to engage on society.
-
 
 
 #### New Site Users
@@ -123,31 +155,37 @@ As a registered user of the site, I want to be able to:
 * know the date and time a post was created, so that I can know how new or old the post is.
 * post pictures, so that I can share moments or toughts.
 * like or dislike other people's posts, so that I can let them know I enjoyed their posts.
-* follow others users, so that I can view their posts on my feed.
+* follow others users, so that I can view their posts on my following feed.
 * unfollow other users, so that I can remove their post from my feed.
 * be followed, so that I can know that other users read my posts.
 * view the number of likes on each post, so that I can see which is the most popular or viral.
-* read the comments of posts, so that I can know the thoughts from others users and follow them.
-* like other people's comments on posts, so that I can let them know I enjoyed their comment.
-
+* add a profile picture so that I will be recognized from other users.
+* see a users list, so that I can find others users to follow them.
+* search for an user, so that I can find a specific user to follow him.
 
 
 *Should Have*
 
 * comment on other people's posts, so that I can be involved in the conversation.
+* read the comments of posts, so that I can know the thoughts from others users and follow them.
+* like other people's comments on posts, so that I can let them know I enjoyed their comment.
 * edit or delete my comments on other people's posts, so that I can edit or remove comments I no longer want published.
-* reply comments, so that I can interate with others users.
-* search for an user, so that I can find a specific user to follow him.
 * delete other people's comments on my own posts, so that I can remove unwanted commments.
-* be notified when other users comment or like my posts or follow/unfollow me.
+* be notified when other users comment or like my posts or follow/unfollow me, so that I can check it.
+* read the feed only from following users, so that I don't waste my time with unwanted posts.
+* access a list from followers, so that I can find others users to follow them.
+* change password, so that I feel more secure.
+
 
 
 *Could Have*
 
 * reshare other people's posts, so that I can share their thoughts with my followers.
+* reply comments, so that I can interate with others users.
 * report posts to admins, so that I can notify inappropriate content.
 * block users, so that I can hide my content from unwanted users.
 * reset my password, so that I can regain access to my account.
+* add a background picture so that I will show what I like to other users.
  
 
 
@@ -170,27 +208,17 @@ As an administrator for the site I want to be able to:
 * remove any content from any user that could be offensive, so that I can moderate the all content.
 
 *Should Have*
-* Edit the admin panel.
-
-
-*Could Have*
 * access a page only for admins to see flagged user posts, so that I can see a list of posts that possibly need to be deleted.
 * unflag a post if a deletion is not needed, so that I can remove it from the flagged posts list.
+
+*Could Have*
+* Edit the admin panel.
+
 
 *Won't Have*
 * suspend, block or delete users who not respect the rules, so that I can maintain site guidelines.
 
 
-### Agile
-The Project Boards on GitHub was used to help to organize and prioritize the tasks.
-The Kanban, as an agile project management tool, helped to visualize the tasks and limit the work in progress (WIP) by moving cards between the To do, In progress and Done columns.
-
-The MoSCow priorization and labels to user stories were used to priorize and implement the features.
-
-* Must Have: guaranteed to be delivered (max 60% of stories)
-* Should Have: adds significant value, but not vital (the rest ~20% of stories)
-* Could Have: has small impact if left out (20% of stories)
-* Won't Have: not a priority for this iteration
 
 
 </details>
@@ -563,16 +591,17 @@ In the landing page has only the logo and title, the user muss be logged in to n
 
 ![User not logged in Navbar](documentation/images/navbar-landing.png)
 
-Once the user is logged in the navbar displays more options, like following posts, notifications, user search and the user icon with the profile and logout link options.
-
 * User logged in Navbar
+Once the user is logged in the navbar displays more options, like following posts, notifications, user search and the user icon with the profile and logout link options.
   
 ![User logged in Navbar](documentation/images/navbar-loggedin.png)
 
-Due to responsiveness, a hamburger menu is used.
 
 * Hamburger menu
+Due to responsiveness, a hamburger menu is used.
+
 ![Hamburger menu closed](documentation/images/navbar-hamburger.png)
+
 ![Hamburger menu opened](documentation/images/navbar-hamburger-open.png)
 
 Clicking on the user icon, the user can access your own profile and sign out.
@@ -595,6 +624,7 @@ The application has Post and Comment Forms, described below:
 The user can create their posts at the all posts lists page, that will be displayed own profile and following feed (if he is followed). 
 There are a content inpunt and an image input.
 There's a placeholder in the form for the user to "Post the news :-)".
+
 ![Post Form](documentation/images/post-form.png)
 
 * **Comment Form**
@@ -677,7 +707,6 @@ The user can easily navigate with the paginator.
 
 Besides the features were registered as Won't Have in the MoSCoW prioritization in the [User Stories](#user-stories), the future implementations I would like to:
 
-* Add change password functionality to the profile section.
 * Add calendar to birth date.
 * Apply paginator on Post Detail Page.
 * Prepopulate the login fields after a user registers on the site and is redirected to the login page - this is good UX as we shouldn't expect a user to fill in the form with information we already have. 
