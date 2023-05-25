@@ -1,5 +1,13 @@
 # TESTING
 
+- Responsiveness Testing
+- Browser Compatibility Testing
+- Bugs resolved and unresolved
+- Lighthouse Testing Outcomes
+- Code Validation
+- User Stories Testing
+- Features Testing
+
 ## CODE
 
 ## USER STORIE

@@ -82,7 +82,7 @@ class PostDetailView(LoginRequiredMixin, View):
     Create Notification type 2 (Comment)
     """
     def get(self, request, pk, *args, **kwargs):
-        post = Post.objects.get(pk=pk)
+        post = Post.objects.get_object_or_404(pk=pk)
         form = CommentForm()
 
         comments = Comment.objects.filter(post=post).order_by('-posted_on')
@@ -96,7 +96,7 @@ class PostDetailView(LoginRequiredMixin, View):
         return render(request, 'titbit/post_detail.html', context)
 
     def post(self, request, pk, *args, **kwargs):
-        post = Post.objects.get(pk=pk)
+        post = Post.objects.get_object_or_404(pk=pk)
         form = CommentForm(request.POST)
 
         if form.is_valid():
@@ -129,8 +129,8 @@ class CommentReplyView(LoginRequiredMixin, View):
     Create Notification type 2 (comment)
     """
     def post(self, request, post_pk, pk, *args, **kwargs):
-        post = Post.objects.get(pk=post_pk)
-        parent_comment = Comment.objects.get(pk=pk)
+        post = Post.objects.get_object_or_404(pk=post_pk)
+        parent_comment = Comment.objects.get_object_or_404(pk=pk)
         form = CommentForm(request.POST)
 
         if form.is_valid():
@@ -183,7 +183,7 @@ class CommentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return reverse_lazy('post-detail', kwargs={'pk': pk})
 
     def test_func(self):
-        comment = self.get_object()
+        comment = self.get_object_or_404()
         return self.request.user == comment.author
 
 
@@ -198,7 +198,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = reverse_lazy('post-list')
 
     def test_func(self):
-        post = self.get_object()
+        post = self.get_object_or_404()
         return self.request.user == post.author or self.request.user.is_superuser
 
 
@@ -227,7 +227,7 @@ class ProfileView(LoginRequiredMixin, View):
     Displays posts and followers from User
     """
     def get(self, request, pk, *args, **kwargs):
-        profile = UserProfile.objects.get(pk=pk)
+        profile = UserProfile.objects.get_object_or_404(pk=pk)
         user = profile.user
         posts = Post.objects.filter(author=user).order_by('-posted_on')
 
@@ -292,7 +292,7 @@ class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return reverse_lazy('profile', kwargs={'pk': pk})
 
     def test_func(self):
-        profile = self.get_object()
+        profile = self.get_object_or_404()
         return self.request.user == profile.user
 
 
@@ -317,7 +317,7 @@ class RemoveFollower(LoginRequiredMixin, View):
     Unfollow an User
     """
     def post(self, request, pk, *args, **kwargs):
-        profile = UserProfile.objects.get(pk=pk)
+        profile = UserProfile.objects.get_object_or_404(pk=pk)
         profile.followers.remove(request.user)
 
         return redirect('profile', pk=profile.pk)
@@ -369,7 +369,7 @@ class Dislike(LoginRequiredMixin, View):
     Users cannot like and dislike the same post
     """
     def post(self, request, pk, *args, **kwargs):
-        post = Post.objects.get(pk=pk)
+        post = Post.objects.get_object_or_404(pk=pk)
 
         is_like = False
 
@@ -404,7 +404,7 @@ class LikeComment(LoginRequiredMixin, View):
     Users cannot like and dislike the same comment
     """
     def post(self, request, pk, *args, **kwargs):
-        comment = Comment.objects.get(pk=pk)
+        comment = Comment.objects.get_object_or_404(pk=pk)
 
         is_dislike = False
 
@@ -443,7 +443,7 @@ class DislikeComment(LoginRequiredMixin, View):
     Users cannot like and dislike the same comment
     """
     def post(self, request, pk, *args, **kwargs):
-        comment = Comment.objects.get(pk=pk)
+        comment = Comment.objects.get_object_or_404(pk=pk)
 
         is_like = False
 
@@ -477,7 +477,7 @@ class UserSearch(View):
     Search users
     """
     def get(self, request, *args, **kwargs):
-        query = self.request.GET.get('query')
+        query = self.request.GET.get_object_or_404('query')
         profile_list = UserProfile.objects.filter(
             Q(user__username__icontains=query)
         )
@@ -497,7 +497,7 @@ class ListFollowers(View):
     Display the followers list
     """
     def get(self, request, pk, *args, **kwargs):
-        profile = UserProfile.objects.get(pk=pk)
+        profile = UserProfile.objects.get_object_or_404(pk=pk)
         followers = profile.followers.all()
 
         paginator = Paginator(followers, 2)
@@ -518,7 +518,8 @@ class PostNotification(View):
     Display the notifications
     """
     def get(self, request, notification_pk, post_pk, *args, **kwargs):
-        notification = Notification.objects.get(pk=notification_pk)
+        notification = Notification.objects.get_object_or_404(
+            pk=notification_pk)
         post = Post.objects.get(pk=post_pk)
 
         notification.user_has_seen = True
@@ -532,8 +533,9 @@ class FollowNotification(View):
     Notifications for when someone follows you
     """
     def get(self, request, notification_pk, profile_pk, *args, **kwargs):
-        notification = Notification.objects.get(pk=notification_pk)
-        profile = UserProfile.objects.get(pk=profile_pk)
+        notification = Notification.objects.get_object_or_404(
+            pk=notification_pk)
+        profile = UserProfile.objects.get_object_or_404(pk=profile_pk)
 
         notification.user_has_seen = True
         notification.save()
@@ -546,7 +548,8 @@ class RemoveNotification(View):
     Remove the notifications when user has seen
     """
     def delete(self, request, notification_pk, *args, **kwargs):
-        notification = Notification.objects.get(pk=notification_pk)
+        notification = Notification.objects.get_object_or_404(
+            pk=notification_pk)
 
         notification.user_has_seen = True
         notification.save()
