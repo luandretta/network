@@ -42,5 +42,6 @@ The issues listed in the table below were indentified during the development of 
 |15 | Couldn't test the application using a free version of Elephant as a database | Create a temporary database to test the application | Closed |
 |16 | Post and Comment form doesn't clear after it's submitted | Call the empty form after save the content posted | Closed |
 |17 | After changed the password redirects to change password page | Add a path with reverse_lazy to overwrite django allauth | Closed |
+|18 | Post author couldn't delete comments in own post | Edit view and template adding if request.user == post.author. | Closed |
 
 

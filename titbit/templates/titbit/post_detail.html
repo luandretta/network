@@ -126,7 +126,7 @@
                     </a>
                     {% endif %}
                     <!-- Author or admin can delete the comment -->
-                    {% if request.user == comment.author or request.user.is_superuser %}
+                    {% if request.user == comment.author or request.user == post.author or request.user.is_superuser %}
                     <a href="{% url 'comment-delete' post.pk comment.pk %}" class="edit">
                         <i class="fas fa-trash"></i>
                     </a>
@@ -205,7 +205,7 @@
                         {{ child_comment.author }}</a>
                     <small class="text-muted"> {{ child_comment.posted_on }}</small>
                     <!-- Author or admin can delete the reply -->
-                    {% if request.user == child_comment.author  or request.user.is_superuser %}
+                    {% if request.user == child_comment.author or request.user == post.author or request.user.is_superuser %}
                     <a href="{% url 'comment-delete' post.pk child_comment.pk %}" class="edit">
                         <i class="fas fa-trash"></i>
                     </a>

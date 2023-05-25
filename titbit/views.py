@@ -141,10 +141,9 @@ class CommentReplyView(LoginRequiredMixin, View):
             new_comment.save()
             messages.success(request, ('Your reply has been posted!'))
 
-        notification = Notification.objects.create(notification_type=2,
-                                                   from_user=request.user,
-                                                   to_user=parent_comment.author,
-                                                   comment=new_comment)
+        notification = Notification.objects.create(
+            notification_type=2, from_user=request.user,
+            to_user=parent_comment.author, comment=new_comment)
 
         return redirect('post-detail', pk=post_pk)
 
@@ -183,7 +182,7 @@ class CommentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return reverse_lazy('post-detail', kwargs={'pk': pk})
 
     def test_func(self):
-        comment = self.get_object_or_404()
+        comment = self.get_object()
         return self.request.user == comment.author
 
 
@@ -199,7 +198,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         post = self.get_object_or_404()
-        return self.request.user == post.author or self.request.user.is_superuser
+        return self.request.user == post.author \
+            or self.request.user.is_superuser
 
 
 class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -216,8 +216,10 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return reverse_lazy('post-detail', kwargs={'pk': pk})
 
     def test_func(self):
-        post = self.get_object()
-        return self.request.user == post.author or self.request.user.is_superuser
+        comment = self.get_object()
+        return self.request.user == post.author \
+            or self.request.user == comment.post.author \
+            or self.request.user.is_superuser
 
 
 class ProfileView(LoginRequiredMixin, View):
@@ -523,8 +525,8 @@ class PostNotification(View):
     Display the notifications
     """
     def get(self, request, notification_pk, post_pk, *args, **kwargs):
-        notification = Notification.objects.get_object_or_404(
-            pk=notification_pk)
+        notification = get_object_or_404(Notification,
+                                         pk=notification_pk)
         post = Post.objects.get(pk=post_pk)
 
         notification.user_has_seen = True
@@ -538,9 +540,9 @@ class FollowNotification(View):
     Notifications for when someone follows you
     """
     def get(self, request, notification_pk, profile_pk, *args, **kwargs):
-        notification = Notification.objects.get_object_or_404(
-            pk=notification_pk)
-        profile = UserProfile.objects.get_object_or_404(pk=profile_pk)
+        notification = get_object_or_404(Notification,
+                                         pk=notification_pk)
+        profile = get_object_or_404(UserProfile, pk=profile_pk)
 
         notification.user_has_seen = True
         notification.save()
@@ -553,8 +555,8 @@ class RemoveNotification(View):
     Remove the notifications when user has seen
     """
     def delete(self, request, notification_pk, *args, **kwargs):
-        notification = Notification.objects.get_object_or_404(
-            pk=notification_pk)
+        notification = get_object_or_404(Notification,
+                                         pk=notification_pk)
 
         notification.user_has_seen = True
         notification.save()
