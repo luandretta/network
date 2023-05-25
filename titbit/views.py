@@ -82,7 +82,7 @@ class PostDetailView(LoginRequiredMixin, View):
     Create Notification type 2 (Comment)
     """
     def get(self, request, pk, *args, **kwargs):
-        post = Post.objects.get_object_or_404(pk=pk)
+        post = get_object_or_404(Post, pk=pk)
         form = CommentForm()
 
         comments = Comment.objects.filter(post=post).order_by('-posted_on')
@@ -96,7 +96,7 @@ class PostDetailView(LoginRequiredMixin, View):
         return render(request, 'titbit/post_detail.html', context)
 
     def post(self, request, pk, *args, **kwargs):
-        post = Post.objects.get_object_or_404(pk=pk)
+        post = get_object_or_404(Post, pk=pk)
         form = CommentForm(request.POST)
 
         if form.is_valid():
@@ -129,8 +129,8 @@ class CommentReplyView(LoginRequiredMixin, View):
     Create Notification type 2 (comment)
     """
     def post(self, request, post_pk, pk, *args, **kwargs):
-        post = Post.objects.get_object_or_404(pk=post_pk)
-        parent_comment = Comment.objects.get_object_or_404(pk=pk)
+        post = get_object_or_404(Post, pk=post_pk)
+        parent_comment = get_object_or_404(Comment, pk=pk)
         form = CommentForm(request.POST)
 
         if form.is_valid():
@@ -227,7 +227,7 @@ class ProfileView(LoginRequiredMixin, View):
     Displays posts and followers from User
     """
     def get(self, request, pk, *args, **kwargs):
-        profile = UserProfile.objects.get_object_or_404(pk=pk)
+        profile = get_object_or_404(UserProfile, pk=pk)
         user = profile.user
         posts = Post.objects.filter(author=user).order_by('-posted_on')
 
@@ -302,7 +302,7 @@ class AddFollower(LoginRequiredMixin, View):
     Notification type 3 (Follow)
     """
     def post(self, request, pk, *args, **kwargs):
-        profile = UserProfile.objects.get(pk=pk)
+        profile = get_object_or_404(UserProfile, pk=pk)
         profile.followers.add(request.user)
 
         notification = Notification.objects.create(notification_type=3,
@@ -317,7 +317,7 @@ class RemoveFollower(LoginRequiredMixin, View):
     Unfollow an User
     """
     def post(self, request, pk, *args, **kwargs):
-        profile = UserProfile.objects.get_object_or_404(pk=pk)
+        profile = get_object_or_404(UserProfile, pk=pk)
         profile.followers.remove(request.user)
 
         return redirect('profile', pk=profile.pk)
@@ -330,7 +330,7 @@ class LikePost(LoginRequiredMixin, View):
     Notification type 1 (Like)
     """
     def post(self, request, pk, *args, **kwargs):
-        post = Post.objects.get(pk=pk)
+        post = get_object_or_404(Post, pk=pk)
 
         is_dislike = False
 
@@ -369,7 +369,7 @@ class Dislike(LoginRequiredMixin, View):
     Users cannot like and dislike the same post
     """
     def post(self, request, pk, *args, **kwargs):
-        post = Post.objects.get_object_or_404(pk=pk)
+        post = get_object_or_404(Post, pk=pk)
 
         is_like = False
 
@@ -404,7 +404,7 @@ class LikeComment(LoginRequiredMixin, View):
     Users cannot like and dislike the same comment
     """
     def post(self, request, pk, *args, **kwargs):
-        comment = Comment.objects.get_object_or_404(pk=pk)
+        comment = get_object_or_404(Comment, pk=pk)
 
         is_dislike = False
 
@@ -443,7 +443,7 @@ class DislikeComment(LoginRequiredMixin, View):
     Users cannot like and dislike the same comment
     """
     def post(self, request, pk, *args, **kwargs):
-        comment = Comment.objects.get_object_or_404(pk=pk)
+        comment = get_object_or_404(Comment, pk=pk)
 
         is_like = False
 
@@ -477,19 +477,24 @@ class UserSearch(View):
     Search users
     """
     def get(self, request, *args, **kwargs):
-        query = self.request.GET.get_object_or_404('query')
-        profile_list = UserProfile.objects.filter(
-            Q(user__username__icontains=query)
-        )
-        paginator = Paginator(profile_list, 3)
-        page_num = request.GET.get('page')
-        profile_list_paginator = paginator.get_page(page_num)
+        query = self.request.GET.get('query')
 
-        context = {
-            'profile_list': profile_list_paginator,
-        }
+        if query is None:
+            return redirect('profile-list')
 
-        return render(request, 'titbit/search.html', context)
+        else:
+            profile_list = UserProfile.objects.filter(
+                Q(user__username__icontains=query)
+            )
+            paginator = Paginator(profile_list, 3)
+            page_num = request.GET.get('page')
+            profile_list_paginator = paginator.get_page(page_num)
+
+            context = {
+                'profile_list': profile_list_paginator,
+            }
+
+            return render(request, 'titbit/search.html', context)
 
 
 class ListFollowers(View):
