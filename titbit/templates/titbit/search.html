@@ -10,8 +10,8 @@
     </div>
     <!-- Result from Users search -->
     <h1 class="text-center mt-3">Users found:</h1>
-    {% if profile_list %}
-    {% for profile in profile_list %}
+    {% if users_profile_list %}
+    {% for profile in users_profile_list %}
     <div class="row justify-content-center mt-3">
         <div class="col col-md-4 col-sm-12 position-relative post-card">
             <div>
@@ -40,18 +40,9 @@
     <!-- Pagination -->
     <nav aria-label="Post navigation">
         <ul class="pagination justify-content-center mt-5">
-            {% if profile_list.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page={{ profile_list.previous_page_number }}">
-                    <span aria-hidden="true">&laquo;</span></a></li>
-            {% else %}
-            <li class="page-item d-none">
-                <a class="page-link" tabindex="-1" href="#" aria-disabled="true"><span
-                        aria-hidden="true">&laquo;</span></a>
-            </li>
-            {% endif %}
-            {% for i in profile_list.paginator.page_range %}
+            {% for i in users_profile_list.paginator.page_range %}
             <li class="page-item">
-                {% if i == profile_list.number %}
+                {% if i == users_profile_list.number %}
                 <a class="page-link  rose"
                     href="?query={{ request.GET.query }}&page={{ forloop.counter }}">{{ forloop.counter }}</a>
                 {% else %}
@@ -60,17 +51,6 @@
                 {% endif %}
             </li>
             {% endfor %}
-            {% if profile_list.has_next %}
-            <li class="page-item">
-                <a href="?page={{ profile_list.next_page_number }}" class="page-link"><span
-                        aria-hidden="true">&raquo;</span></a>
-            </li>
-            {% else %}
-            <li class="page-item d-none">
-                <a class="page-link" tabindex="-1" href="#" aria-disabled="true"><span
-                        aria-hidden="true">&raquo;</span></a>
-            </li>
-            {% endif %}
         </ul>
     </nav>
     {% else %}

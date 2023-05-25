@@ -197,7 +197,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = reverse_lazy('post-list')
 
     def test_func(self):
-        post = self.get_object_or_404()
+        post = self.get_object()
         return self.request.user == post.author \
             or self.request.user.is_superuser
 
@@ -217,9 +217,8 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         comment = self.get_object()
-        return self.request.user == post.author \
-            or self.request.user == comment.post.author \
-            or self.request.user.is_superuser
+        post = get_object_or_404(Post, pk=self.kwargs['post_pk'])
+        return self.request.user == post.author or self.request.user == comment.author or self.request.user.is_superuser
 
 
 class ProfileView(LoginRequiredMixin, View):
@@ -294,7 +293,7 @@ class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return reverse_lazy('profile', kwargs={'pk': pk})
 
     def test_func(self):
-        profile = self.get_object_or_404()
+        profile = self.get_object()
         return self.request.user == profile.user
 
 
@@ -485,15 +484,15 @@ class UserSearch(View):
             return redirect('profile-list')
 
         else:
-            profile_list = UserProfile.objects.filter(
+            users = UserProfile.objects.filter(
                 Q(user__username__icontains=query)
             )
-            paginator = Paginator(profile_list, 3)
+            paginator = Paginator(users, 3)
             page_num = request.GET.get('page')
-            profile_list_paginator = paginator.get_page(page_num)
+            users_list = paginator.get_page(page_num)
 
             context = {
-                'profile_list': profile_list_paginator,
+                'users_profile_list': users_list,
             }
 
             return render(request, 'titbit/search.html', context)
@@ -504,7 +503,7 @@ class ListFollowers(View):
     Display the followers list
     """
     def get(self, request, pk, *args, **kwargs):
-        profile = UserProfile.objects.get_object_or_404(pk=pk)
+        profile = get_object_or_404(UserProfile, pk=pk)
         followers = profile.followers.all()
 
         paginator = Paginator(followers, 2)
