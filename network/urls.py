@@ -18,6 +18,8 @@ from django.urls import path, include
 from allauth.account import views as allauth_views
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
+from django.conf.urls.static import static
+from .views import handler404, handler500, handler403, handler405
 
 
 urlpatterns = [
@@ -34,7 +36,7 @@ urlpatterns = [
     ),
     path('accounts/', include('allauth.urls')),
     path('titbit/', include('titbit.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
 
 handler404 = 'network.views.handler404'
 handler500 = 'network.views.handler500'
