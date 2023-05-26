@@ -568,7 +568,7 @@ In case the user forgets his password to log in, he can click on the "Reset your
 
 For this function the email was created: titbit_team@outlook.com. This functionality was first tested in the Backend.
 
-17. **Error custom pages**
+17. **Error Custom Pages**
 
 If a user ends up on a page that either doesn't exist or that they shouldn't be on then they'll be shown an error page with a button to bring them back to their feed.
 There are 403, 404, 405 and 500 error custom pages.
@@ -585,7 +585,7 @@ Error 405
 Error 500
 [Error 500](documentation/images/error-500.png)
 
-
+- - -
 
 ### Elements found on each page
 

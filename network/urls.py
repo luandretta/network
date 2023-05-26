@@ -34,7 +34,7 @@ urlpatterns = [
     ),
     path('accounts/', include('allauth.urls')),
     path('titbit/', include('titbit.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'network.views.handler404'
 handler500 = 'network.views.handler500'
