@@ -87,6 +87,7 @@ The deployed project was tested on multiple browsers to check for compatibility 
 |17 | After changed the password redirects to change password page | Add a path with reverse_lazy to overwrite django allauth | Closed |
 |18 | Post author couldn't delete comments in own post | Edit view and template adding if request.user == post.author. | Closed |
 |19 | The table of contents on the README.md an TESTING.md doesn't work due to emojis in titles. | Remove all emojis from titles. | Closed|
+|20 | NameError: name 'settings' is not defined | Remove the static from urls | Closed |
 
 There are no remaining bugs.
 
