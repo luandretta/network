@@ -401,7 +401,8 @@ This User Model was built using [Django's Allauth Library](https://django-allaut
 - - -
 
 ##  Features
-⚙️
+
+⚙️ Scope of functionalities
 - - -
 
 <details>
@@ -409,7 +410,7 @@ This User Model was built using [Django's Allauth Library](https://django-allaut
 
 ### Pages
 
-The website is comprised of X pages which are extended from a base template.
+The website is comprised of 20 pages which are extended from a base template.
 
 1. **Home Page** 
 
@@ -434,7 +435,7 @@ When the user is registered he will be redirected to the main feed and a welcome
 
 ![Sign In Page](documentation/images/sign-in-message.png)
 
-4. **Logout Page**
+4. **Sing Out Page**
 
 When the user wants to finish their session and logout, they can do so from the nav menu. When a user clicks the logout button they're met with a page asking them to confirm they want to log out. 
 ![Sign out Page](documentation/images/sing-out.png)
@@ -483,7 +484,7 @@ This feed can be accessed by clicking on the Titbit logo when the user is logged
 
 ![All Posts List](documentation/images/feed-paginator.png)
 
-8. **Following feed**
+8. **Following Feed**
 
 The following feed containing posts only from users they have followed. 
 Posts are displayed exactly as on the "All Posts List" and offer the same options
@@ -494,7 +495,7 @@ If the user isn't following anyone or the people they're following has no posts,
 
 ![Following Feed](documentation/images/no-following.png)
 
-9. **Post detail**
+9. **Post Detail**
 
 Clicking on a post redirects the site to the  post details page. Below the post, the user will be able to comment on this post via the form and also read all the comments.
 
@@ -508,7 +509,7 @@ The comment has a rose border and the reply is small and has a blue border for t
 
 ![Post detail Page](documentation/images/comment.png)
 
-10. **Edit post**
+10. **Edit Post**
 
 The author can edit his post by clicking on the edit icon presents in his own posts. After edition the user need to submit it clicking on the button. 
 There are a button to go back without edition.
@@ -557,11 +558,20 @@ The user can click on the profiles in the list to view them and follow them if h
 There's a list from all users.
 ![Users](documentation/images/users.png)
 
+15. **Change Password**
 
-15. **Error pages**
+When the user access your own profile and click on the edit icon to update his profile, there's a link to change his password.
+
+16. **Reset Password**
+
+In case the user forgets his password to log in, he can click on the "Reset your password" option, being redirected and asked for his email to receive the link to reset his password.
+
+For this function the email was created: titbit_team@outlook.com. This functionality was first tested in the Backend.
+
+17. **Error custom pages**
 
 If a user ends up on a page that either doesn't exist or that they shouldn't be on then they'll be shown an error page with a button to bring them back to their feed.
-There are 403, 404, 405 and 500 error pages.
+There are 403, 404, 405 and 500 error custom pages.
 
 Error 403
 [Error 403](documentation/images/error-403.png)
@@ -572,9 +582,10 @@ Error 404
 Error 405
 [Error 405](documentation/images/error-405.png)
 
-
 Error 500
 [Error 500](documentation/images/error-500.png)
+
+
 
 ### Elements found on each page
 
@@ -630,7 +641,6 @@ There's a placeholder in the form for the user to "Post the news :-)".
 
 * **Comment Form**
 
-
 The user can comment posts clicking on the post then filling the comment form and submit it at the post detail page.
 There is only a content input. Clicking on the comment will bring up the reply input that is using the same comment form to submit the reply.
 
@@ -660,19 +670,18 @@ Comments are viewed under a post at post detail page and are very similar to pos
 
 ![Comment](documentation/images/comment-one.png)
 
-
-Comments can be deleted by the comment author or post author and edited only by the comment author. There's the option to go back to the post or delete.
+Comments can be deleted by the comment author or post author or admin, and edited only by the comment author. There's the option to go back to the post or delete.
 
 ![Comment Delete](documentation/images/comment-delete.png)
 
 
 * **Reply a comment**
-Replies are displayed under the comment parent, small and has a blue border.
+Replies are displayed under the comment parent, small and has a blue border. 
 
 ![Comment and Reply](documentation/images/comment.png)
 
-When the user click on the comment icon on the comment will appear the reply form and the information that the reply cannot be edited and only deleted from reply author.
-The admin can delete it as well.
+When the user click on the comment icon on the comment will appear the reply form due to toggle function and the information that the reply cannot be edited, only deleted from reply author or admin.
+
 
 ![Reply](documentation/images/reply-comment.png)
 
@@ -687,6 +696,7 @@ There are a hover effect changing the blue color  to rose to gain attention.
 
 * **Notifications**
 There are three types of notifications: like, comment and follow that permit the user knows what's going on.
+There are built with custom tags.
 The notifications tab on the nav menu shows the number of unread notifications and when a user clicks it a dropdown will appear with a list of their notifications. If a user clicks on the notification it will bring them to the user or post, to do with the notification. 
 
 ![Notifications](documentation/images/notifications.png)
@@ -700,6 +710,13 @@ The pagination is implemented in the all posts list, following feed, posts on pr
 The user can easily navigate with the paginator.
 
 ![Pagination](documentation/images/pagination.png)
+
+* **Messages**
+Some personalized messages are displayed after certain user actions.
+
+![Message](documentation/images/message-post.png) 
+![Message](documentation/images/message-sign-in.png) 
+![Message](documentation/images/message-sign-out.png)
 
 
 - - -
@@ -734,7 +751,7 @@ I have been mindful during coding to ensure that the website is as accessible fr
 - - -
 
 ##  Technologies Used 
-⚒️
+⚒️ Project is created with:
 
 <details>
 <summary>👇</summary>
@@ -857,7 +874,7 @@ To clone the repository:
 Please see [TESTING.md](TESTING.md) for all testing performed
 - - -
 
-##  Credits 
+##  References
 ®️
 - - -
 
