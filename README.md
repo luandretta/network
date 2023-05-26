@@ -13,7 +13,7 @@ Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
 ![GitHub language count](https://img.shields.io/github/languages/count/luandretta/network?style=for-the-badge)
 ![GitHub top language](https://img.shields.io/github/languages/top/luandretta/network?style=for-the-badge)
 
-## 🚀 CONTENTS
+## 🚀 TABLE OF CONTENTS
 
 * [User Experience](#user-experience)
   * [Project Goals](#project-goals)
@@ -60,7 +60,8 @@ Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
 
 - - -
 
-## 📌 User Experience
+##  User Experience
+📌
 <details>
 
 <summary>👇</summary>
@@ -225,8 +226,8 @@ As an administrator for the site I want to be able to:
 
 - - - 
 
-## 📝 Design
-
+##  Design
+📝
 <details>
 <summary>👇</summary>
 
@@ -399,8 +400,8 @@ This User Model was built using [Django's Allauth Library](https://django-allaut
 
 - - -
 
-## ⚙️ Features
-
+##  Features
+⚙️
 - - -
 
 <details>
@@ -703,7 +704,8 @@ The user can easily navigate with the paginator.
 
 - - -
 
-### 🧠 Future Implementations 
+###  Future Implementations 
+🧠 
 
 Besides the features were registered as Won't Have in the MoSCoW prioritization in the [User Stories](#user-stories), the future implementations I would like to:
 
@@ -717,8 +719,8 @@ Besides the features were registered as Won't Have in the MoSCoW prioritization 
 * Events page.
 * 
 
-### 🗣️ Accessibility
-
+###  Accessibility
+🗣️
 I have been mindful during coding to ensure that the website is as accessible friendly as possible. This has been have achieved by:
 
 * Using semantic HTML.
@@ -731,13 +733,15 @@ I have been mindful during coding to ensure that the website is as accessible fr
 
 - - -
 
-## ⚒️ Technologies Used 
+##  Technologies Used 
+⚒️
 
 <details>
 <summary>👇</summary>
 
 
-### 🌎 Languages Used
+###  Languages Used
+🌎
 
 * HTML - main site content
 * CSS - site desing and layout
@@ -761,7 +765,8 @@ I have been mindful during coding to ensure that the website is as accessible fr
 [Bootstrap](https://getbootstrap.com/) - Version 5.2.3 - CSS Framework.
 
 
-### ⛑ Programs Used 
+###  Programs Used 
+⛑
 
 [Pip](https://pypi.org/project/pip/) - Tool for installing python packages.
 
@@ -790,23 +795,12 @@ I have been mindful during coding to ensure that the website is as accessible fr
 [Shields.io](https://shields.io/) To add badges to the README.
 
 
-
-### 🚨 Error Handling 
-
-- - - 
-
-While researching the best way to handle errors in a Flask application using blueprints I came across the following [article](https://nrodrig1.medium.com/flask-blueprints-error-handling-and-config-file-example-d1a031070763). I really liked how this solution allowed me to create a blueprint to custom handle a number of different errors, rather than just creating a single 404 error page.
-
-### Defensive Programming
-
-
-
 - - -
 </details>
 
 
-## 👩‍💻 Deployment & Local Development
-
+##  Deployment & Local Development
+👩‍💻
 - - -
 <details>
 <summary>👇</summary>
@@ -814,7 +808,8 @@ While researching the best way to handle errors in a Flask application using blu
 
 ### Deployment
 
-###  🏡 Local Development
+###   Local Development
+🏡
 
 #### How to Fork
 
@@ -856,22 +851,21 @@ To clone the repository:
 
 - - -
 
-## 💬 Testing 
-
-- - -
+##  Testing 
+💬
 
 Please see [TESTING.md](TESTING.md) for all testing performed
 - - -
 
-## ®️ Credits 
-
+##  Credits 
+®️
 - - -
 
 <details> 
 <summary>👇</summary>
 
-### 🔗 Code Used 
-
+###  Code Used 
+🔗
 * []()
 
 * [How to ...? - Stack Overflow](https://stackoverflow.com/)
@@ -900,7 +894,8 @@ Please see [TESTING.md](TESTING.md) for all testing performed
 * [Unit Test](https://adamj.eu/tech/2020/06/15/how-to-unit-test-a-django-form/)
 * [Redirect after successful password change](https://github.com/pennersr/django-allauth/issues/468)
 
-### 📝 Content 
+###  Content 
+📝
 
 Content for this project was written by me, Lucimeri Andretta. 
 
@@ -908,7 +903,8 @@ Content for this project was written by me, Lucimeri Andretta.
 
 * 
 
-### 👋 Acknowledgments 
+###  Acknowledgments 
+👋
 
 I would like to acknowledge the following people who helped me along the way in completing this project: 🫶
 

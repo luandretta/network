@@ -1,27 +1,70 @@
 # TESTING
 
-- Responsiveness Testing
-- Browser Compatibility Testing
-- Bugs resolved and unresolved
-- Lighthouse Testing Outcomes
-- Code Validation
-- User Stories Testing
-- Features Testing
+For a proper conclusion to this project several tests were performed.
 
-## CODE
+## 🚀 TABLE OF CONTENTS
 
-## USER STORIE
+* [RESPONSIVENESS TESTING](#responsiveness-testing)
+* [BROWSER COMPABILITY TESTING](#browser-compability-testing)
+* [BUGS RESOLVED AND UNRESOLVED](#bugs-resolved-and-unresolved)
+* [LIGHTHOUSE TESTING OUTCOMES](#lighthouse-testing-outcomes)
+* [CODE VALIDATION](#code-validation)
+* [USER STORIES TESTING](#user-stories-testing)
+* [FEATURES TESTING](#features-testing)
+* [AUTOMATED TESTING](#automated-testing)
+* [TEST CASE](#test-case)
 
-## BROWSER
+Return back to the [README.md](README.md) file.
 
-## DEVICE
+- - -
 
-## ACCESSIBILITY
+## RESPONSIVENESS TESTING
 
-## PERFORMANCE
+The deployed application was tested on multiple devices to check for responsiveness issues. (Which devices, issues)
+It works as expected according to the wireframes.
+### Mobile
 
-## ☠️ BUGS ☠️
-The issues listed in the table below were indentified during the development of the project.
+![]()
+
+### Tablet
+
+![]()
+
+### Laptop
+
+![]()
+
+### Desktop
+
+![]()
+
+- - -
+
+## BROWSER COMPABILITY TESTING
+
+The deployed project was tested on multiple browsers to check for compatibility issues. (Work as expected?)
+### Chrome
+
+![]()
+
+### Firefox
+
+![]()
+
+### Edge
+
+![]()
+
+### Safari
+
+![]()
+
+
+
+- - -
+
+## BUGS RESOLVED AND UNRESOLVED 
+☠️ The issues listed in the table below were indentified during the development of the project.
 
 |N.| Issue |  Action | Status | 
 |:---|:--- |:--- |:--- |
@@ -43,5 +86,177 @@ The issues listed in the table below were indentified during the development of 
 |16 | Post and Comment form doesn't clear after it's submitted | Call the empty form after save the content posted | Closed |
 |17 | After changed the password redirects to change password page | Add a path with reverse_lazy to overwrite django allauth | Closed |
 |18 | Post author couldn't delete comments in own post | Edit view and template adding if request.user == post.author. | Closed |
+|19 | The table of contents on the README.md an TESTING.md doesn't work due to emojis in titles. | Remove all emojis from titles. | Closed|
+
+There are no remaining bugs.
+
+- - -
+
+## LIGHTHOUSE TESTING OUTCOMES
+
+The deployed project was tested using the Lighthouse Audit tool to check for any major issues. The results for each page are listed bellow.
+- Home (Landing page - not Logged in)
+![]()
+- Sing Up
+![]()
+- Sing In
+![]()
+- Sing Out
+![]()
+- Forgot Password 
+![]()
+- Change Password
+![]()
+- Home (Main Feed - Logged in)
+![]()
+- Following
+![]()
+- Post 
+![]()
+- Edit post
+![]()
+- Delete post
+![]()
+- Edit comment
+![]()
+- Delete comment
+![]()
+- Users
+![]()
+- Search
+![]()
+- Profile
+![]()
+- Profile Update
+![]()
+- Followers
+![]()
+
+
+- - -
+
+## CODE VALIDATION
+
+### HTML
+
+The [HTML W3C Validator](https://validator.w3.org/) to validate all HTML files.
+In order to properly validate the HTML pages with Jinja syntax, the steps are followed for each file:
+
+- Navigate to the deployed application using Google Chrome,
+- Right-click anywhere on the page, and select View Page Source.
+- Copy the entire "compiled" code, without any Jinja syntax., and use the validate by input method.
+
+The result for each page are listed bellow:
+
+- Home (Landing)
+![]()
+- Sing Up
+![]()
+- Sing In
+![]()
+- Sing Out
+![]()
+- Forgot Password
+![]()
+- Home (Main Feed - Logged in)
+![]()
+- Following
+![]()
+- Post Detail
+![]()
+- Edit post
+![]()
+- Delete post
+![]()
+- Edit comment
+![]()
+- Delete comment
+![]()
+- Users
+![]()
+- Search
+![]()
+- Profile
+![]()
+- Profile Update
+![]()
+- Followers
+![]()
+
+
+### CSS
+The [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/) was used to validate the CSS file.
+
+### JAVASCRIPT
+The [JShint Validator](https://jshint.com/) was used to validate the JavaScript file.
+
+### PYTHON
+The [Code Institute Python Linter]()was used to validate all Python files.
+
+#### Network project
+- Settings.py
+![]()
+- urls.py (main)
+![]()
+- views.py
+![]()
+
+#### Home app
+- urls.py 
+![]()
+- views.py
+![]()
+- custom_tags.py
+![]()
+
+#### Titbit app
+- admin.py
+![]()
+- forms.py
+![]()
+- models.py
+![]()
+- tests.py
+![]()
+- urls.py
+![]()
+- views.py
+![]()
+
+
+- - -
+
+## USER STORIES TESTING
+The User Stories testing  were listed bellow:
+
+
+- - -
+
+## FEATURES TESTING
+
+- - -
+
+## AUTOMATED TESTING
+
+The Django's Built-in Unit Testing Framework is used to test the application functionality on the project.
+To perform the test the following step was used:
+- In the terminal type the command:
+```bash
+python3 manage.py test
+```
+
+The result:
+![]()
+
+- - -
+
+## TEST CASE
+A test case were written to proof the post feature and the delete post.
+
+
+
+
+
+
 
 
