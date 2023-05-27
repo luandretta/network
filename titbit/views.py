@@ -218,7 +218,9 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         comment = self.get_object()
         post = get_object_or_404(Post, pk=self.kwargs['post_pk'])
-        return self.request.user == post.author or self.request.user == comment.author or self.request.user.is_superuser
+        return self.request.user == post.author \
+            or self.request.user == comment.author \
+            or self.request.user.is_superuser
 
 
 class ProfileView(LoginRequiredMixin, View):

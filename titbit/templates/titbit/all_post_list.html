@@ -38,10 +38,10 @@
                         class="rounded-circle post-img" height="50" width="50">
                     {% endif %}
                 </div>
-                <p class="post-text">
+                <p class="post-text aegean">
                     <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@
                         {{ post.author }}</a>
-                    <small class="text-muted"> {{ post.posted_on }}</small>
+                    <small class="black"> {{ post.posted_on }}</small>
                     <!-- Author can edit the post -->
                     {% if request.user == post.author %}
                     <a href="{% url 'post-edit' post.pk %}" class="edit">
@@ -60,7 +60,7 @@
             <div class="position-relative">
                 <p>{{ post.content }}</p>
                 {% if post.image %}
-                <img src="{{ post.image.url }}" class="post-image-upload">
+                <img src="{{ post.image.url }}" class="post-image-upload" alt="picture uploaded">
                 {% endif %}
                 <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
             </div>

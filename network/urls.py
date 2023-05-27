@@ -35,7 +35,7 @@ urlpatterns = [
     ),
     path('accounts/', include('allauth.urls')),
     path('titbit/', include('titbit.urls')),
-] 
+]
 
 handler404 = 'network.views.handler404'
 handler500 = 'network.views.handler500'

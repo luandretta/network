@@ -96,42 +96,55 @@ There are no remaining bugs.
 ## LIGHTHOUSE TESTING OUTCOMES
 
 The deployed project was tested using the Lighthouse Audit tool to check for any major issues. The results for each page are listed bellow.
+
 - Home (Landing page - not Logged in)
-![]()
+
+![Home](documentation/images/l-home)
+
 - Sing Up
-![]()
+
+![Sing Up](documentation/images/l-singup.png)
+
 - Sing In
-![]()
+
+![Sing In](documentation/images/l-singin.png)
+
 - Sing Out
-![]()
+![Sing Out](documentation/images/l-signout.png)
+
 - Forgot Password 
-![]()
+
+![Forgot Password](documentation/images/l-password-reset.png)
+
 - Change Password
-![]()
+![Change Password](documentation/images/l-)
+
 - Home (Main Feed - Logged in)
-![]()
+
+![Home - Main Feed - Logged in](documentation/images/l-all-posts-list.png)
+
 - Following
-![]()
+![Following](documentation/images/l-)
 - Post 
-![]()
+![Post](documentation/images/l-)
 - Edit post
-![]()
+![Edit post](documentation/images/l-)
 - Delete post
-![]()
+![Delete post](documentation/images/l-)
 - Edit comment
-![]()
+![Edit comment](documentation/images/l-)
 - Delete comment
-![]()
+![Delete comment](documentation/images/l-)
 - Users
-![]()
+![Users](documentation/images/l-)
 - Search
-![]()
+![Search](documentation/images/l-)
 - Profile
-![]()
+![Profile](documentation/images/l-)
 - Profile Update
-![]()
+![Profile Update](documentation/images/l-)
 - Followers
-![]()
+![Followers](documentation/images/l-)
 
 
 - - -
@@ -188,46 +201,82 @@ The result for each page are listed bellow:
 ### CSS
 The [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/) was used to validate the CSS file.
 
+| File | Screenshot | Notes |
+| --- | --- | --- |
+| style.css | ![style.css](documentation/images/v-css.png) | ![style.css warning](documentation/images/v-css-warning.png) |
+
+
 ### JAVASCRIPT
+
 The [JShint Validator](https://jshint.com/) was used to validate the JavaScript file.
 
+| File | Screenshot | Notes |
+| --- | --- | --- |
+| titbit.js | ![screenshot](documentation/images/v-javascript.png) | Unused variables: commentReply Toggle, showNotifications and removeNotifications |
+
 ### PYTHON
-The [Code Institute Python Linter]()was used to validate all Python files.
+
+The [Code Institute Python Linter](https://pep8ci.herokuapp.com)was used to validate all Python files.
 
 #### Network project
+
 - Settings.py
-![]()
+
+![Settings](documentation/images/v-network-settings.png)
+
 - urls.py (main)
-![]()
+
+![Urls](documentation/images/v-network-urls.png)
+
 - views.py
-![]()
+
+![Views](documentation/images/v-network-views.png)
 
 #### Home app
+
 - urls.py 
-![]()
+
+![Urls](documentation/images/v-home-urls.png)
+
 - views.py
-![]()
+
+![Views](documentation/images/v-home-views.png)
+
 - custom_tags.py
-![]()
+
+![Custom Tags](documentation/images/v-home-custom-tags.png)
 
 #### Titbit app
+
 - admin.py
-![]()
+
+![Admin](documentation/images/v-titbit-admin.png)
+
 - forms.py
-![]()
+
+![Forms](documentation/images/v-titbit-forms.png)
+
 - models.py
-![]()
+
+![Models](documentation/images/v-titbit-models.png)
+
 - tests.py
-![]()
+
+![Tests](documentation/images/v-titbit-tests.png)
+
 - urls.py
-![]()
+
+![Urls](documentation/images/v-titbit-urls.png)
+
 - views.py
-![]()
+
+![Views](documentation/images/v-titbit-views.png)
 
 
 - - -
 
 ## USER STORIES TESTING
+
 The User Stories testing  were listed bellow:
 
 
@@ -239,22 +288,23 @@ The User Stories testing  were listed bellow:
 
 ## AUTOMATED TESTING
 
-The Django's Built-in Unit Testing Framework is used to test the application functionality on the project.
+The Django's Built-in Unit Testing Framework was used to test the application functionality on the project without errors.
 To perform the test the following step was used:
 - In the terminal type the command:
+
 ```bash
 python3 manage.py test
 ```
 
-The result:
-![]()
 
 - - -
 
 ## TEST CASE
-A test case were written to proof the post feature and the delete post.
 
+A test case were written to proof the post feature and the delete post. A creation of a temporary database was needed.
+Ran 2 tests without issues.
 
+![Teste Case](documentation/images/test-case.png)
 
 
 

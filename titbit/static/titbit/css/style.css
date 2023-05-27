@@ -16,7 +16,7 @@
 
 
 * {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     border: none;
     background-color: var(--light-blue);
@@ -30,7 +30,6 @@ html, body {
     font-weight: 300;
     max-width: 2000px;
     min-height: 100vh;
-    margin-left: 0 auto;
     scroll-behavior: smooth;
     background-color: var(--light-blue);
 }
@@ -64,6 +63,10 @@ a:hover {
 
 .black {
     color: var(--black);
+}
+
+.aegean {
+    color: var(--aegean-blue);
 }
 
 .bg-blue {
