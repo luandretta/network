@@ -89,11 +89,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp-mail.outlook.com'
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_USER = "titbit_team@outlook.com"
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-EMAIL_USE_STARTTLS = True
 
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
