@@ -323,24 +323,29 @@ User results list as required.
 ![Error Pages](documentation/wireframes/w-error.png)
 
 
+- - - 
 
 ### Database Schema & User Journey
  
 #### User Journey
 
-![User Journey](documentation/images/user-journey.drawio.png)
+![User Journey](documentation/images/user-journey.png)
 
 #### Database Schema
 
 * **Diagram**
-An entitiy relationship diagram was created to help the visualization the relationships of the data structures and mapped it out.
-![Entity Diagram]()
+
+An entity relationship diagram was created to help the visualization the relationships of the data structures and mapped it out.
+
+![Entity Diagram](documentation/images/entity-diagram.png)
 
 
 * **Models**
+
 Models created for this application:
 
 1. **Allauth User Model**
+
 This User Model was built using [Django's Allauth Library](https://django-allauth.readthedocs.io/en/latest/overview.html)
 
 2. **Post Model**
@@ -556,11 +561,18 @@ The user can click on the profiles in the list to view them and follow them if h
 14. **Users**
 
 There's a list from all users.
+
 ![Users](documentation/images/users.png)
 
 15. **Change Password**
 
 When the user access your own profile and click on the edit icon to update his profile, there's a link to change his password.
+
+![Change Password](documentation/images/password-change-link.png)
+
+The user is able to change his password.
+
+![Change Password](documentation/images/password-change.png)
 
 16. **Reset Password**
 
@@ -568,22 +580,28 @@ In case the user forgets his password to log in, he can click on the "Reset your
 
 For this function the email was created: titbit_team@outlook.com. This functionality was first tested in the Backend.
 
+![Reset Password](documentation/images/reset-password-outlook.png)
+
+
 17. **Error Custom Pages**
 
 If a user ends up on a page that either doesn't exist or that they shouldn't be on then they'll be shown an error page with a button to bring them back to their feed.
 There are 403, 404, 405 and 500 error custom pages.
 
 Error 403
-[Error 403](documentation/images/error-403.png)
+
+![Error Custom Page](documentation/images/error.png)
 
 Error 404
-[Error 404](documentation/images/error-404.png)
+
+![Error 404](documentation/images/error404.png)
 
 Error 405
-[Error 405](documentation/images/error-405.png)
+
+![Error 405](documentation/images/error-405.png)
 
 Error 500
-[Error 500](documentation/images/error-500.png)
+![Error 500](documentation/images/error-500.png)
 
 - - -
 
@@ -715,8 +733,9 @@ The user can easily navigate with the paginator.
 Some personalized messages are displayed after certain user actions.
 
 ![Message](documentation/images/message-post.png) 
-![Message](documentation/images/message-sign-in.png) 
+![Message](documentation/images/message-sing-in.png) 
 ![Message](documentation/images/message-sign-out.png)
+![Message](documentation/images/message-password.png) 
 
 
 - - -
