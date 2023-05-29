@@ -99,15 +99,15 @@ The deployed project was tested using the Lighthouse Audit tool to check for any
 
 - Home (Landing page - not Logged in)
 
-![Home](documentation/images/l-home)
+![Home](documentation/images/l-home.png)
 
 - Sing Up
 
-![Sing Up](documentation/images/l-singup.png)
+![Sing Up](documentation/images/l-signup.png)
 
 - Sing In
 
-![Sing In](documentation/images/l-singin.png)
+![Sing In](documentation/images/l-signin.png)
 
 - Sing Out
 ![Sing Out](documentation/images/l-signout.png)
@@ -121,28 +121,49 @@ The deployed project was tested using the Lighthouse Audit tool to check for any
 
 - Home (Main Feed - Logged in)
 
-![Home - Main Feed - Logged in](documentation/images/l-all-posts-list.png)
+![Home - Main Feed - Logged in](documentation/images/l-main-feed.png)
+
+* Best Practices: Displays images with incorrect aspect ratio - this will happen due to the uploading of photos by the user.
 
 - Following
-![Following](documentation/images/l-)
-- Post 
-![Post](documentation/images/l-)
+
+![Following](documentation/images/l-following.png)
+
+- Post Detail
+
+![Post Detail](documentation/images/l-)
+
 - Edit post
 ![Edit post](documentation/images/l-)
+
 - Delete post
-![Delete post](documentation/images/l-)
+
+![Delete post](documentation/images/l-post-delete.png)
+
 - Edit comment
 ![Edit comment](documentation/images/l-)
+
 - Delete comment
-![Delete comment](documentation/images/l-)
+
+![Delete comment](documentation/images/l-comment-delete.png)
+
 - Users
 ![Users](documentation/images/l-)
+
 - Search
-![Search](documentation/images/l-)
+
+![Search](documentation/images/l-search.png)
+
+![Search](documentation/images/l-search-no-one.png)
+
 - Profile
-![Profile](documentation/images/l-)
+
+![Profile](documentation/images/l-profile.png)
+
 - Profile Update
-![Profile Update](documentation/images/l-)
+
+![Profile Update](documentation/images/l-profile-update.png)
+
 - Followers
 ![Followers](documentation/images/l-)
 

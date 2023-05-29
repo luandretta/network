@@ -140,7 +140,7 @@
                 <form method="POST" action="{% url 'comment-like' post.pk  comment.pk %}">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ request.path }}">
-                    <button class="like-button" type="submit">
+                    <button class="like-button" name="like" type="submit">
                         {% if request.user in comment.likes.all %}
                         <i class="fa-solid fa-thumbs-up"></i>
                         {% else %}
@@ -153,7 +153,7 @@
                 <form method="POST" action="{% url 'comment-dislike' post.pk  comment.pk %}">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ request.path }}">
-                    <button class="like-button" type="submit">
+                    <button class="like-button" name="dislike" type="submit">
                         {% if request.user in comment.dislikes.all %}
                         <i class="fa-solid fa-thumbs-down"></i>
                         {% else %}
@@ -164,7 +164,7 @@
                 </form>
                 <!-- Reply a Comment button-->
                 <div>
-                    <button class="comment-button"><i class="fa-regular fa-comment"
+                    <button class="comment-button" name="reply"><i class="fa-regular fa-comment"
                             onclick="commentReplyToggle('{{ comment.pk }}')"></i></button>
                 </div>
             </div>

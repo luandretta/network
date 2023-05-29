@@ -28,8 +28,8 @@
                 {% endif %}
             </div>
             <p class="post-text">
-                <a class="text-primary" href="{% url 'profile' post.author.profile.pk %}">@ {{ post.author }}</a>
-                <small class="text-muted"> {{ post.posted_on }}</small>
+                <a class="text-primary aegean" href="{% url 'profile' post.author.profile.pk %}">@ {{ post.author }}</a>
+                <small class="aegean">{{ post.posted_on }}</small>
                 <!-- Author can edit the post -->
                 {% if request.user == post.author %}
                 <a href="{% url 'post-edit' post.pk %}" class="edit">
