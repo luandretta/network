@@ -42,18 +42,19 @@
                         </a>
                         {% endif %}
                     </span>
-                    {% else %}
-                    <h3 class="py-4">{{ user.username }}
-                        <span>
-                            {% if request.user == user %}
-                            <a href="{% url 'profile-edit' profile.pk %}" class="edit">
-                                <i class="far fa-edit"></i>
-                            </a>
-                            {% endif %}
-                        </span>
-                    </h3>
-                    {% endif %}
                 </h3>
+                {% else %}
+                <h3 class="py-4">{{ user.username }}
+                    <span>
+                        {% if request.user == user %}
+                        <a href="{% url 'profile-edit' profile.pk %}" class="edit">
+                            <i class="far fa-edit"></i>
+                        </a>
+                        {% endif %}
+                    </span>
+                </h3>
+                {% endif %}
+
                 {% if profile.bio %}
                 <p class="mx-2">{{ profile.bio }}</p>
                 {% endif %}
@@ -169,30 +170,32 @@
     <nav aria-label="Post navigation">
         <ul class="pagination justify-content-center mt-5">
             {% if posts.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page={{ posts.previous_page_number }}"><span aria-hidden="true">&laquo;</span></a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ posts.previous_page_number }}"><span
+                        aria-hidden="true">&laquo;</span></a></li>
             {% else %}
             <li class="page-item d-none">
-                <a class="page-link" tabindex="-1" href="#" aria-disabled="true"><span aria-hidden="true">&laquo;</span></a>
+                <a class="page-link" tabindex="-1" href="#" aria-disabled="true"><span
+                        aria-hidden="true">&laquo;</span></a>
             </li>
             {% endif %}
             {% for i in posts.paginator.page_range %}
             <li class="page-item">
                 {% if i == posts.number %}
-                <a class="page-link  rose"
-                    href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                <a class="page-link  rose" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
                 {% else %}
-                <a class="page-link"
-                    href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                <a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
                 {% endif %}
             </li>
             {% endfor %}
             {% if posts.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ posts.next_page_number }}"><span aria-hidden="true">&raquo;</span></a>
+                <a class="page-link" href="?page={{ posts.next_page_number }}"><span
+                        aria-hidden="true">&raquo;</span></a>
             </li>
             {% else %}
             <li class="page-item d-none">
-                <a class="page-link" tabindex="-1" href="#" aria-disabled="true"><span aria-hidden="true">&raquo;</span></a>
+                <a class="page-link" tabindex="-1" href="#" aria-disabled="true"><span
+                        aria-hidden="true">&raquo;</span></a>
             </li>
             {% endif %}
         </ul>

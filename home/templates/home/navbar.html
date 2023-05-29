@@ -12,12 +12,12 @@
             href="{% url 'index' %}" 
             {% endif %}>
             <i class="fa-solid fa-users-between-lines"></i> Titbit</a>
+            {% if user.is_authenticated %}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            {% if user.is_authenticated %}
             <!-- Feed from following users -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -35,7 +35,7 @@
                 </ul>
                 <!-- User settings-->
                 <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle black" data-bs-toggle="dropdown" role="buton"
+                    <a class="nav-link dropdown-toggle black" data-bs-toggle="dropdown" role="button"
                         aria-expanded="false"><i class="fas fa-user black"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right dropdown-user ">
                         <li><a class="dropdown-item dropdown-user " href="{% url 'profile' request.user.profile.pk %}">My Profile</a>

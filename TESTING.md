@@ -97,6 +97,11 @@ There are no remaining bugs.
 
 The deployed project was tested using the Lighthouse Audit tool to check for any major issues. The results for each page are listed bellow.
 
+**Best Practices**: Displays images with incorrect aspect ratio - this will happen due to the uploading of photos by the user.
+
+Some tests were made using DevTool with Google Chrome, but it was very slow and other tests were made with Microsoft Edge, where the language was German. (Leistung = Performance, Barrierefreiheit = Accessibility)
+
+
 - Home (Landing page - not Logged in)
 
 ![Home](documentation/images/l-home.png)
@@ -110,6 +115,7 @@ The deployed project was tested using the Lighthouse Audit tool to check for any
 ![Sing In](documentation/images/l-signin.png)
 
 - Sing Out
+
 ![Sing Out](documentation/images/l-signout.png)
 
 - Forgot Password 
@@ -117,13 +123,12 @@ The deployed project was tested using the Lighthouse Audit tool to check for any
 ![Forgot Password](documentation/images/l-password-reset.png)
 
 - Change Password
-![Change Password](documentation/images/l-)
+
+![Change Password](documentation/images/l-password-change.png)
 
 - Home (Main Feed - Logged in)
 
 ![Home - Main Feed - Logged in](documentation/images/l-main-feed.png)
-
-* Best Practices: Displays images with incorrect aspect ratio - this will happen due to the uploading of photos by the user.
 
 - Following
 
@@ -131,28 +136,35 @@ The deployed project was tested using the Lighthouse Audit tool to check for any
 
 - Post Detail
 
-![Post Detail](documentation/images/l-)
+![Post Detail](documentation/images/l-post-detail.png)
 
 - Edit post
-![Edit post](documentation/images/l-)
+
+![Edit post](documentation/images/l-post-edit.png)
 
 - Delete post
 
 ![Delete post](documentation/images/l-post-delete.png)
 
 - Edit comment
-![Edit comment](documentation/images/l-)
+
+![Edit comment](documentation/images/l-comment-edit.png)
 
 - Delete comment
 
 ![Delete comment](documentation/images/l-comment-delete.png)
 
 - Users
-![Users](documentation/images/l-)
+
+![Users](documentation/images/l-users.png)
 
 - Search
 
+Valid query:
+
 ![Search](documentation/images/l-search.png)
+
+No user found:
 
 ![Search](documentation/images/l-search-no-one.png)
 
@@ -165,7 +177,8 @@ The deployed project was tested using the Lighthouse Audit tool to check for any
 ![Profile Update](documentation/images/l-profile-update.png)
 
 - Followers
-![Followers](documentation/images/l-)
+
+![Followers](documentation/images/l-followers.png)
 
 
 - - -
@@ -184,48 +197,151 @@ In order to properly validate the HTML pages with Jinja syntax, the steps are fo
 The result for each page are listed bellow:
 
 - Home (Landing)
-![]()
+
+First test:
+**Warning**: The type attribute is unnecessary for JavaScript resources. - Removed from script.
+
+Second test:
+
+![HTML Validation - Home](documentation/images/v-html-home.png)
+
 - Sing Up
-![]()
+
+![HTML Validation - Singup](documentation/images/v-html-signup.png)
+
 - Sing In
-![]()
+
+![HTML Validation - Singin](documentation/images/v-html-signin.png)
+
 - Sing Out
-![]()
+
+![HTML Validation - Singout](documentation/images/v-html-signout.png)
+
+The error message was ignored, because the the `aria-controls` identifies an element in the same document whose contents are controlled by the current element.
+
+![HTML Validation - Singout](documentation/images/v-html-signout-id.png)
+
 - Forgot Password
-![]()
+
+First test:
+
+Error: Attribute mt-2 not allowed on element p at this point. - Add the missed `class=" "`.
+
+Second test:
+
+![HTML Validation - Password Reset](documentation/images/v-html-password-reset.png)
+
 - Home (Main Feed - Logged in)
-![]()
+
+![HTML Validation - Main Feed](documentation/images/v-html-main-feed.png)
+
 - Following
-![]()
+
+First test:
+
+![HTML Validation - Following Feed](documentation/images/v-html-following-1.png)
+
+"Picture uploaded" was added as an alt attribute to uploaded image by user.
+Second test:
+![HTML Validation - Following Feed](documentation/images/v-html-following-2.png)
+
 - Post Detail
-![]()
+
+![HTML Validation - Post Detail](documentation/images/v-html-post-detail.png)
+
 - Edit post
-![]()
+
+![HTML Validation - Edit Post](documentation/images/v-html-post-edit.png)
+
 - Delete post
-![]()
+
+![HTML Validation - Delete Post](documentation/images/v-html-post-delete.png)
+
 - Edit comment
-![]()
+
+![HTML Validation - Edit Comment](documentation/images/v-html-comment-edit.png)
+
 - Delete comment
-![]()
+
+![HTML Validation - Delete Comment](documentation/images/v-html-comment-delete.png)
+
 - Users
-![]()
+
+First test:
+
+![HTML Validation - Users](documentation/images/v-html-users-1.png)
+
+The double escape `&amp;amp;` was added.
+
+Second test:
+
+![HTML Validation - Users](documentation/images/v-html-users-2.png)
+
 - Search
-![]()
+
+First test:
+
+![HTML Validation - Search](documentation/images/v-html-search.png)
+The double escape `&amp;amp;` was added.
+Second test:
+![HTML Validation - ](documentation/images/v-html-search-2.png)
+
 - Profile
-![]()
+
+First test:
+
+![HTML Validation - Profile](documentation/images/v-html-profile.png)
+
+ - `<h3/>` written in the right place.
+
+Second test:
+
+![HTML Validation - Profile](documentation/images/v-html-profile-2.png)
+
 - Profile Update
-![]()
+
+![HTML Validation - Profile Update](documentation/images/v-html-profile-update.png)
+
+- Change Password
+
+First test:
+
+![HTML Validation - Change Password](documentation/images/v-html-password-change-error.png)
+
+Div was removed.
+
+Second test:
+
+![HTML Validation - Change Password](documentation/images/v-html-password-change.png)
+
 - Followers
-![]()
+
+![HTML Validation - Followers](documentation/images/v-html-followers.png)
+
+- Error 403
+
+![HTML Validation - Error 403](documentation/images/v-html-error-403.png)
+
+- Error 404
+
+![HTML Validation - Error 404](documentation/images/v-html-error-404.png)
+
+
+- Error 500
+
+![HTML Validation - Error 500](documentation/images/v-html-error-500.png)
+- - - 
 
 
 ### CSS
+
 The [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/) was used to validate the CSS file.
 
 | File | Screenshot | Notes |
 | --- | --- | --- |
 | style.css | ![style.css](documentation/images/v-css.png) | ![style.css warning](documentation/images/v-css-warning.png) |
 
+- - - 
 
 ### JAVASCRIPT
 
@@ -234,6 +350,10 @@ The [JShint Validator](https://jshint.com/) was used to validate the JavaScript 
 | File | Screenshot | Notes |
 | --- | --- | --- |
 | titbit.js | ![screenshot](documentation/images/v-javascript.png) | Unused variables: commentReply Toggle, showNotifications and removeNotifications |
+
+
+- - - 
+
 
 ### PYTHON
 

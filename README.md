@@ -590,7 +590,7 @@ There are 403, 404, 405 and 500 error custom pages.
 
 Error 403
 
-![Error Custom Page](documentation/images/error.png)
+![Error Custom Page](documentation/images/error-403.png)
 
 Error 404
 
@@ -1061,6 +1061,8 @@ Please see [TESTING.md](TESTING.md) for all testing performed
 * [Testing Tools](https://docs.djangoproject.com/en/4.2/topics/testing/tools/#django.test.Client.get)
 * [Unit Test](https://adamj.eu/tech/2020/06/15/how-to-unit-test-a-django-form/)
 * [Redirect after successful password change](https://github.com/pennersr/django-allauth/issues/468)
+* [Character Reference Paginator](https://stackoverflow.com/questions/34206532/replaced-with-amp-w3c-validator-still-showing-error)
+* [Aria-controls](https://rocketvalidator.com/html-validation/the-aria-controls-attribute-must-point-to-an-element-in-the-same-document)
 
 ###  Content 
 📝

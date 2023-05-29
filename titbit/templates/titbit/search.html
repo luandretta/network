@@ -44,10 +44,10 @@
             <li class="page-item">
                 {% if i == users_profile_list.number %}
                 <a class="page-link  rose"
-                    href="?query={{ request.GET.query }}&page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                    href="?query={{ request.GET.query }}&amp;amp;page={{ forloop.counter }}">{{ forloop.counter }}</a>
                 {% else %}
                 <a class="page-link"
-                    href="?query={{ request.GET.query }}&page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                    href="?query={{ request.GET.query }}&amp;amp;page={{ forloop.counter }}">{{ forloop.counter }}</a>
                 {% endif %}
             </li>
             {% endfor %}

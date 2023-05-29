@@ -60,7 +60,7 @@
             <div class="position-relative">
                 <p>{{ post.content }}</p>
                 {% if post.image %}
-                <img src="{{ post.image.url }}" class="post-image-upload" alt="picture uploaded">
+                <img src="{{ post.image.url }}" class="post-image-upload" alt="picture uploaded by user">
                 {% endif %}
                 <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
             </div>
