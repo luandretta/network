@@ -275,52 +275,93 @@ Wireframes were created for mobile, tablet and desktop using [Balsamiq](https://
 #### Home Page (Landing Page)
 The home page is the landing page that the user will access if he has not yet started a Titbit session, i.e. if the user is not logged in.
 
-![Home Page](documentation/wireframes/w-home.png)
+| Desktop | Tablet | Mobile |
+| --- | --- | --- |
+| ![Home Page](documentation/wireframes/w-home.png) | ![Home Page](documentation/wireframes/w-home-ipad.png)| ![Home Page](documentation/wireframes/w-home-mobile.png) |
 
-#### Sing Up, sing In and Change Password
-There's a form according to the purpose of the page, but the layout are the same
 
-![Sing Up, sing In and Change Password](documentation/wireframes/w-singup.png)
+
+#### Sing Up, Sing In and Change Password
+There's a form according to the purpose of the page, but the layout are the same.
+
+| Desktop | Tablet | Mobile |
+| --- | --- | --- |
+| ![Sing Up, sing In and Change Password](documentation/wireframes/w-singup.png) | ![Sing Up, sing In and Change Password](documentation/wireframes/w-singup-ipad.png)| ![Sing Up, sing In and Change Password](documentation/wireframes/w-singup-mobile.png)|
+
+
 
 #### Sing Out
 There's a confirmation to avoid mistakes.
 
-![Sing Out](documentation/wireframes/w-singout.png)
+| Desktop | Tablet | Mobile |
+| --- | --- | --- |
+| ![Sing Out](documentation/wireframes/w-singout.png) | ![Sing Out](documentation/wireframes/w-singout-ipad.png)| ![Sing Out](documentation/wireframes/w-singout-mobile.png)|
+
 
 #### Profile
 
-![Profile Page](documentation/wireframes/w-profile.png)
+| Desktop | Tablet | Mobile |
+| --- | --- | --- |
+| ![Profile Page](documentation/wireframes/w-profile.png) | ![Profile Page](documentation/wireframes/w-profile-ipad.png)| ![Profile Page](documentation/wireframes/w-profile-mobile.png)|
+
+
 
 #### Edit Profile
 
-![Edit Profile Page](documentation/wireframes/w-update-profile.png)
+| Desktop | Tablet | Mobile |
+| --- | --- | --- |
+| ![Edit Profile Page](documentation/wireframes/w-update-profile.png) | ![Edit Profile Page](documentation/wireframes/w-update-profile-ipad.png)| ![Edit Profile Page](documentation/wireframes/w-update-profile-mobile.png)|
+
 
 #### Search Result, Users and Followers
+
 User results list as required.
 
-![Profile Page](documentation/wireframes/w-users.png)
+| Desktop | Tablet | Mobile |
+| --- | --- | --- |
+| ![Profile Page](documentation/wireframes/w-users.png) | ![Profile Page](documentation/wireframes/w-users-ipad.png)| ![Profile Page](documentation/wireframes/w-users-mobile.png)|
 
-#### All Posts and Following 
 
-![All Posts and Following](documentation/wireframes/w-feed.png)
+#### All Posts and Following Feed
+
+The posts have the same layout regardless of the page that will be displayed. 
+
+The two feed pages have the same layout, except that on the following page there is no form to post new titbits.
+
+![Post layout](documentation/wireframes/w-post.png)
+
+| Desktop | Tablet | Mobile |
+| --- | --- | --- |
+| ![All Posts and Following](documentation/wireframes/w-feed.png) | ![All Posts and Following](documentation/wireframes/w-feed-ipad.png) | ![All Posts and Following](documentation/wireframes/w-feed-mobile.png) |
 
 
 #### Post Detail
 
-![Post Detail Page](documentation/wireframes/w-post-detail.png)
+| Desktop | Tablet | Mobile |
+| --- | --- | --- |
+| ![Post Detail Page](documentation/wireframes/w-post-detail.png) | ![Post Detail Page](documentation/wireframes/w-post-detail-ipad.png) | ![Post Detail Page](documentation/wireframes/w-post-detail-mobile.png) |
+
 
 #### Delete Confirmation
 
-![Delete Confirmation](documentation/wireframes/w-delete.png)
+| Desktop | Tablet | Mobile |
+| --- | --- | --- |
+| ![Delete Confirmation](documentation/wireframes/w-delete.png) | ![Delete Confirmation](documentation/wireframes/w-delete-ipad.png) | ![Delete Confirmation](documentation/wireframes/w-delete-mobile.png) |
+
+
 
 #### Edit Post and Comment
 
-![Edit Post and Comment](documentation/wireframes/w-edit.png)
+| Desktop | Tablet | Mobile |
+| --- | --- | --- |
+| ![Edit Post and Comment](documentation/wireframes/w-edit.png) | ![Edit Post and Comment](documentation/wireframes/w-edit-ipad.png) | ![Edit Post and Comment](documentation/wireframes/w-edit-mobile.png) |
 
 
 #### Error Pages
 
-![Error Pages](documentation/wireframes/w-error.png)
+| Desktop | Tablet | Mobile |
+| --- | --- | --- |
+| ![Error Pages](documentation/wireframes/w-error.png) | ![Error Pages](documentation/wireframes/w-error-ipad.png) | ![Error Pages](documentation/wireframes/w-error-mobile.png) |
 
 
 - - - 
@@ -594,7 +635,7 @@ Error 403
 
 Error 404
 
-![Error 404](documentation/images/error404.png)
+![Error 404](documentation/images/error-404.png)
 
 Error 405
 
@@ -637,6 +678,7 @@ Due to responsiveness, a hamburger menu is used.
 Clicking on the user icon, the user can access your own profile and sign out.
 
 * User dropdown menu
+
 ![User dropdown menu](documentation/images/user-icon.png)
 
 * **Footer** 
@@ -747,16 +789,18 @@ Besides the features were registered as Won't Have in the MoSCoW prioritization 
 
 * Add calendar to birth date.
 * Apply paginator on Post Detail Page.
-* Prepopulate the login fields after a user registers on the site and is redirected to the login page - this is good UX as we shouldn't expect a user to fill in the form with information we already have. 
-* Business Profile.
-* Advertisements.
-* App for smartphones.
-* Refactor the like and dislike code for front-end to avoid rendering.
-* Events page.
-* 
+* Prepopulate the login fields after a user registers on the site and is redirected to the login page - this is good UX as we shouldn't expect a user to fill in the form with information we already have.
+* Buildin Photo Editor
+* Business Profile
+* Advertisements
+* App for smartphones
+* Refactor the like and dislike code for front-end to avoid rendering
+* Events page
+
 
 ###  Accessibility
 🗣️
+
 I have been mindful during coding to ensure that the website is as accessible friendly as possible. This has been have achieved by:
 
 * Using semantic HTML.
