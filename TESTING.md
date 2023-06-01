@@ -118,9 +118,14 @@ Some tests were made using DevTool with Google Chrome, but it was very slow and 
 
 ![Sing Out](documentation/images/l-signout.png)
 
-- Forgot Password 
+- Reset Password 
 
-![Forgot Password](documentation/images/l-password-reset.png)
+![Reset Password](documentation/images/l-password-reset.png)
+
+
+- Reset Password Done
+
+![Reset Password Done](documentation/images/l-password-reset-done.png)
 
 - Change Password
 
@@ -221,7 +226,7 @@ The error message was ignored, because the the `aria-controls` identifies an ele
 
 ![HTML Validation - Singout](documentation/images/v-html-signout-id.png)
 
-- Forgot Password
+- Reset Password
 
 First test:
 
@@ -230,6 +235,11 @@ Error: Attribute mt-2 not allowed on element p at this point. - Add the missed `
 Second test:
 
 ![HTML Validation - Password Reset](documentation/images/v-html-password-reset.png)
+
+- Reset Password Done
+
+![HTML Validation - Password Reset Done](documentation/images/v-html-password-reset-done.png)
+
 
 - Home (Main Feed - Logged in)
 

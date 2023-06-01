@@ -456,7 +456,7 @@ This User Model was built using [Django's Allauth Library](https://django-allaut
 
 ### Pages
 
-The website is comprised of 20 pages which are extended from a base template.
+The website is comprised of 21 pages which are extended from a base template.
 
 1. **Home Page** 
 
@@ -619,12 +619,25 @@ The user is able to change his password.
 
 In case the user forgets his password to log in, he can click on the "Reset your password" option, being redirected and asked for his email to receive the link to reset his password.
 
-For this function the email was created: titbit_team@outlook.com. This functionality was first tested in the Backend.
+For this function the email was created: titbitteam@gmail.com. This functionality was first tested in the Backend.
 
-![Reset Password](documentation/images/reset-password-outlook.png)
+![Reset Password](documentation/images/reset-password-terminal.png)
 
+![Reset Password](documentation/images/password-reset-page.png)
 
-17. **Error Custom Pages**
+The issue with reset password is described on [TESTING.md](TESTING.md).
+
+17. **Reset Password Done**
+
+After the user sends his email to reset his password he will receive a notice that an email with a link has been sent. 
+
+![Reset Password](documentation/images/password-reset-done.png)
+
+The user will receive an email with a link to reset his password and confirming his username.
+
+![Reset Password](documentation/images/password-reset-email.png)
+
+18. **Error Custom Pages**
 
 If a user ends up on a page that either doesn't exist or that they shouldn't be on then they'll be shown an error page with a button to bring them back to their feed.
 There are 403, 404, 405 and 500 error custom pages.
@@ -649,11 +662,13 @@ Error 500
 ### Elements found on each page
 
 * **Logo** 
+
 The logo is displayed on the left side menu with the title Titbit.
 Clicking on it redicts to all posts, if the user is logged in.
 ![Titbit favicon](documentation/images/favicon.png)
 
 * **Navigation** 
+
 The Navbar is displayed on all pages of the website and allows users to navigate the site with ease. 
 The navbar is comprised of a logo, the sites name, following posts, users list, notifications, user icon with dropdown menu and a search bar.
 In the landing page has only the logo and title, the user muss be logged in to navigate the site.
@@ -693,6 +708,7 @@ The footer appears across the website and includes information about the develop
 The application has Post and Comment Forms, described below:
 
 * **Post Form**
+
 The user can create their posts at the all posts lists page, that will be displayed own profile and following feed (if he is followed). 
 There are a content inpunt and an image input.
 There's a placeholder in the form for the user to "Post the news :-)".
@@ -755,6 +771,7 @@ There are a hover effect changing the blue color  to rose to gain attention.
 ![Back Hover](documentation/images/back-button-hover.png)
 
 * **Notifications**
+
 There are three types of notifications: like, comment and follow that permit the user knows what's going on.
 There are built with custom tags.
 The notifications tab on the nav menu shows the number of unread notifications and when a user clicks it a dropdown will appear with a list of their notifications. If a user clicks on the notification it will bring them to the user or post, to do with the notification. 
@@ -766,12 +783,14 @@ If the user wants to remove a notification without going to the associated page,
 ![Notifications](documentation/images/notifications-close.png)
 
 * **Pagination**
+
 The pagination is implemented in the all posts list, following feed, posts on profile page, followers, users and search results avoiding infinite scroll and increase the user experience.
 The user can easily navigate with the paginator.
 
 ![Pagination](documentation/images/pagination.png)
 
 * **Messages**
+
 Some personalized messages are displayed after certain user actions.
 
 ![Message](documentation/images/message-post.png) 
