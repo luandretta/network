@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['titbit-network.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['titbit-network.herokuapp.com', 'localhost', '8000-luandretta-network-y8g6rga1ayk.ws-eu98.gitpod.io']
 
 
 # Application definition

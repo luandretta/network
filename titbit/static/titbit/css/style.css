@@ -16,11 +16,11 @@
 
 
 * {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     border: none;
     background-color: var(--light-blue);
-    /* outline: 1px solid red;  */
+    outline: 1px solid red; 
     box-sizing: border-box;
 }
 
@@ -35,10 +35,10 @@ html, body {
 }
 
 body {
-     padding-top: 70px;
-     display: flex;
-     flex-direction: column;
-     min-height: 100vh;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 h1, h2 {

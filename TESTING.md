@@ -80,7 +80,7 @@ The deployed project was tested on multiple browsers to check for compatibility 
 |10 | Default profile_pic doesn't display | Add boolean to templates | Closed |
 |11 | Reply comment icon button doesn't work. Parent_id was not found. | Remove '' from argument in the function. | Closed |
 |12 | Default profile picture doesn't be displayed at followers_list. | Edit the template followers_list with boolean | Closed | 
-|13 | ConnectionRefusedError at /accounts/password/reset/ | Google and Gitpod don't see eye-to-eye and will not send emails from a Google SMPT account. Use outlook account to send email to reset password  | Closed |
+|13 | ConnectionRefusedError at /accounts/password/reset/ | Google and Gitpod don't see eye-to-eye and will not send emails from a Google SMPT account. Use outlook account to send email to reset password, but got Error 500 at Heroku, then changed to a new google account, turn on the 2-Step Verification and use the App Password.| Closed |
 |14 | Skip collestactic at Heroky during deployment | Run the command **python manage.py collectstatic** then deploy the project again. | Closed|
 |15 | Couldn't test the application using a free version of Elephant as a database | Create a temporary database to test the application | Closed |
 |16 | Post and Comment form doesn't clear after it's submitted | Call the empty form after save the content posted | Closed |
