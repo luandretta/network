@@ -76,13 +76,19 @@ The aim of this project was to build a site that allows users to easily sign, ke
 
 
 ### Agile
+
 The Agile Tool was used to help to organize and prioritize the tasks using Project Boards on GitHub.
-A Template for issues was created to speed up the process of adding User Stories to this project. In the repositorie, head over to the settings, then Set Up Templates on the Features. The Issue Template helps to add enough information to the card, so the Developer knoks what are the MVP Points to address.
+
+In the first instance a spreadsheet was created to help gather details by theme to later define the epics. Themes: Account Management, Profile, Post Pool, Navigation and Admin.
+
+A Template for issues was created to speed up the process of adding User Stories to this project. 
+
+* In the repositorie, head over to the settings, then Set Up Templates on the Features. The Issue Template helps to add enough information to the card, so the Developer knoks what are the MVP Points to address.
+
 ![Issues template](documentation/images/set-up-template.png)
 
 ![Issues template](documentation/images/user-story-template.png)
 
-A Sheet was created to help gathering details to place in each card. 
 
 The MoSCow priorization and customized labels to user stories were used to priorize and implement the features.
 
@@ -175,27 +181,25 @@ As a registered user of the site, I want to be able to:
 * be notified when other users comment or like my posts or follow/unfollow me, so that I can check it.
 * read the feed only from following users, so that I don't waste my time with unwanted posts.
 * access a list from followers, so that I can find others users to follow them.
-* change password, so that I feel more secure.
-
 
 
 *Could Have*
 
-* reshare other people's posts, so that I can share their thoughts with my followers.
 * reply comments, so that I can interate with others users.
-* report posts to admins, so that I can notify inappropriate content.
-* block users, so that I can hide my content from unwanted users.
 * reset my password, so that I can regain access to my account.
+* change password, so that I feel more secure.
 * add a background picture so that I will show what I like to other users.
- 
 
 
 *Won't Have*
 
+* reshare other people's posts, so that I can share their thoughts with my followers.
 * call users, so that I can communicate with them more quickly.
 * create communities, so that I can share content by specific theme.
 * message other users, so that I can get in touch with them privately.
 * write testimonials about other users, so that I can testify about the other users according to the relationship I have with them.
+* block users, so that I can hide my content from unwanted users.
+* report posts to admins, so that I can notify inappropriate content.
 
 
 
@@ -207,19 +211,17 @@ As an administrator for the site I want to be able to:
 
 *Must Have*
 * remove any content from any user that could be offensive, so that I can moderate the all content.
+* have own profil, so that I can have user experience.
 
-*Should Have*
-* access a page only for admins to see flagged user posts, so that I can see a list of posts that possibly need to be deleted.
-* unflag a post if a deletion is not needed, so that I can remove it from the flagged posts list.
 
 *Could Have*
 * Edit the admin panel.
+* access a page only for admins to see flagged user posts, so that I can see a list of posts that possibly need to be deleted.
+* unflag a post if a deletion is not needed, so that I can remove it from the flagged posts list.
 
 
 *Won't Have*
 * suspend, block or delete users who not respect the rules, so that I can maintain site guidelines.
-
-
 
 
 </details>
@@ -846,7 +848,7 @@ I have been mindful during coding to ensure that the website is as accessible fr
 * CSS - site desing and layout
 * CSS :root variables - custom properties
 * Javascript - user interaction
-* Python - back-end programming language
+* Python 3.8.11 - back-end programming language
 
 
 ### Databases Used
@@ -984,10 +986,14 @@ Deployment steps are as follows, after account setup:
 
 | Key | Value |
 | --- | --- |
-| `CLOUDINARY_URL` | insert your own Cloudinary API key here |
-| `DATABASE_URL` | insert your own ElephantSQL database URL here |
+| `CLOUDINARY_URL` | Insert your own Cloudinary API key here |
+| `DATABASE_URL` | Insert your own ElephantSQL database URL here |
 | `DISABLE_COLLECTSTATIC` | 1 (*this is temporary, and can be removed for the final deployment*) |
-| `SECRET_KEY` | this can be any random secret key |
+| `SECRET_KEY` | This can be any Django random secret key |
+| `EMAIL_USER` | Insert your e-mail (a gmail was used) |
+| `EMAIL_HOST_PASSWORD` | Insert the app password |
+
+
 
 Heroku needs two additional files in order to deploy properly.
 - requirements.txt
@@ -1132,9 +1138,6 @@ Please see [TESTING.md](TESTING.md) for all testing performed
 
 Content for this project was written by me, Lucimeri Andretta. 
 
-### Media
-
-* 
 
 ###  Acknowledgments 
 👋

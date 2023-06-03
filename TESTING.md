@@ -23,6 +23,8 @@ Return back to the [README.md](README.md) file.
 The deployed application was tested on multiple devices to check for responsiveness issues.
 It works as expected according to the wireframes and no issue was found.
 
+![Responsiveness](documentation/images/responsiveness.png)
+
 |Device| Screenshot | 
 |:---|:---: |
 | Desktop |  ![Desktop](documentation/images/desktop.png)  |
@@ -217,19 +219,135 @@ The [Code Institute Python Linter](https://pep8ci.herokuapp.com)was used to vali
 
 ## USER STORIES TESTING
 
-The User Stories testing  were listed bellow:
+The implemented User Stories were tested and listed bellow:
+
+### New Site Users
+
+- - -
+
+As a first time user of the site, I want to be able to:
+
+*Must Have*
 
 | User Stories | Screenshot  | Notes|
 | --- | --- | --- |
-|  |   | Pass |
-|  |   | Pass |
-|  |   | Pass |
-|  |   | Pass |
+| understand what the site is for and how to navigate the site, so I can decide wheter or not to sign up. |   | Pass |
+| register for an account, so that I can create my profile and explore the website. |   | Pass |
+| easily navigate the site, so that I can access what I need at the click of a button. |   | Pass |
+
+
+
+### **Registered Users**
+
+- - -
+
+As a registered user of the site, I want to be able to:
+
+*Must Have*
+
+| User Stories | Screenshot  | Notes|
+| --- | --- | --- |
+| log in to my account, so that I can access the website. |   | Pass |
+| log out of my account, so that I can end my session |   | Pass |
+| have my own profile, so that I can be found from my friends. |   | Pass |
+| edit my profile, so that I can update or personalize it. |   | Pass |
+| read the new posts, so that I can keep up to date |   | Pass |
+| create, edit, delete and view my posts, so that I can have control of my content |   | Pass |
+| know the date and time a post was created, so that I can know how new or old the post is |   | Pass |
+| post pictures, so that I can share moments or toughts |   | Pass |
+| like or dislike other people's posts, so that I can let them know I enjoyed their posts |   | Pass |
+| follow others users, so that I can view their posts on my following feed |   | Pass |
+| unfollow other users, so that I can remove their post from my feed |   | Pass |
+| be followed, so that I can know that other users read my posts |   | Pass |
+| view the number of likes on each post, so that I can see which is the most popular or viral |   | Pass |
+| add a profile picture so that I will be recognized from other users |   | Pass |
+| see a users list, so that I can find others users to follow them |   | Pass |
+| search for an user, so that I can find a specific user to follow him|   | Pass |
+
+
+*Should Have*
+
+| User Stories | Screenshot  | Notes|
+| --- | --- | --- |
+| comment on other people's posts, so that I can be involved in the conversation |   | Pass |
+| read the comments of posts, so that I can know the thoughts from others users and follow them |   | Pass |
+| like other people's comments on posts, so that I can let them know I enjoyed their comment |   | Pass |
+| edit or delete my comments on other people's posts, so that I can edit or remove comments I no longer want published |   | Pass |
+| delete other people's comments on my own posts, so that I can remove unwanted commments |   | Pass |
+| be notified when other users comment or like my posts or follow/unfollow me, so that I can check it |   | Pass |
+| read the feed only from following users, so that I don't waste my time with unwanted posts |   | Pass |
+| access a list from followers, so that I can find others users to follow them |   | Pass |
+
+
+*Could Have*
+
+| User Stories | Screenshot  | Notes|
+| --- | --- | --- |
+| reply comments, so that I can interate with others users |   | Pass |
+| reset my password, so that I can regain access to my account |   | Pass |
+| change password, so that I feel more secure |   | Pass |
+| add a background picture so that I will show what I like to other users |   | Pass |
+
+
+### **Admin User**
+
+- - -
+
+As an administrator for the site I want to be able to:
+
+*Must Have*
+
+| User Stories | Screenshot  | Notes|
+| --- | --- | --- |
+| remove any content from any user that could be offensive, so that I can moderate the all content |   | Pass |
+| have own profil, so that I can have user experience |   | Pass |
 
 
 - - -
 
 ## FEATURES TESTING
+
+The features were manually tested as defensive programming during the development of this project and also after it was finished with the below user acceptance testing:
+
+
+| Page | User Action | Expected Result| Notes |
+| --- | --- | --- | --- |
+|  **Home Page**   |  |  | |
+| Landing | Click on Logo | Redirection to Home page | Pass |
+| | Click on Sign Up button  | Redirection to Sign Up page | Pass |
+| | Click on Sign In button | Redirection to Sign In page | Pass |
+| Logged in | Click on Logo | Redirection to Main Feed | Pass |
+| **Sign Up** |  |  |  |
+| | Enter valid email address | Field will only accept email address format |  |
+| | Enter valid password (twice) | Field will only accept password format |  |
+| | Click Sign Up button on sign up page  | Redirects user to feed |  |
+| | Click on Sign In link | Redirection to Sign In page | Pass |
+| **Sing In** |  |  |  |
+| | Enter valid email address | Field will only accept email address format |  |
+| | Enter valid password | Field will only accept password format |  |
+| | Click Login button on login page | Redirects user to feed |  |
+| | Click Forgot Password | Redirects user to password reset page |  |
+| | Click on Sign Up link | Redirection to Sign Up page | Pass |
+| **Password Reset**|  |  |  |
+| | Enter valid email address |  |  |
+| | Click Reset Password button |  |  |
+| | Receive email with link to reset password |  |  |
+| | Reset password |  |  |
+| **Main Feed** |  |  |  |
+| | Create a post only with text as content |  |  |
+| | Create a post only with picture |  |  |
+| | Create a post with text and picture |  |  |
+| | Click send on new post form without adding content | | |
+| | Click on a post | User will be redirected to the individual post page |  |
+| | Click on the username on a post | User will be redirected to the post author's profile |  |
+| | Click the like button on a post | Like button will fill with colour and the like count will increase by 1, Post author receives a notification letting them know someone has liked their post |  |
+| | Click the like button on a post already liked by the user | Like button will become clear in the middle like count will decrease by 1 |  |
+| | Click the dislike button on a post | Dislike button will fill with colour and the dislike count will increase by 1 |  |
+| | Click the dislike button on a post already liked by the user | Dislike button will become clear in the middle dislike count will decrease by 1 |  |
+| | Click edit icon on own post | User is redirected to post edit page |  |
+| | Click delete icon on own post | User is redirected to post delete confirmation page |  |
+
+
 
 - - -
 
