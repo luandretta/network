@@ -17,6 +17,7 @@ Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
 
 * [User Experience](#user-experience)
   * [Project Goals](#project-goals)
+  * [Agile](#agile)
   * [User Stories](#user-stories)
 
 * [Design](#design)
@@ -25,12 +26,12 @@ Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
   * [Imagery](#imagery)
   * [Wireframes](#wireframes)
   * [Database Schema & User Journey](#database-schema--user-journey)
-    * [User Journey](#user-journey)
-    * [First Draft Database Schema](#first-draft-database-schema)
-    * [Final Database Schema](#final-database-schema)
 
 * [Features](#features)
+  * [Pages](#pages)
   * [Elements Fount on Each Page](#elements-found-on-each-page)
+  * [Forms](#forms)
+  * [Other Elements](#other-elements)
   * [Future Implementations](#future-implementations)
   * [Accessibility](#accessibility)
 
@@ -38,17 +39,16 @@ Link to deployed site: [Titbit](https://titbit-network.herokuapp.com/)
   * [Languages Used](#languages-used)
   * [Databases Used](#databases-used)
   * [Frameworks Used](#frameworks-used)
-  * [Libraries & Packages Used](#libraries--packages-used)
   * [Programs Used](#programs-used)
-    * [Error Handling](#error-handling)
-    * [Defensive Programming](#defensive-programming)
-    * [Database Migration to ElephantSQL](#database-migration-to-elephantsql)
 
 * [Deployment & Local Development](#deployment--local-development)
-  * [Deployment](#deployment)
   * [Local Development](#local-development)
     * [How to Fork](#how-to-fork)
     * [How to Clone](#how-to-clone)
+  * [ElephantSQL Database](#elephantsql-database)
+  * [Cloudinary API](#cloudinary-api)
+  * [heroku Deployment](#heroku-deployment)
+  * [Local Deployment](#local-deployment)
 
 * [Testing](#testing)
   
@@ -908,7 +908,6 @@ I have been mindful during coding to ensure that the website is as accessible fr
 
 The live deployment application can be found on [Heroku](https://titbit-network.herokuapp.com/).
 
-### Deployment
 
 ###   Local Development
 🏡
@@ -1103,7 +1102,6 @@ Please see [TESTING.md](TESTING.md) for all testing performed
 
 ###  Code Used 
 🔗
-* []()
 
 * [How to ...? - Stack Overflow](https://stackoverflow.com/)
 * [How to ...? - W3 Schools](https://www.w3schools.com/django/index.php)
@@ -1144,6 +1142,16 @@ Content for this project was written by me, Lucimeri Andretta.
 
 I would like to acknowledge the following people who helped me along the way in completing this project: 🫶
 
+- first, I would like to thank my family, for their continuous support and understanding while working on the development of this project! It was a difficult time, husband and son were sick, car accident with my daughter, but by the grace of God I could achieve what I planned! 
+
+- I would like to thank my Mentor Brian Macharia for his support, insight expertise, and guidance.
+
+- I would like to thak everyone who tested Titbit befor I sent it, specially my son Matheus. If a 10 year old child could navigate through the site without instructions an adult would be able to do the same! 
+
+- Stackoverflow and Slack community, because someone has ever had the same doubt as me...
+
 </details>
+
+Developed By Lucimeri Andretta for Code Institute's Portfolio Project 4 - 2023. This code will not be changed until the end of the course. Feel free to connect with me on [Linkedin](www.linkedin.com/in/luandretta). 
 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
