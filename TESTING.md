@@ -344,6 +344,11 @@ As an administrator for the site I want to be able to:
 The features were manually tested as defensive programming during the development of this project and also after it was finished with the below user acceptance testing:
 
 
+ Video recorded with testing:
+  
+![Click here to watch](https://github.com/luandretta/network/assets/113333171/bc92614c-b519-40a2-8570-186dfa59dde2)
+
+
 | Page | User Action | Expected Result| Notes |
 | --- | --- | --- | --- |
 |  **Home Page**   |  |  | |
