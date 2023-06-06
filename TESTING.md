@@ -20,7 +20,10 @@ Return back to the [README.md](README.md) file.
 
 ## RESPONSIVENESS TESTING
 
-The deployed application was tested on multiple devices to check for responsiveness issues. The bootstrap classes were used to be as responsive as possible.
+<details>
+<summary>👇</summary>
+
+The deployed application was tested on multiple devices to check for responsiveness issues. The bootstrap classes were used to be as responsive as possible and there was no need to add media queries.
 
 It works as expected according to the wireframes and no issue was found.
 
@@ -33,27 +36,34 @@ It works as expected according to the wireframes and no issue was found.
 | Tablet  |  ![Tablet](documentation/images/ipad.png)  |
 | Mobile  |  ![Mobile](documentation/images/iphone.png)  |
 
+</details>
 
 - - -
 
 ## BROWSER COMPABILITY TESTING
+
+
+<details>
+<summary>👇</summary>
 
 The deployed project was tested on multiple browsers to check for compatibility issues and works as expected.
 
 |Browser | Screenshot | 
 |:---:|:---: |
 | Chrome | ![Chrome](documentation/images/chrome.png)  |
-| Firefox | ![Firefox]()  |
 | Edge  | ![Edge](documentation/images/edge.png)  |
-| Safari | ![Safari]()  |
 | Internet Explorer - Mobile |  ![Internet Explorer](documentation/images/explorer.jpg)  |
 
+</details>
 
 - - -
 
 ## BUGS RESOLVED AND UNRESOLVED 
 
 ☠️ The issues listed in the table below were indentified during the development of the project.
+
+<details>
+<summary>👇</summary>
 
 |N.| Issue |  Action | Status | 
 |:---|:--- |:--- |:--- |
@@ -82,9 +92,14 @@ The deployed project was tested on multiple browsers to check for compatibility 
 
 There are no remaining bugs.
 
+</details>
+
 - - -
 
 ## LIGHTHOUSE TESTING OUTCOMES
+
+<details>
+<summary>👇</summary>
 
 The deployed project was tested using the Lighthouse Audit tool to check for any major issues. The results for each page are listed bellow.
 
@@ -117,10 +132,14 @@ Notes:
 | Profile Update | ![Profile Update](documentation/images/l-profile-update.png) |
 | Followers | ![Followers](documentation/images/l-followers.png) |
 
+</details>
 
 - - -
 
 ## CODE VALIDATION
+
+<details>
+<summary>👇</summary>
 
 ### HTML
 
@@ -216,10 +235,14 @@ The [Code Institute Python Linter](https://pep8ci.herokuapp.com)was used to vali
 | urls.py |  ![Urls](documentation/images/v-titbit-urls.png) | Pass |
 | views.py | ![Views](documentation/images/v-titbit-views.png)  | Pass |
 
+</details>
 
 - - -
 
 ## USER STORIES TESTING
+
+<details>
+<summary>👇</summary>
 
 The implemented User Stories were tested during the development of this project and also after it was finished with the below user acceptance testing:
 
@@ -309,10 +332,14 @@ As an administrator for the site I want to be able to:
 | remove any content from any user that could be offensive, so that I can moderate the all content| Pass |
 | have own profil, so that I can have user experience| Pass |
 
+</details>
 
 - - -
 
 ## FEATURES TESTING
+
+<details>
+<summary>👇</summary>
 
 The features were manually tested as defensive programming during the development of this project and also after it was finished with the below user acceptance testing:
 
@@ -447,11 +474,14 @@ The features were manually tested as defensive programming during the developmen
 | | Click on GitHub Icon | Redirects to GitHub repository | Pass |
 | | Click on "Lucimeri Andretta" link | Redirects to GitHub from the creator of this application | Pass |
 
-
+</details>
 
 - - -
 
 ## AUTOMATED TESTING
+
+<details>
+<summary>👇</summary>
 
 The Django's Built-in Unit Testing Framework was used to test the application functionality on the project without errors.
 To perform the test the following step was used:
@@ -472,5 +502,6 @@ Ran 2 tests without issues.
 ![Teste Case](documentation/images/test-case.png)
 
 
+</details>
 
 Return back to the [README.md](README.md) file.

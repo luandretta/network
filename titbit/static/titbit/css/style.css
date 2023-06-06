@@ -192,6 +192,7 @@ nav ul {
     border: solid 0.4px var(--dark-blue);
     border-radius: 8px;
     padding: 5px;
+    max-width: 85%;
 }
 
 /* ----------------------------------------Notifications */
