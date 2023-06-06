@@ -679,10 +679,6 @@ Error 404
 
 ![Error 404](documentation/images/error-404.png)
 
-Error 405
-
-![Error 405](documentation/images/error-405.png)
-
 Error 500
 ![Error 500](documentation/images/error-500.png)
 

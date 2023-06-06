@@ -20,7 +20,7 @@ class AllPostsListView(LoginRequiredMixin, View):
         posts = Post.objects.all().order_by('-posted_on')
         form = PostForm()
 
-        paginator = Paginator(posts, 4)
+        paginator = Paginator(posts, 10)
         page_num = request.GET.get('page')
         posts_paginator = paginator.get_page(page_num)
 
@@ -63,7 +63,7 @@ class FollowingPostsListView(LoginRequiredMixin, View):
             Q(author__profile__followers__in=[logged_in_user.id])
         ).order_by('-posted_on')
 
-        paginator = Paginator(following, 4)
+        paginator = Paginator(following, 10)
         page_num = request.GET.get('page')
         following_posts = paginator.get_page(page_num)
 
@@ -234,7 +234,7 @@ class ProfileView(LoginRequiredMixin, View):
         user = profile.user
         posts = Post.objects.filter(author=user).order_by('-posted_on')
 
-        paginator = Paginator(posts, 2)
+        paginator = Paginator(posts, 5)
         page_num = request.GET.get('page')
         posts_paginator = paginator.get_page(page_num)
 
@@ -271,7 +271,7 @@ class ProfileListView(LoginRequiredMixin, View):
     def get(self, request):
         profiles = UserProfile.objects.all()
 
-        paginator = Paginator(profiles, 5)
+        paginator = Paginator(profiles, 10)
         page_num = request.GET.get('page')
         profile_list = paginator.get_page(page_num)
 
@@ -508,7 +508,7 @@ class ListFollowers(View):
         profile = get_object_or_404(UserProfile, pk=pk)
         followers = profile.followers.all()
 
-        paginator = Paginator(followers, 2)
+        paginator = Paginator(followers, 10)
         page_num = request.GET.get('page')
         followers_paginator = paginator.get_page(page_num)
 

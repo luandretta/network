@@ -362,6 +362,9 @@ The features were manually tested as defensive programming during the developmen
 | | Click Login button on login page | Redirects user to main feed and displays message | Pass |
 | | Click Forgot Password | Redirects user to password reset page | Pass |
 | | Click on Sign Up link | Redirection to Sign Up page | Pass |
+| **Sing Out** |  |  |  |
+| | click on dropdown menu, then sign out | Redirects to sign out page | Pass |
+| | Click to confirm to sign out  | Redirects to landing page and displays message with the sign out confirmation | Pass |
 | **Password Reset**|  |  |  |
 | | Enter valid email address and click Reset Password button| Request confirmation | Pass |
 | | Receive email with link to reset password | The link to reset the password is valid | Pass |
