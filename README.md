@@ -372,7 +372,7 @@ The two feed pages have the same layout, except that on the following page there
  
 #### User Journey
 
-![User Journey](documentation/images/user-journey.png)
+![User Journey](documentation/images/user-journey.jpg)
 
 #### Database Schema
 
@@ -389,7 +389,11 @@ Models created for this application:
 
 1. **Allauth User Model**
 
-This User Model was built using [Django's Allauth Library](https://django-allauth.readthedocs.io/en/latest/overview.html)
+This User Model was built using [Django's Allauth Library](https://django-allauth.readthedocs.io/en/latest/overview.html).
+
+The minimum length of the account Username was set to 3, due to short names (Bob, Joe, Ian,...).
+
+The user can log in with either his username or his email address.
 
 2. **Post Model**
 
@@ -458,7 +462,7 @@ This User Model was built using [Django's Allauth Library](https://django-allaut
 
 ### Pages
 
-The website is comprised of 21 pages which are extended from a base template.
+The website is comprised more than 20 pages which are extended from a base template.
 
 1. **Home Page** 
 
@@ -521,12 +525,17 @@ There's a button to bring them back to their profile if they decide not to make 
 7. **All posts list**
 
 This main feed shows every single post on the website from all users. It allows the user to find new users to follow and connect with. At the top of the feed there's an area for the user to create a post.
+
 Each post is composed of the author, his profile picture, date and time of publication, content and icons for liking or commenting. It is possible to publish photos as content.
 Posts are displayed in chronological order from newest to oldest and there are a paginator avoiding infinite scroll.
+
 If the author of the post is viewing own post then there are more icons, one to edit and other to delete this post.
+
 Each post is clickable and permit the user to see the post in detail like its comments and replies.
+
 The user can like or dislike each post.
 This feed can be accessed by clicking on the Titbit logo when the user is logged in.
+
 ![All Posts List](documentation/images/feed.png)
 
 
@@ -589,10 +598,14 @@ There's a button to bring them back to the post they commented on if the user ch
 The Username Search Input is on navbar and if the search matches users a list containing all users will displayed.
 If the search has no results will let the user know there was no match. 
 The page also contains a button to bring the user back to the feed.
+
 ![Search](documentation/images/search.png)
 
 In case the search result does not show any results the user will be informed.
+
 ![Search](documentation/images/search-no-user.png)
+
+In case the form is sent empty it will be redirected to the list of all users.
 
 13. **Followers**
 
@@ -617,6 +630,10 @@ The user is able to change his password.
 
 ![Change Password](documentation/images/password-change.png)
 
+The user receives a confirmation that his password was changed.
+
+![Change Password Confirmation](documentation/images/password-changed.jpg)
+
 16. **Reset Password**
 
 In case the user forgets his password to log in, he can click on the "Reset your password" option, being redirected and asked for his email to receive the link to reset his password.
@@ -639,7 +656,17 @@ The user will receive an email with a link to reset his password and confirming 
 
 ![Reset Password](documentation/images/password-reset-email.png)
 
-18. **Error Custom Pages**
+18. **Reset Password Change**
+
+After the user receives an email to reset his password, by clicking on the link he will be redirected to the site and must enter his new password twice.
+
+![Reset Password Change](documentation/images/reset-password-change.jpg)
+
+If the user tries to use the link a second time it will return as a bad request.
+
+![Reset Password - Bad Request](documentation/images/reset-password-bad-token.jpg)
+
+19. **Error Custom Pages**
 
 If a user ends up on a page that either doesn't exist or that they shouldn't be on then they'll be shown an error page with a button to bring them back to their feed.
 There are 403, 404, 405 and 500 error custom pages.
@@ -667,7 +694,9 @@ Error 500
 
 The logo is displayed on the left side menu with the title Titbit.
 Clicking on it redicts to all posts, if the user is logged in.
+
 ![Titbit favicon](documentation/images/favicon.png)
+
 
 * **Navigation** 
 
@@ -704,6 +733,7 @@ The footer appears across the website and includes information about the develop
 
 ![Footer](documentation/images/footer.png)
 
+- - - 
 
 ### Forms
 
@@ -724,26 +754,33 @@ There is only a content input. Clicking on the comment will bring up the reply i
 
 ![Comment Form](documentation/images/comment-form.png)
 
+- - -
 
 ### Other Elements
 
 * **Posts**
 
 Each post is composed of the author, his profile picture, date and time of publication, content and icons for liking or commenting and have a dark blue border for better UX. It is possible to publish photos as content.
+
 Posts are displayed in chronological order from newest to oldest and there are a paginator avoiding infinite scroll.
+
 If the author of the post is viewing own post then there are more icons, one to edit and other to delete this post.
+
 The admin has power to delete posts with inappropriate content.
 
 Own Post
+
 ![Post](documentation/images/post-owner.png)
 
 Each post is clickable and permit the user to see the post in detail like its comments and replies.
 The user can like or dislike each post and see the how many likes and dislikes the post has.
 
 Post from other user
+
 ![Post](documentation/images/post.png)
 
 * **Comments**
+
 Comments are viewed under a post at post detail page and are very similar to posts, can be liked or disliked and has a rose border.
 
 ![Comment](documentation/images/comment-one.png)
@@ -1153,5 +1190,6 @@ I would like to acknowledge the following people who helped me along the way in 
 </details>
 
 Developed By Lucimeri Andretta for Code Institute's Portfolio Project 4 - 2023. This code will not be changed until the end of the course. Feel free to connect with me on [Linkedin](www.linkedin.com/in/luandretta). 
+
 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)

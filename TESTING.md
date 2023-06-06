@@ -78,6 +78,7 @@ The deployed project was tested on multiple browsers to check for compatibility 
 |19 | The table of contents on the README.md an TESTING.md doesn't work due to emojis in titles. | Remove all emojis from titles. | Closed|
 |20 | NameError: name 'settings' is not defined | Remove the static from urls | Closed |
 |21 | Pagination from Search and Users doesn't work correctly | Add `&amp` due to paramenters.| Closed |
+| 22 | Video of the testing exceeds GitHub's file size limit and push was rejected | Delete video, `git reset --soft` was used to reset the last three commits, new commit was done with the changes, then the code was pushed to GitHub successfully | Closed | 
 
 There are no remaining bugs.
 
@@ -223,6 +224,8 @@ The [Code Institute Python Linter](https://pep8ci.herokuapp.com)was used to vali
 The implemented User Stories were tested during the development of this project and also after it was finished with the below user acceptance testing:
 
 Check out the video with some tests by clicking [here](documentation/video/test.mp4).
+
+There are several screenshots of the features in the [README.md](README.md) file.
 
 
 ### New Site Users
