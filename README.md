@@ -1179,13 +1179,13 @@ Content for this project was written by me, Lucimeri Andretta.
 
 I would like to acknowledge the following people who helped me along the way in completing this project: 🫶
 
-- first, I would like to thank my family, for their continuous support and understanding while working on the development of this project! It was a difficult time, husband and son were sick, car accident with my daughter, but by the grace of God I could achieve what I planned! 
+- first, I would like to thank my family, for their continuous support and understanding while working on the development of this project! It was a difficult time, husband and son were sick, car accident with my daughter, but by the grace of God I could achieve what I planned! ❤️
 
 - I would like to thank my Mentor Brian Macharia for his support, insight expertise, and guidance.
 
 - I would like to thak everyone who tested Titbit befor I sent it, specially my son Matheus. If a 10 year old child could navigate through the site without instructions an adult would be able to do the same! 
 
-- Stackoverflow and Slack community, because someone has ever had the same doubt as me...
+- Stackoverflow and Slack community, because someone has ever had the same doubt as me... 🤡
 
 </details>
 
