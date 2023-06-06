@@ -894,8 +894,6 @@ I have been mindful during coding to ensure that the website is as accessible fr
 
 [Django](https://www.djangoproject.com/) - Python framework
 
-[Flask](https://pypi.org/project/Flask/) - A micro framework.
-
 [Bootstrap](https://getbootstrap.com/) - Version 5.2.3 - CSS Framework.
 
 
@@ -1163,6 +1161,7 @@ Please see [TESTING.md](TESTING.md) for all testing performed
 * [Redirect after successful password change](https://github.com/pennersr/django-allauth/issues/468)
 * [Character Reference Paginator](https://stackoverflow.com/questions/34206532/replaced-with-amp-w3c-validator-still-showing-error)
 * [Aria-controls](https://rocketvalidator.com/html-validation/the-aria-controls-attribute-must-point-to-an-element-in-the-same-document)
+* [How to unstage commits](https://devconnected.com/how-to-unstage-files-on-git/#:~:text=To%20unstage%20commits%20on%20Git,and%20specify%20the%20commit%20hash.&text=Alternatively%2C%20if%20you%20want%20to%20unstage%20your%20last%20commit%2C%20you,order%20to%20revert%20it%20easily.&text=Using%20the%20%E2%80%9C%E2%80%93soft%E2%80%9D%20argument,your%20working%20directory%20and%20index.)
 
 ###  Content 
 📝
